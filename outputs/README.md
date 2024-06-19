@@ -1,0 +1,3 @@
+# Outputs Directory
+
+This directory contains...
