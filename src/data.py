@@ -4,9 +4,41 @@ numpy.char = None
 import great_expectations as gx
 import pandas as pd
 from great_expectations.data_context import FileDataContext
+import pandas as pd
+import hydra
+from omegaconf import DictConfig
+import dvc.api
+import os
+
+@hydra.main(config_path="../configs", config_name="config")
+def sample_data(cfg: DictConfig) -> None:
+    # Read the data file
+    data_url = cfg.data.url
+    df = pd.read_csv(data_url)
+
+    # Take a sample
+    sample_size = cfg.data.sample_size
+    sample_df = df.sample(frac=sample_size, random_state=42).reset_index(drop=True)
+
+    # Create samples folder if it doesn't exist
+    sample_folder = cfg.data.sample_folder
+
+    # Save the sample to the samples folder
+    sample_path = os.path.join(sample_folder, "sample.csv")
+    sample_df.to_csv(sample_path, index=False)
+
+    # Add the sample file to DVC for versioning
+    dvc.api.add(sample_path)
+    print(f"Sample saved and added to DVC: {sample_path}")
+
+if __name__ == "__main__":
+    sample_data()
+
+
 
 class DataValidationException(Exception):
     pass
+
 
 def validate_initial_data(data_path="data/flats.csv"):
     # Initialize the DataContext
