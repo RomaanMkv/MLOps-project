@@ -33,26 +33,23 @@ def sample_data(cfg: DictConfig) -> None:
     subprocess.run(["dvc", "add", sample_path], check=True)
     print(f"Sample saved and added to DVC: {sample_path}")
 
-if __name__ == "__main__":
-    sample_data()
-
-
 
 class DataValidationException(Exception):
     pass
 
-
-def validate_initial_data(data_path="data/flats.csv"):
+@hydra.main(config_path="../configs", config_name="config")
+def validate_initial_data(cfg: DictConfig) -> None:
+    data_path=cfg.gx.data_path
     # Initialize the DataContext
-    FileDataContext(project_root_dir = "services")
-    context = gx.get_context(project_root_dir = "services")
+    FileDataContext(project_root_dir = cfg.gx.project_root_dir)
+    context = gx.get_context(project_root_dir = cfg.gx.project_root_dir)
 
     # Add or update the pandas datasource
-    ds = context.sources.add_or_update_pandas(name="pandas_datasource")
+    ds = context.sources.add_or_update_pandas(name=cfg.gx.datasource_name)
 
     # Add CSV asset
     da1 = ds.add_csv_asset(
-        name="csv_file",
+        name=cfg.gx.asset_name,
         filepath_or_buffer=data_path,
     )
 
@@ -60,12 +57,12 @@ def validate_initial_data(data_path="data/flats.csv"):
     batch_request = da1.build_batch_request()
 
     # Add or update the expectation suite
-    context.add_or_update_expectation_suite("initial_data_validation")
+    context.add_or_update_expectation_suite(cfg.gx.suite_name)
 
     # Get validator for the batch and expectation suite
     validator = context.get_validator(
         batch_request=batch_request,
-        expectation_suite_name="initial_data_validation"
+        expectation_suite_name=cfg.gx.suite_name
     )
 
     # 1. 'month' feature
@@ -126,8 +123,11 @@ def validate_initial_data(data_path="data/flats.csv"):
 
     print("All expectations passed successfully.")
 
-# # Call the function to validate the data
-# try:
-#     validate_initial_data()
-# except DataValidationException as e:
-#     print(str(e))
+
+if __name__ == "__main__":
+    # sample_data()
+    # Call the function to validate the data
+    try:
+        validate_initial_data()
+    except DataValidationException as e:
+        print(str(e))
