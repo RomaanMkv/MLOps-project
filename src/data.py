@@ -30,7 +30,6 @@ def sample_data(cfg: DictConfig) -> None:
     sample_df.to_csv(sample_path, index=False)
 
     # Add the sample file to DVC for versioning
-    # Add the sample file to DVC for versioning
     subprocess.run(["dvc", "add", sample_path], check=True)
     print(f"Sample saved and added to DVC: {sample_path}")
 
