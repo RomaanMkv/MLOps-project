@@ -7,19 +7,13 @@ from great_expectations.data_context import FileDataContext
 import pandas as pd
 import hydra
 from omegaconf import DictConfig
-import dvc.api
 import os
 import subprocess
 
 @hydra.main(config_path="../configs", config_name="config")
 def sample_data(cfg: DictConfig) -> None:
     # Read the data file
-    data_url = cfg.data.url
-    # Get the current working directory
-    current_directory = os.getcwd()
-
-    # Print the current working directory
-    print(f"The current working directory is: {current_directory}")
+    data_url = cfg.data.path + cfg.data.raw_data_name + str(cfg.data.version) + cfg.data.data_format
 
     df = pd.read_csv(data_url)
 
