@@ -9,11 +9,18 @@ import hydra
 from omegaconf import DictConfig
 import dvc.api
 import os
+import subprocess
 
 @hydra.main(config_path="../configs", config_name="config")
 def sample_data(cfg: DictConfig) -> None:
     # Read the data file
     data_url = cfg.data.url
+    # Get the current working directory
+    current_directory = os.getcwd()
+
+    # Print the current working directory
+    print(f"The current working directory is: {current_directory}")
+
     df = pd.read_csv(data_url)
 
     # Take a sample
@@ -22,13 +29,15 @@ def sample_data(cfg: DictConfig) -> None:
 
     # Create samples folder if it doesn't exist
     sample_folder = cfg.data.sample_folder
+    os.makedirs(sample_folder, exist_ok=True)
 
     # Save the sample to the samples folder
     sample_path = os.path.join(sample_folder, "sample.csv")
     sample_df.to_csv(sample_path, index=False)
 
     # Add the sample file to DVC for versioning
-    dvc.api.add(sample_path)
+    # Add the sample file to DVC for versioning
+    subprocess.run(["dvc", "add", sample_path], check=True)
     print(f"Sample saved and added to DVC: {sample_path}")
 
 if __name__ == "__main__":
@@ -124,8 +133,8 @@ def validate_initial_data(data_path="data/flats.csv"):
 
     print("All expectations passed successfully.")
 
-# Call the function to validate the data
-try:
-    validate_initial_data()
-except DataValidationException as e:
-    print(str(e))
+# # Call the function to validate the data
+# try:
+#     validate_initial_data()
+# except DataValidationException as e:
+#     print(str(e))
