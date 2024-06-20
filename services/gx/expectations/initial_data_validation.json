@@ -1,0 +1,204 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "initial_data_validation",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "month"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": "2024-06",
+        "min_value": "2017-01"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "month",
+        "regex": "^\\d{4}-\\d{2}$"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "town"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "town",
+        "value_set": [
+          "ANG MO KIO",
+          "BEDOK",
+          "BISHAN",
+          "BUKIT BATOK",
+          "BUKIT MERAH",
+          "BUKIT PANJANG",
+          "BUKIT TIMAH",
+          "CENTRAL AREA",
+          "CHOA CHU KANG",
+          "CLEMENTI",
+          "GEYLANG",
+          "HOUGANG",
+          "JURONG EAST",
+          "JURONG WEST",
+          "KALLANG/WHAMPOA",
+          "MARINE PARADE",
+          "PASIR RIS",
+          "PUNGGOL",
+          "QUEENSTOWN",
+          "SEMBAWANG",
+          "SENGKANG",
+          "SERANGOON",
+          "TAMPINES",
+          "TOA PAYOH",
+          "WOODLANDS",
+          "YISHUN"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "flat_type"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "flat_type",
+        "value_set": [
+          "1 ROOM",
+          "2 ROOM",
+          "3 ROOM",
+          "4 ROOM",
+          "5 ROOM",
+          "EXECUTIVE",
+          "MULTI-GENERATION"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "storey_range"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "storey_range",
+        "value_set": [
+          "01 TO 03",
+          "04 TO 06",
+          "07 TO 09",
+          "10 TO 12",
+          "13 TO 15",
+          "16 TO 18",
+          "19 TO 21",
+          "22 TO 24",
+          "25 TO 27",
+          "28 TO 30",
+          "31 TO 33",
+          "34 TO 36",
+          "37 TO 39",
+          "40 TO 42",
+          "43 TO 45",
+          "46 TO 48",
+          "49 TO 51"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "floor_area_sqm"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "floor_area_sqm",
+        "max_value": 249,
+        "min_value": 31
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "floor_area_sqm",
+        "regex": "^\\d+(\\.\\d+)?$"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "lease_commence_date"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "lease_commence_date",
+        "max_value": 2020,
+        "min_value": 1966
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "lease_commence_date",
+        "regex": "^\\d{4}$"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "resale_price"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "resale_price",
+        "max_value": 1588000,
+        "min_value": 140000
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_pair_values_a_to_be_greater_than_b",
+      "kwargs": {
+        "column_A": "resale_price",
+        "column_B": "floor_area_sqm"
+      },
+      "meta": {}
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.16"
+  }
+}
