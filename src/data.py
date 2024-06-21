@@ -8,7 +8,6 @@ import pandas as pd
 import hydra
 from omegaconf import DictConfig
 import os
-import subprocess
 
 @hydra.main(config_path="../configs", config_name="config")
 def sample_data(cfg: DictConfig) -> None:
@@ -29,30 +28,23 @@ def sample_data(cfg: DictConfig) -> None:
     sample_path = os.path.join(sample_folder, "sample.csv")
     sample_df.to_csv(sample_path, index=False)
 
-    # Add the sample file to DVC for versioning
-    subprocess.run(["dvc", "add", sample_path], check=True)
-    print(f"Sample saved and added to DVC: {sample_path}")
-
-if __name__ == "__main__":
-    sample_data()
-
-
 
 class DataValidationException(Exception):
     pass
 
-
-def validate_initial_data(data_path="data/flats.csv"):
+@hydra.main(config_path="../configs", config_name="config")
+def validate_initial_data(cfg: DictConfig) -> None:
+    data_path=cfg.gx.data_path
     # Initialize the DataContext
-    FileDataContext(project_root_dir = "services")
-    context = gx.get_context(project_root_dir = "services")
+    FileDataContext(project_root_dir = cfg.gx.project_root_dir)
+    context = gx.get_context(project_root_dir = cfg.gx.project_root_dir)
 
     # Add or update the pandas datasource
-    ds = context.sources.add_or_update_pandas(name="pandas_datasource")
+    ds = context.sources.add_or_update_pandas(name=cfg.gx.datasource_name)
 
     # Add CSV asset
     da1 = ds.add_csv_asset(
-        name="csv_file",
+        name=cfg.gx.asset_name,
         filepath_or_buffer=data_path,
     )
 
@@ -60,12 +52,12 @@ def validate_initial_data(data_path="data/flats.csv"):
     batch_request = da1.build_batch_request()
 
     # Add or update the expectation suite
-    context.add_or_update_expectation_suite("initial_data_validation")
+    context.add_or_update_expectation_suite(cfg.gx.suite_name)
 
     # Get validator for the batch and expectation suite
     validator = context.get_validator(
         batch_request=batch_request,
-        expectation_suite_name="initial_data_validation"
+        expectation_suite_name=cfg.gx.suite_name
     )
 
     # 1. 'month' feature
@@ -108,6 +100,17 @@ def validate_initial_data(data_path="data/flats.csv"):
     validator.expect_column_values_to_be_between('resale_price', min_value=140000, max_value=1588000)
     validator.expect_column_pair_values_A_to_be_greater_than_B('resale_price', 'floor_area_sqm')
 
+    # 8. 'flat_model' feature
+    validator.expect_column_values_to_not_be_null('flat_model') 
+    validator.expect_column_values_to_be_in_set('flat_model', [
+        'Model A', 'Improved', 'New Generation', 'DBSS', 'Simplified', 'Apartment', 'Standard', 'Premium Apartment',
+        'Maisonette', 'Model A-Maisonette', 'Premium Apartment Loft', 'Type S1', 'Type S2', 'Model A2', '2-room',
+        'Terrace', 'Adjoined flat', 'Improved-Maisonette', 'Multi Generation', '3Gen', 'Premium Maisonette'
+    ])
+
+    # 9. 'block' feature
+    validator.expect_column_values_to_not_be_null('block')
+
     # Save the expectation suite
     validator.save_expectation_suite()
 
@@ -125,9 +128,3 @@ def validate_initial_data(data_path="data/flats.csv"):
         raise DataValidationException("Data validation failed for one or more expectations.")
 
     print("All expectations passed successfully.")
-
-# # Call the function to validate the data
-# try:
-#     validate_initial_data()
-# except DataValidationException as e:
-#     print(str(e))
