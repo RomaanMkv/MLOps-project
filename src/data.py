@@ -105,6 +105,17 @@ def validate_initial_data(cfg: DictConfig) -> None:
     validator.expect_column_values_to_be_between('resale_price', min_value=140000, max_value=1588000)
     validator.expect_column_pair_values_A_to_be_greater_than_B('resale_price', 'floor_area_sqm')
 
+    # 8. 'flat_model' feature
+    validator.expect_column_values_to_not_be_null('flat_model') 
+    validator.expect_column_values_to_be_in_set('flat_model', [
+        'Model A', 'Improved', 'New Generation', 'DBSS', 'Simplified', 'Apartment', 'Standard', 'Premium Apartment',
+        'Maisonette', 'Model A-Maisonette', 'Premium Apartment Loft', 'Type S1', 'Type S2', 'Model A2', '2-room',
+        'Terrace', 'Adjoined flat', 'Improved-Maisonette', 'Multi Generation', '3Gen', 'Premium Maisonette'
+    ])
+
+    # 9. 'block' feature
+    validator.expect_column_values_to_not_be_null('block')
+
     # Save the expectation suite
     validator.save_expectation_suite()
 
