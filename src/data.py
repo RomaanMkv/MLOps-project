@@ -8,7 +8,6 @@ import pandas as pd
 import hydra
 from omegaconf import DictConfig
 import os
-import subprocess
 
 @hydra.main(config_path="../configs", config_name="config")
 def sample_data(cfg: DictConfig) -> None:
@@ -28,10 +27,6 @@ def sample_data(cfg: DictConfig) -> None:
     # Save the sample to the samples folder
     sample_path = os.path.join(sample_folder, "sample.csv")
     sample_df.to_csv(sample_path, index=False)
-
-    # Add the sample file to DVC for versioning
-    subprocess.run(["dvc", "add", sample_path], check=True)
-    print(f"Sample saved and added to DVC: {sample_path}")
 
 
 class DataValidationException(Exception):
@@ -133,12 +128,3 @@ def validate_initial_data(cfg: DictConfig) -> None:
         raise DataValidationException("Data validation failed for one or more expectations.")
 
     print("All expectations passed successfully.")
-
-
-if __name__ == "__main__":
-    sample_data()
-    # Call the function to validate the data
-    try:
-        validate_initial_data()
-    except DataValidationException as e:
-        print(str(e))
