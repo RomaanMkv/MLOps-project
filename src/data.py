@@ -125,7 +125,7 @@ def validate_initial_data(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
-    # sample_data()
+    sample_data()
     # Call the function to validate the data
     try:
         validate_initial_data()
