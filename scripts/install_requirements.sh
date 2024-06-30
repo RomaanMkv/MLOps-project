@@ -25,12 +25,16 @@ if [ ! -d "venv" ]; then
     python3.11 -m venv venv
 fi
 
+echo "export AIRFLOW_HOME=$PWD/services/airflow" >> ~/.bashrc
+echo "export PYTHONPATH=$PWD/src" >> ~/.bashrc
+echo "export PROJECT_BASE_PATH==$PWD" >> ~/.bashrc
+
+source ~/.bashrc
+
 # Activate the virtual environment
 source venv/bin/activate
 
 # Install the requirements
-<<<<<<< Updated upstream
 pip install -r requirements.txt
-=======
-pip install -r requirements.txt
->>>>>>> Stashed changes
+
+
