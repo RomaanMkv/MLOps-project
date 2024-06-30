@@ -20,13 +20,9 @@ navigate_to_mlops_project() {
 # Call the function
 navigate_to_mlops_project
 
-# Check if virtual environment folder exists, if not, create one
-if [ ! -d "venv" ]; then
-    python3.11 -m venv venv
-fi
-
-# Activate the virtual environment
-source venv/bin/activate
-
-# Install the requirements
-pip install -r requirements.txt --upgrade
+pkill -f "airflow scheduler"
+pkill -f "airflow webserver"
+airflow dags backfill \
+            --start-date START_DATE \
+            --end-date END_DATE \
+            dag_id
