@@ -29,4 +29,8 @@ fi
 source venv/bin/activate
 
 # Install the requirements
-pip install -r requirements.txt --upgrade
+<<<<<<< Updated upstream
+pip install -r requirements.txt
+=======
+pip install -r requirements.txt
+>>>>>>> Stashed changes
