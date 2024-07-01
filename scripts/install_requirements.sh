@@ -27,13 +27,18 @@ fi
 
 echo "export AIRFLOW_HOME=$PWD/services/airflow" >> ~/.bashrc
 echo "export PYTHONPATH=$PWD/src" >> ~/.bashrc
-echo "export PROJECT_BASE_PATH==$PWD" >> ~/.bashrc
+echo "export PROJECT_BASE_PATH=$PWD" >> ~/.bashrc
 echo "export ZENML_CONFIG_PATH=$PWD/services/zenml" >> ~/.bashrc
 
 source ~/.bashrc
 
 # Activate the virtual environment
 source venv/bin/activate
+
+mkdir -p $AIRFLOW_HOME/logs $AIRFLOW_HOME/dags
+echo > $AIRFLOW_HOME/logs/scheduler.log
+echo > $AIRFLOW_HOME/logs/triggerer.log
+echo > $AIRFLOW_HOME/logs/webserver.log
 
 # Install the requirements
 pip install -r requirements.txt

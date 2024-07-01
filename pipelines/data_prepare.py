@@ -1,7 +1,7 @@
 import pandas as pd
 from typing_extensions import Tuple, Annotated
 from zenml import step, pipeline, ArtifactConfig
-from data import transform_data, extract_data, load_features, validate_transformed_data
+from src.data import preprocess_data, extract_data, load_features, validate_transformed_data
 import os
 
 BASE_PATH = os.path.expandvars("$PROJECTPATH")
@@ -33,7 +33,7 @@ def transform(df: pd.DataFrame)-> Tuple[
                                     ]:
 
     # Your data transformation code
-    X, y = transform_data(df)
+    X, y = preprocess_data(df)
 
     return X, y
 
