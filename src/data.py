@@ -4,6 +4,7 @@ numpy.char = None
 import great_expectations as gx
 import pandas as pd
 from great_expectations.data_context import FileDataContext
+from great_expectations.checkpoint import SimpleCheckpoint
 import pandas as pd
 import hydra
 from omegaconf import DictConfig
@@ -14,8 +15,9 @@ from sklearn.preprocessing import OneHotEncoder
 from datetime import datetime
 from sklearn.preprocessing import StandardScaler
 
-@hydra.main(config_path="../configs", config_name="config")
+
 def sample_data(cfg: DictConfig) -> None:
+    
     # Read the data file
     data_url = cfg.data.path + cfg.data.raw_data_name + str(cfg.data.version) + cfg.data.data_format
 
@@ -37,7 +39,7 @@ def sample_data(cfg: DictConfig) -> None:
 class DataValidationException(Exception):
     pass
 
-@hydra.main(config_path="../configs", config_name="config")
+
 def validate_initial_data(cfg: DictConfig) -> None:
     data_path=cfg.gx.data_path
     # Initialize the DataContext
@@ -204,7 +206,7 @@ def preprocess_data(data):
             df = df.drop(columns=['town', 'block', 'street_name'])
             return df
         
-        coord_df = pd.read_csv("../data/coordinates.csv", index_col='full_address')
+        coord_df = pd.read_csv("data/coordinates.csv", index_col='full_address')
 
         def get_coordinate(full_addr):
             try:
@@ -233,3 +235,10 @@ def preprocess_data(data):
     
 
     return X, y
+
+def create_validation_expectations():
+    pass
+
+# df, version = extract_data("/home/roman/MLOps/MLOps-project")
+# df, _ = preprocess_data(df)
+# df.to_csv('dataframe.csv', index=False)
