@@ -72,8 +72,6 @@ version_data_sample() {
     echo "Data sample versioned successfully."
 }
 
-version_data_sample
-
 if validate_data_sample; then
     echo "Data validation passed."
     version_data_sample

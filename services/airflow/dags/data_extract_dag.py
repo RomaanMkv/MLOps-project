@@ -93,7 +93,6 @@ version_data = BashOperator(
     fi
     current_version=$(cat ./configs/version_counter.txt)
     next_version=$((current_version + 1))
-    echo $next_version > ./configs/version_counter.txt
     # Store the DVC version in the configuration file
     echo 'version: ' $next_version > ./configs/data_version.yaml
     """,
