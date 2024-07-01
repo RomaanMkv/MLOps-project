@@ -15,6 +15,9 @@ from sklearn.preprocessing import OneHotEncoder
 from datetime import datetime
 from sklearn.preprocessing import StandardScaler
 
+from zenml.client import Client
+import zenml
+
 
 def sample_data(cfg: DictConfig) -> None:
     
@@ -242,3 +245,25 @@ def create_validation_expectations():
 # df, version = extract_data("/home/roman/MLOps/MLOps-project")
 # df, _ = preprocess_data(df)
 # df.to_csv('dataframe.csv', index=False)
+
+
+def load_features(X: pd.DataFrame, y: pd.DataFrame, version: str):
+    features_target = pd.concat([X, y], axis=1)
+
+    zenml.save_artifact(data=features_target, name="features_target", tags=[version])
+
+    client = Client()
+
+    artifacts = client.list_artifact_versions(name="features_target", tag=version, sort_by="version").items
+
+    artifacts.reverse()
+
+    latest_artifact = artifacts[0].load()
+    
+    return latest_artifact
+
+def load_artifact(name: str, version: str) -> pd.DataFrame:
+    client = Client()
+    artifacts = client.list_artifact_versions(name=name, tag=version, sort_by="version").items
+    artifacts.reverse()
+    return artifacts[0].load()
