@@ -28,6 +28,7 @@ fi
 echo "export AIRFLOW_HOME=$PWD/services/airflow" >> ~/.bashrc
 echo "export PYTHONPATH=$PWD/src" >> ~/.bashrc
 echo "export PROJECT_BASE_PATH==$PWD" >> ~/.bashrc
+echo "export ZENML_CONFIG_PATH=$PWD/services/zenml" >> ~/.bashrc
 
 source ~/.bashrc
 

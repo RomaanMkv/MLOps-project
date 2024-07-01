@@ -128,3 +128,5 @@ def validate_initial_data(cfg: DictConfig) -> None:
         raise DataValidationException("Data validation failed for one or more expectations.")
 
     print("All expectations passed successfully.")
+
+def extract_data

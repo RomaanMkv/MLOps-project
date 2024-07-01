@@ -86,19 +86,11 @@ version_data = BashOperator(
     echo "Versioning the data sample..."
     dvc add data/samples/sample.csv
     echo "Data sample versioned successfully."
-    # Read the current version number
-    if [ ! -f ./configs/version_counter.txt ]; then
-        echo 0 > ./configs/version_counter.txt
-    fi
-    current_version=$(cat ./configs/version_counter.txt)
-    next_version=$((current_version + 1))
-    echo $next_version > ./configs/version_counter.txt
     # Store the DVC version in the configuration file
-    echo 'version: ' $next_version > ./configs/data_version.yaml
+    echo 'version: '$(dvc status -c data/samples/sample.csv) > ./configs/data_version.yaml
     """,
     dag=dag,
 )
-
 
 # Task to load the sample to the data store (dvc push)
 load_sample = BashOperator(
