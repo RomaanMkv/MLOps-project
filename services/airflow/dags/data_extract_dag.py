@@ -40,15 +40,16 @@ sample_data = BashOperator(
     cd {project_base_path}
     echo "Taking a data sample..."
     {project_base_path}/venv/bin/python -c "
-import hydra
-from omegaconf import DictConfig
+from hydra import initialize, compose
+from omegaconf import OmegaConf
 from src.data import sample_data
 
-@hydra.main(config_path='$CONFIG_PATH', config_name='$CONFIG_NAME')
-def run_sample_data(cfg: DictConfig) -> None:
-    sample_data(cfg)
-
-run_sample_data()
+if __name__ == '__main__':
+    # Initialize Hydra and compose the configuration
+    with initialize(version_base=None, config_path='$CONFIG_PATH'):
+        cfg = compose(config_name='$CONFIG_NAME')
+        
+        sample_data(cfg)
     "
     """,
     env={'CONFIG_PATH': config_path, 'CONFIG_NAME': config_name},  # Setting environment variables
@@ -60,19 +61,19 @@ validate_data = BashOperator(
     bash_command=f"""
     cd {project_base_path}
     {project_base_path}/venv/bin/python -c "
-import hydra
+from hydra import initialize, compose
 from src.data import validate_initial_data
-from omegaconf import DictConfig
 
-@hydra.main(config_path='$CONFIG_PATH', config_name='$CONFIG_NAME')
-def run_validate_initial_data(cfg: DictConfig) -> None:
-    validate_initial_data(cfg)
-
-try:
-    run_validate_initial_data()
-except Exception as e:
-    import sys
-    sys.exit(1)
+if __name__ == '__main__':
+    try:
+        # Initialize Hydra and compose the configuration
+        with initialize(version_base=None, config_path='$CONFIG_PATH'):
+            cfg = compose(config_name='$CONFIG_NAME')
+            
+            validate_initial_data(cfg)
+    except Exception as e:
+        import sys
+        sys.exit(1)
 "
     """,
     env={'CONFIG_PATH': config_path, 'CONFIG_NAME': config_name},  # Setting environment variables

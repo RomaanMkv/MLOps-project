@@ -22,6 +22,7 @@ navigate_to_mlops_project
 
 pkill -f "airflow scheduler"
 pkill -f "airflow webserver"
+kill $(ps -ef | grep "airflow" | awk '{print $2}')
 airflow dags backfill \
             --start-date START_DATE \
             --end-date END_DATE \
