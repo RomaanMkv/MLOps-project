@@ -211,6 +211,8 @@ def load_artifact(name: str, version: str) -> pd.DataFrame:
 # df, version = extract_data("/home/roman/MLOps/MLOps-project")
 # X, y = preprocess_data(df)
 # print(type(y))
+# artifact = load_artifact('features_target', '5')
+# print(artifact)
 
 
 

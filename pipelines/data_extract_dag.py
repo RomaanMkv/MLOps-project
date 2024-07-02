@@ -25,7 +25,7 @@ default_args = {
 
 # Define the DAG
 dag = DAG(
-    'data_extract_dag22',  # DAG ID
+    'data_extract_dag',  # DAG ID
     default_args=default_args,
     description='A simple data extraction and validation DAG',  # Description of the DAG
     schedule_interval='*/5 * * * *',  # Schedule to run every 5 minutes
@@ -40,15 +40,16 @@ sample_data = BashOperator(
     cd {project_base_path}
     echo "Taking a data sample..."
     {project_base_path}/venv/bin/python -c "
-import hydra
-from omegaconf import DictConfig
+from hydra import initialize, compose
+from omegaconf import OmegaConf
 from src.data import sample_data
 
-@hydra.main(config_path='$CONFIG_PATH', config_name='$CONFIG_NAME')
-def run_sample_data(cfg: DictConfig) -> None:
-    sample_data(cfg)
-
-run_sample_data()
+if __name__ == '__main__':
+    # Initialize Hydra and compose the configuration
+    with initialize(version_base=None, config_path='$CONFIG_PATH'):
+        cfg = compose(config_name='$CONFIG_NAME')
+        
+        sample_data(cfg)
     "
     """,
     env={'CONFIG_PATH': config_path, 'CONFIG_NAME': config_name},  # Setting environment variables
@@ -60,19 +61,19 @@ validate_data = BashOperator(
     bash_command=f"""
     cd {project_base_path}
     {project_base_path}/venv/bin/python -c "
-import hydra
+from hydra import initialize, compose
 from src.data import validate_initial_data
-from omegaconf import DictConfig
 
-@hydra.main(config_path='$CONFIG_PATH', config_name='$CONFIG_NAME')
-def run_validate_initial_data(cfg: DictConfig) -> None:
-    validate_initial_data(cfg)
-
-try:
-    run_validate_initial_data()
-except Exception as e:
-    import sys
-    sys.exit(1)
+if __name__ == '__main__':
+    try:
+        # Initialize Hydra and compose the configuration
+        with initialize(version_base=None, config_path='$CONFIG_PATH'):
+            cfg = compose(config_name='$CONFIG_NAME')
+            
+            validate_initial_data(cfg)
+    except Exception as e:
+        import sys
+        sys.exit(1)
 "
     """,
     env={'CONFIG_PATH': config_path, 'CONFIG_NAME': config_name},  # Setting environment variables
@@ -86,11 +87,20 @@ version_data = BashOperator(
     echo "Versioning the data sample..."
     dvc add data/samples/sample.csv
     echo "Data sample versioned successfully."
-    # Store the DVC version in the configuration file
-    echo 'version: '$(dvc status -c data/samples/sample.csv) > ./configs/data_version.yaml
+    
+    # Read the current version number from config.yaml
+    current_version=$(grep 'version' ./configs/config.yaml | awk '{{print $2}}')
+    if [ -z "$current_version" ]; then
+        current_version=0
+    fi
+
+    # Store the new version in the configuration file
+    sed -i "s/version: $current_version/version: $next_version/" ./configs/config.yaml
+
     """,
     dag=dag,
 )
+
 
 # Task to load the sample to the data store (dvc push)
 load_sample = BashOperator(

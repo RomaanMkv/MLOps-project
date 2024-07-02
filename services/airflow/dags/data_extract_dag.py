@@ -25,7 +25,7 @@ default_args = {
 
 # Define the DAG
 dag = DAG(
-    'data_extract_dag22',  # DAG ID
+    'data_extract_dag',  # DAG ID
     default_args=default_args,
     description='A simple data extraction and validation DAG',  # Description of the DAG
     schedule_interval='*/5 * * * *',  # Schedule to run every 5 minutes
@@ -87,14 +87,16 @@ version_data = BashOperator(
     echo "Versioning the data sample..."
     dvc add data/samples/sample.csv
     echo "Data sample versioned successfully."
-    # Read the current version number
-    if [ ! -f ./configs/version_counter.txt ]; then
-        echo 0 > ./configs/version_counter.txt
+    
+    # Read the current version number from config.yaml
+    current_version=$(grep 'version' ./configs/config.yaml | awk '{{print $2}}')
+    if [ -z "$current_version" ]; then
+        current_version=0
     fi
-    current_version=$(cat ./configs/version_counter.txt)
-    next_version=$((current_version + 1))
-    # Store the DVC version in the configuration file
-    echo 'version: ' $next_version > ./configs/data_version.yaml
+
+    # Store the new version in the configuration file
+    sed -i "s/version: $current_version/version: $next_version/" ./configs/config.yaml
+
     """,
     dag=dag,
 )

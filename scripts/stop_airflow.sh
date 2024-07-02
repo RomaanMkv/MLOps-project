@@ -20,10 +20,10 @@ navigate_to_mlops_project() {
 # Call the function
 navigate_to_mlops_project
 
-pkill -f "airflow scheduler"
-pkill -f "airflow webserver"
-kill $(ps -ef | grep "airflow" | awk '{print $2}')
-airflow dags backfill \
+sudo pkill -f "airflow scheduler"
+sudo pkill -f "airflow webserver"
+sudo kill $(ps -ef | grep "airflow" | awk '{print $2}')
+sudo airflow dags backfill \
             --start-date START_DATE \
             --end-date END_DATE \
             dag_id
