@@ -69,7 +69,7 @@ def extract_data(base_path):
     df_file_path = base_path + '/data/samples/sample.csv'
     df = pd.read_csv(df_file_path)
 
-    return df, version
+    return df, str(version)
 
 
 def preprocess_data(data):
@@ -153,9 +153,8 @@ def preprocess_data(data):
     data = data.dropna()
 
     X = data.drop(columns=['resale_price'])
-    y = data['resale_price']
+    y = data[['resale_price']]
     
-
     return X, y
 
 def validate_features(X, y):
@@ -184,7 +183,7 @@ def validate_features(X, y):
 
     print("All expectations passed successfully.")
 
-
+    return X, y
 
 
 def load_features(X: pd.DataFrame, y: pd.DataFrame, version: str):
@@ -202,6 +201,7 @@ def load_features(X: pd.DataFrame, y: pd.DataFrame, version: str):
     
     return latest_artifact
 
+
 def load_artifact(name: str, version: str) -> pd.DataFrame:
     client = Client()
     artifacts = client.list_artifact_versions(name=name, tag=version, sort_by="version").items
@@ -210,7 +210,8 @@ def load_artifact(name: str, version: str) -> pd.DataFrame:
 
 # df, version = extract_data("/home/roman/MLOps/MLOps-project")
 # X, y = preprocess_data(df)
-# validate_features(X, y)
+# print(type(y))
+
 
 
 

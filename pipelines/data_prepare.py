@@ -1,10 +1,10 @@
 import pandas as pd
 from typing_extensions import Tuple, Annotated
 from zenml import step, pipeline, ArtifactConfig
-from src.data import preprocess_data, extract_data, load_features, validate_transformed_data
+from data import preprocess_data, extract_data, load_features, validate_features
 import os
 
-BASE_PATH = os.path.expandvars("$PROJECTPATH")
+BASE_PATH = os.path.expandvars("$PROJECT_BASE_PATH")
 
 @step(enable_cache=False)
 def extract()-> Tuple[
@@ -48,7 +48,7 @@ def validate(X:pd.DataFrame,
                                            tags=["data_preparation"])]
                                     ]:
 
-    X, y = validate_transformed_data(X, y)
+    X, y = validate_features(X, y)
     
     return X, y
 
