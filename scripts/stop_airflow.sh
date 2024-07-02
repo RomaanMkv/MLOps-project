@@ -27,3 +27,7 @@ sudo airflow dags backfill \
             --start-date START_DATE \
             --end-date END_DATE \
             dag_id
+
+# check remaining airflow processes
+ps aux | grep airflow
+# use kill -9 <PID> in case some processes can't be terminated
