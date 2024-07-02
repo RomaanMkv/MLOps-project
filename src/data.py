@@ -58,26 +58,6 @@ def validate_initial_data(cfg: DictConfig) -> None:
 
     print("All expectations passed successfully.")
 
-# def validate_initial_data() -> None:
-#     context = gx.get_context(project_root_dir = 'services')
-
-#     results = context.run_checkpoint(checkpoint_name="initial_data_validation_checkpoint_data")
-
-#     # Print detailed validation results
-#     print("Validation success:", results.success)
-#     for result in results["run_results"].values():
-#         validation_result = result["validation_result"]
-#         for res in validation_result["results"]:
-#             expectation = res["expectation_config"]["expectation_type"]
-#             success = res["success"]
-#             print(f"Expectation {expectation}: {'SUCCESS' if success else 'FAILURE'}")
-#             if not success:
-#                 print(f"Details: {res['result']}")
-#         if not results.success:
-#             raise DataValidationException("Data validation failed for one or more expectations.")
-
-#     print("All expectations passed successfully.")
-
 
 def extract_data(base_path):
     version_file_path = base_path + '/configs/data_version.yaml'
@@ -178,6 +158,34 @@ def preprocess_data(data):
 
     return X, y
 
+def validate_features(X, y):
+    if not os.path.exists('data/preprocessed'):
+        os.makedirs('data/preprocessed')
+
+    X.to_csv('data/preprocessed/X.csv')
+    y.to_csv('data/preprocessed/y.csv')
+
+    context = gx.get_context(project_root_dir = 'services')
+
+    results = context.run_checkpoint(checkpoint_name="preprocessed_data_validation_checkpoint_data")
+
+    # Print detailed validation results
+    print("Validation success:", results.success)
+    for result in results["run_results"].values():
+        validation_result = result["validation_result"]
+        for res in validation_result["results"]:
+            expectation = res["expectation_config"]["expectation_type"]
+            success = res["success"]
+            print(f"Expectation {expectation}: {'SUCCESS' if success else 'FAILURE'}")
+            if not success:
+                print(f"Details: {res['result']}")
+        if not results.success:
+            raise DataValidationException("Data validation failed for one or more expectations.")
+
+    print("All expectations passed successfully.")
+
+
+
 
 def load_features(X: pd.DataFrame, y: pd.DataFrame, version: str):
     features_target = pd.concat([X, y], axis=1)
@@ -201,7 +209,8 @@ def load_artifact(name: str, version: str) -> pd.DataFrame:
     return artifacts[0].load()
 
 # df, version = extract_data("/home/roman/MLOps/MLOps-project")
-# df, _ = preprocess_data(df)
-# df.to_csv('data/data.csv', index=False)
+# X, y = preprocess_data(df)
+# validate_features(X, y)
 
-# validate_initial_data()
+
+
