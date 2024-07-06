@@ -86,13 +86,25 @@ version_data = BashOperator(
     cd {project_base_path}
     echo "Versioning the data sample..."
     dvc add data/samples/sample.csv
-    echo "Data sample versioned successfully."
     
     # Read the current version number from config.yaml
-    current_version=$(grep 'version' ./configs/config.yaml | awk '{{print $2}}')
+    current_version=$(grep 'version' ./configs/config.yaml | awk -F ': ' '{{print $2}}' | tr -d '[:space:]')
+
     if [ -z "$current_version" ]; then
         current_version=0
     fi
+
+    git push -d origin "V$current_version"
+    git tag -d "V$current_version"
+
+    git add data/samples/sample.csv.dvc data/samples/gitgnore
+    git commit -m 'add data sample'
+    git push
+    dvc push
+    echo "Data sample versioned successfully."
+
+    git tag -a "V$current_version" -m "A new version of the data 'V$current_version'"
+    git push --tags
 
     # Store the new version in the configuration file
     sed -i "s/version: $current_version/version: $next_version/" ./configs/config.yaml

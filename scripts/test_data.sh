@@ -69,6 +69,10 @@ version_data_sample() {
     echo "Versioning the data sample..."
     # Add the sample file to DVC for versioning
     dvc add data/samples/sample.csv
+    git add data/samples/sample.csv.dvc data/samples/gitgnore
+    git commit -m 'add data sample'
+    git push
+    dvc push
     echo "Data sample versioned successfully."
 }
 
