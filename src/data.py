@@ -7,6 +7,7 @@ import os
 import yaml
 
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
 from datetime import datetime
 from sklearn.preprocessing import StandardScaler
 
@@ -73,21 +74,13 @@ def extract_data(base_path):
 
 
 def preprocess_data(data):
-    def encode(df):
-        categorical = ["flat_type", "storey_range", "flat_model"]
-
-        encoder = OneHotEncoder(sparse_output=False)
-        encoded_data = encoder.fit_transform(df[categorical])
-        encoded_df = pd.DataFrame(encoded_data, columns=encoder.get_feature_names_out(categorical))
-        df = df.drop(columns=categorical).join(encoded_df)
-        return df
-    
     def convert_time_columns(df):
         reference_date = datetime(1966, 1, 1)
         df['month'] = pd.to_datetime(df['month'], format='%Y-%m')
         df['month_seconds'] = (df['month'] - reference_date).dt.total_seconds()
         df['lease_commence_date'] = pd.to_datetime(df['lease_commence_date'], format='%Y')
         df['lease_commence_date_seconds'] = (df['lease_commence_date'] - reference_date).dt.total_seconds()
+        
         def calculate_lease_end(row):
             try:
                 years, months = 0, 0
@@ -103,6 +96,7 @@ def preprocess_data(data):
             except Exception as e:
                 print(f"Error processing row: {row}, error: {e}")
                 return None
+        
         df['remaining_lease_seconds'] = df.apply(calculate_lease_end, axis=1)
         df.drop(columns=['month', 'lease_commence_date', 'remaining_lease'], inplace=True)
         df.rename(columns={
@@ -110,15 +104,9 @@ def preprocess_data(data):
             'lease_commence_date_seconds': 'lease_commence_date',
             'remaining_lease_seconds': 'remaining_lease'
         }, inplace=True)
+        
+        return df
 
-        return df
-    
-    def scale_columns(df):
-        to_be_scaled = ['floor_area_sqm', 'month', 'lease_commence_date', 'remaining_lease']
-        scaler = StandardScaler()
-        df[to_be_scaled] = scaler.fit_transform(df[to_be_scaled])
-        return df
-    
     def get_coordinates(df):
         def create_address_string(row):
             return f"{row['town']}, {row['street_name']}, block {row['block']}, Singapore"
@@ -133,27 +121,58 @@ def preprocess_data(data):
         def get_coordinate(full_addr):
             try:
                 result = coord_df.loc[full_addr]
-                return numpy.float64(result['latitude']), numpy.float64(result['longitude'])
+                return np.float64(result['latitude']), np.float64(result['longitude'])
             except KeyError:
-                return numpy.nan, numpy.nan
+                return np.nan, np.nan
         
         df = make_full_address(df)
         df[['latitude', 'longitude']] = df['full_address'].apply(lambda addr: pd.Series(get_coordinate(addr)))
-        df = df.drop(columns= 'full_address')
+        df = df.drop(columns='full_address')
 
         return df
-    
 
-    data = encode(data)
+    # Process the columns that need to be converted first
     data = convert_time_columns(data)
-    data = scale_columns(data)
     data = get_coordinates(data)
     data['latitude'] = pd.to_numeric(data['latitude'], errors='coerce')
     data['longitude'] = pd.to_numeric(data['longitude'], errors='coerce')
+    
+    # Define the transformations
+    categorical_features = ["flat_type", "storey_range", "flat_model"]
+    numeric_features = ['floor_area_sqm', 'month', 'lease_commence_date', 'remaining_lease']
+    coordinate_features = ['latitude', 'longitude']
+    
+    # Pipeline for categorical features
+    categorical_transformer = Pipeline(steps=[
+        ('onehot', OneHotEncoder(sparse_output=False))
+    ])
+    
+    # Pipeline for numeric features
+    numeric_transformer = Pipeline(steps=[
+        ('scaler', StandardScaler())
+    ])
+    
+    # Combine all transformations
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('cat', categorical_transformer, categorical_features),
+            ('num', numeric_transformer, numeric_features),
+        ],
+        remainder='passthrough'
+    )
+    
+    # Apply transformations
     data = data.dropna()
-
     X = data.drop(columns=['resale_price'])
     y = data[['resale_price']]
+    
+    X_transformed = preprocessor.fit_transform(X)
+    transformed_columns = (
+        preprocessor.transformers_[0][1].named_steps['onehot'].get_feature_names_out(categorical_features).tolist() +
+        numeric_features +
+        coordinate_features
+    )
+    X = pd.DataFrame(X_transformed, columns=transformed_columns, index=X.index)
     
     return X, y
 
