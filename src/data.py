@@ -74,9 +74,9 @@ def extract_data(base_path, cfg: DictConfig):
     return df, str(version)
 
 
-def preprocess_data(data):
+def preprocess_data(data, cfg: DictConfig):
     def convert_time_columns(df):
-        reference_date = datetime(1966, 1, 1)
+        reference_date = datetime.strptime(cfg.prepr_data.reference_date, "%Y-%m-%d")
         df['month'] = pd.to_datetime(df['month'], format='%Y-%m')
         df['month_seconds'] = (df['month'] - reference_date).dt.total_seconds()
         df['lease_commence_date'] = pd.to_datetime(df['lease_commence_date'], format='%Y')
@@ -117,7 +117,7 @@ def preprocess_data(data):
             df = df.drop(columns=['town', 'block', 'street_name'])
             return df
         
-        coord_df = pd.read_csv("data/coordinates.csv", index_col='full_address')
+        coord_df = pd.read_csv(cfg.prepr_data.coordinates_file_path, index_col='full_address')
 
         def get_coordinate(full_addr):
             try:
@@ -139,9 +139,9 @@ def preprocess_data(data):
     data['longitude'] = pd.to_numeric(data['longitude'], errors='coerce')
     
     # Define the transformations
-    categorical_features = ["flat_type", "storey_range", "flat_model"]
-    numeric_features = ['floor_area_sqm', 'month', 'lease_commence_date', 'remaining_lease']
-    coordinate_features = ['latitude', 'longitude']
+    categorical_features = list(cfg.prepr_data.categorical_features)
+    numeric_features = list(cfg.prepr_data.numeric_features)
+    coordinate_features = list(cfg.prepr_data.coordinate_features)
     
     # Pipeline for categorical features
     categorical_transformer = Pipeline(steps=[
@@ -164,8 +164,8 @@ def preprocess_data(data):
     
     # Apply transformations
     data = data.dropna()
-    X = data.drop(columns=['resale_price'])
-    y = data[['resale_price']]
+    X = data.drop(columns=[cfg.prepr_data.target_feature])
+    y = data[[cfg.prepr_data.target_feature]]
     
     X_transformed = preprocessor.fit_transform(X)
     transformed_columns = (
@@ -177,16 +177,16 @@ def preprocess_data(data):
     
     return X, y
 
-def validate_features(X, y):
-    if not os.path.exists('data/preprocessed'):
-        os.makedirs('data/preprocessed')
+def validate_features(X, y, cfg : DictConfig):
+    if not os.path.exists(cfg.val_feat.data_path):
+        os.makedirs(cfg.val_feat.data_path)
 
-    X.to_csv('data/preprocessed/X.csv')
-    y.to_csv('data/preprocessed/y.csv')
+    X.to_csv(cfg.val_feat.X_path)
+    y.to_csv(cfg.val_feat.y_path)
 
-    context = gx.get_context(project_root_dir = 'services')
+    context = gx.get_context(project_root_dir = cfg.val_feat.project_root_dir)
 
-    results = context.run_checkpoint(checkpoint_name="preprocessed_data_validation_checkpoint_data")
+    results = context.run_checkpoint(checkpoint_name=cfg.val_feat.checkpoint_name)
 
     # Print detailed validation results
     print("Validation success:", results.success)

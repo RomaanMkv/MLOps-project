@@ -12,5 +12,18 @@ val_in_data:
 extr_data:
   version_file_path : "/configs/data_version.yaml"
   df_file_path : "/data/samples/sample.csv"
+prepr_data:
+  reference_date: "1966-01-01"
+  coordinates_file_path: "data/coordinates.csv"
+  categorical_features: ["flat_type", "storey_range", "flat_model"]
+  numeric_features: ["floor_area_sqm", "month", "lease_commence_date", "remaining_lease"]
+  coordinate_features: ["latitude", "longitude"]
+  target_feature: "resale_price"
+val_feat:
+  data_path: "data/preprocessed"
+  X_path: "data/preprocessed/X.csv"
+  y_path: "data/preprocessed/y.csv"
+  project_root_dir: "services"
+  checkpoint_name: "preprocessed_data_validation_checkpoint_data"
 
   

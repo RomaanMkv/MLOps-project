@@ -39,7 +39,9 @@ def transform(df: pd.DataFrame)-> Tuple[
                                     ]:
 
     # Your data transformation code
-    X, y = preprocess_data(df)
+    with initialize(version_base=None, config_path=CONFIG_PATH):
+        cfg = compose(config_name=CONFIG_NAME)
+        X, y = preprocess_data(data=df, cfg=cfg)
 
     return X, y
 
@@ -54,7 +56,9 @@ def validate(X:pd.DataFrame,
                                            tags=["data_preparation"])]
                                     ]:
 
-    X, y = validate_features(X, y)
+    with initialize(version_base=None, config_path=CONFIG_PATH):
+        cfg = compose(config_name=CONFIG_NAME)
+        X, y = validate_features(X=X, y=y, cfg=cfg)
     
     return X, y
 
