@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 import great_expectations as gx
 import pandas as pd
 import pandas as pd
@@ -10,6 +10,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from datetime import datetime
 from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 
 from zenml.client import Client
 import zenml
