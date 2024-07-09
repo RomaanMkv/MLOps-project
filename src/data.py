@@ -19,16 +19,16 @@ import zenml
 def sample_data(cfg: DictConfig) -> None:
     
     # Read the data file
-    data_url = cfg.data.path + cfg.data.raw_data_name + str(cfg.data.version) + cfg.data.data_format
+    data_url = cfg.sample_data.path + cfg.sample_data.raw_data_name + str(cfg.sample_data.sample_version) + cfg.sample_data.data_format
 
     df = pd.read_csv(data_url)
 
     # Take a sample
-    sample_size = cfg.data.sample_size
+    sample_size = cfg.sample_data.sample_size
     sample_df = df.sample(frac=sample_size, random_state=42).reset_index(drop=True)
 
     # Create samples folder if it doesn't exist
-    sample_folder = cfg.data.sample_folder
+    sample_folder = cfg.sample_data.sample_folder
     os.makedirs(sample_folder, exist_ok=True)
 
     # Save the sample to the samples folder
@@ -41,9 +41,9 @@ class DataValidationException(Exception):
 
 
 def validate_initial_data(cfg: DictConfig) -> None:
-    context = gx.get_context(project_root_dir = cfg.gx.project_root_dir)
+    context = gx.get_context(project_root_dir = cfg.val_in_data.project_root_dir)
 
-    results = context.run_checkpoint(checkpoint_name="initial_data_validation_checkpoint_data")
+    results = context.run_checkpoint(checkpoint_name=cfg.val_in_data.checkpoint_name)
 
     # Print detailed validation results
     print("Validation success:", results.success)
@@ -61,14 +61,14 @@ def validate_initial_data(cfg: DictConfig) -> None:
     print("All expectations passed successfully.")
 
 
-def extract_data(base_path):
-    version_file_path = base_path + '/configs/data_version.yaml'
+def extract_data(base_path, cfg: DictConfig):
+    version_file_path = base_path + cfg.extr_data.version_file_path
     version = 0
     with open(version_file_path, 'r') as file:
         data = yaml.safe_load(file)
         version = data.get('version')
     
-    df_file_path = base_path + '/data/samples/sample.csv'
+    df_file_path = base_path + cfg.extr_data.df_file_path
     df = pd.read_csv(df_file_path)
 
     return df, str(version)

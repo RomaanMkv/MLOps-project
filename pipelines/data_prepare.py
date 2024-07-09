@@ -3,8 +3,12 @@ from typing_extensions import Tuple, Annotated
 from zenml import step, pipeline, ArtifactConfig
 from data import preprocess_data, extract_data, load_features, validate_features
 import os
+from hydra import initialize, compose
+from omegaconf import OmegaConf
 
 BASE_PATH = os.path.expandvars("$PROJECT_BASE_PATH")
+CONFIG_PATH = '../configs'
+CONFIG_NAME = 'config'
 
 @step(enable_cache=False)
 def extract()-> Tuple[
@@ -18,7 +22,9 @@ def extract()-> Tuple[
                                        tags=["data_preparation"])]
                     ]:
     
-    df, version = extract_data(BASE_PATH)
+    with initialize(version_base=None, config_path=CONFIG_PATH):
+        cfg = compose(config_name=CONFIG_NAME)
+        df, version = extract_data(base_path=BASE_PATH, cfg=cfg)
 
     return df, version
 

@@ -1,15 +1,16 @@
-data:
+sample_data:
   path : "data_base/"
   raw_data_name : "sample"
   data_format : ".csv"
-  version : 1
+  sample_version : 1
   sample_size: 1
   sample_name: "sample.csv"
   sample_folder: "data/samples"
-gx:
-  data_path : "data/samples/sample.csv"
+val_in_data:
   project_root_dir : "services"
-  datasource_name : "pandas_datasource"
-  asset_name : "csv_file"
-  suite_name : "initial_data_validation"
+  checkpoint_name : "initial_data_validation_checkpoint_data"
+extr_data:
+  version_file_path : "/configs/data_version.yaml"
+  df_file_path : "/data/samples/sample.csv"
+
   
