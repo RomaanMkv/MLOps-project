@@ -25,6 +25,8 @@ def load_features(name, version):
     X = latest_artifact.iloc[:, :-1]
     y = latest_artifact.iloc[:, -1]
 
+    print("!!!!!!!!!!!!!!!!!", y)
+
     return X, y
 
 
