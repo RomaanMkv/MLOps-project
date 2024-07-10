@@ -7,21 +7,23 @@ import mlflow
 import mlflow.sklearn
 import importlib
 
-def load_features(name, version, size = 1):
+def load_features(name, version):
     client = Client()
-    l = client.list_artifact_versions(name = name, tag = version, sort_by="version").items
-    l.reverse
 
-    df = l[0].load()
-    df = df.sample(frac = size, random_state = 88)
+    # Retrieve the list of artifacts for the given name and version
+    artifacts = client.list_artifact_versions(name=name, tag=version, sort_by="version").items
 
-    print("size of df is ", df.shape)
-    print("df columns: ", df.columns)
+    # Ensure that the artifacts list is not empty and reverse it to get the latest artifact first
+    if not artifacts:
+        raise ValueError(f"No artifacts found for name '{name}' with version '{version}'")
+    
+    artifacts.reverse()
 
-    X = df[df.columns[:-1]]
-    y = df.y
+    latest_artifact = artifacts[0].load()
 
-    print("shapes of X,y = ", X.shape, y.shape)
+    # Split the loaded artifact into X and y
+    X = latest_artifact.iloc[:, :-1]
+    y = latest_artifact.iloc[:, -1]
 
     return X, y
 
