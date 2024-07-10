@@ -1,0 +1,21 @@
+model_name: random_forest
+artifact_path: basic_rf
+
+tag_key: "model"
+tag_value: "basic RF"
+
+module_name: "sklearn.ensemble"
+class_name: "RandomForestClassifier"
+
+params:
+  n_estimators: [100, 200, 500]
+  criterion: ['gini', 'entropy', 'log_loss']
+  random_state: [88] #, 100, 44]
+
+
+# hydra:
+#   sweeper:
+#       params:
+#         +params.n_estimators: "100, 200, 500"
+#         +params.criterion: "'gini', 'entropy', 'log_loss'"
+#         +params.random_state: 88
