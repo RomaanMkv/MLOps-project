@@ -3,19 +3,11 @@ defaults:
 
 folds: 3
 
-evaluation_metric: "f1"
-cv_evaluation_metric: "mean_test_f1"
+evaluation_metric: "neg_mean_squared_error"
+cv_evaluation_metric: "mean_test_neg_mean_squared_error"
 
 pyfunc_predict_fn: "predict_proba"
 
 metrics:
   neg_mean_squared_error: "neg_mean_squared_error"
   r2: "r2"
-
-
-# hydra:
-#   sweeper:
-#       sampler:
-#         seed: 8888
-#       # n_trials: 20 # number of times to try to optimize the search space
-#       direction: maximize # minimize
