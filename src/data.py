@@ -164,6 +164,7 @@ def preprocess_data(data, cfg: DictConfig):
     
     # Apply transformations
     data = data.dropna()
+            
     X = data.drop(columns=[cfg.prepr_data.target_feature])
     y = data[[cfg.prepr_data.target_feature]]
     
@@ -174,6 +175,15 @@ def preprocess_data(data, cfg: DictConfig):
         coordinate_features
     )
     X = pd.DataFrame(X_transformed, columns=transformed_columns, index=X.index)
+
+    columns_needed = list(cfg.prepr_data.columns_needed)
+    # Retain only the columns that are in 'columns_needed'
+    X = X[[col for col in X.columns if col in columns_needed]]
+
+    # Add any missing columns from 'columns_needed' with all values set to 0
+    for col in columns_needed:
+        if col not in X.columns:
+            X[col] = 0
     
     return X, y
 

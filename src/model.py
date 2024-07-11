@@ -8,6 +8,7 @@ import mlflow.sklearn
 import importlib
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
+from mlflow.tracking import MlflowClient
 
 def load_features(name, version, fraction=1):
     client = Client()

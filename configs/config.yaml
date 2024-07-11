@@ -2,7 +2,7 @@ sample_data:
   path : "data_base/"
   raw_data_name : "sample"
   data_format : ".csv"
-  sample_version : 2
+  sample_version : 0
   sample_size: 1
   sample_name: "sample.csv"
   sample_folder: "data/samples"
@@ -18,6 +18,19 @@ prepr_data:
   categorical_features: ["flat_type", "storey_range", "flat_model"]
   numeric_features: ["floor_area_sqm", "month", "lease_commence_date", "remaining_lease"]
   coordinate_features: ["latitude", "longitude"]
+  columns_needed: [
+    "flat_type_1 ROOM", "flat_type_2 ROOM", "flat_type_3 ROOM", "flat_type_4 ROOM", "flat_type_5 ROOM", 
+    "flat_type_EXECUTIVE", "flat_type_MULTI-GENERATION", "storey_range_01 TO 03", "storey_range_04 TO 06", 
+    "storey_range_07 TO 09", "storey_range_10 TO 12", "storey_range_13 TO 15", "storey_range_16 TO 18", 
+    "storey_range_19 TO 21", "storey_range_22 TO 24", "storey_range_25 TO 27", "storey_range_28 TO 30", 
+    "storey_range_31 TO 33", "storey_range_34 TO 36", "storey_range_37 TO 39", "storey_range_40 TO 42", 
+    "storey_range_43 TO 45", "storey_range_46 TO 48", "storey_range_49 TO 51", "flat_model_2-room", 
+    "flat_model_3Gen", "flat_model_Adjoined flat", "flat_model_Apartment", "flat_model_DBSS", "flat_model_Improved", 
+    "flat_model_Improved-Maisonette", "flat_model_Maisonette", "flat_model_Model A", "flat_model_Model A-Maisonette", 
+    "flat_model_Model A2", "flat_model_Multi Generation", "flat_model_New Generation", "flat_model_Premium Apartment", 
+    "flat_model_Premium Apartment Loft", "flat_model_Simplified", "flat_model_Standard", "flat_model_Terrace", 
+    "flat_model_Type S1", "flat_model_Type S2", "floor_area_sqm", "month", "lease_commence_date", 
+    "remaining_lease", "latitude", "longitude"]
   target_feature: "resale_price"
 val_feat:
   data_path: "data/preprocessed"
