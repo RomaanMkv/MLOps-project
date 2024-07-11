@@ -6,6 +6,8 @@ import pandas as pd
 import mlflow
 import mlflow.sklearn
 import importlib
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
 
 def load_features(name, version, fraction=1):
     client = Client()
@@ -150,21 +152,19 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 model_uri = model_info.model_uri
                 loaded_model = mlflow.sklearn.load_model(model_uri=model_uri)
 
-                predictions = loaded_model.predict(X_test) # type: ignore
+                y_pred = loaded_model.predict(X_test) # type: ignore
         
-                eval_data = pd.DataFrame(y_test)
-                eval_data.columns = ["label"]
-                eval_data["predictions"] = predictions
+                mse = mean_squared_error(y_test, y_pred)
+                rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+                r2 = r2_score(y_test, y_pred)
 
-                results = mlflow.evaluate(
-                    data=eval_data,
-                    model_type="classifier",
-                    targets="label",
-                    predictions="predictions",
-                    evaluators=["default"]
-                )
+                mlflow.log_metric("mean_squared_error", mse)
+                mlflow.log_metric("roo_mean_squared_error", rmse)
+                mlflow.log_metric("r_2_score", r2)
 
-                print(f"metrics:\n{results.metrics}")
+                print(f'mse={mse}')
+                print(f'rmse={rmse}')
+                print(f'r2={r2}')
 
             
             # mlflow.end_run()  
