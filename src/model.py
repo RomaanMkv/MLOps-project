@@ -159,7 +159,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 r2 = r2_score(y_test, y_pred)
 
                 mlflow.log_metric("mean_squared_error", mse)
-                mlflow.log_metric("roo_mean_squared_error", rmse)
+                mlflow.log_metric("root_mean_squared_error", rmse)
                 mlflow.log_metric("r_2_score", r2)
 
                 print(f'mse={mse}')
