@@ -7,7 +7,7 @@ import mlflow
 import mlflow.sklearn
 import importlib
 
-def load_features(name, version):
+def load_features(name, version, fraction=1):
     client = Client()
 
     # Retrieve the list of artifacts for the given name and version
@@ -20,6 +20,8 @@ def load_features(name, version):
     artifacts.reverse()
 
     latest_artifact = artifacts[0].load()
+
+    latest_artifact = latest_artifact.sample(frac=fraction, random_state=1)
 
     # Split the loaded artifact into X and y
     X = latest_artifact.iloc[:, :-1]
@@ -35,15 +37,13 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
     best_metrics_keys = [metric for metric in gs.cv_results_]
     best_metrics_dict = {k:v for k,v in zip(best_metrics_keys, best_metrics_values) if 'mean' in k or 'std' in k}
 
-    print(100*'#')
-    print(cv_results, cv_results.columns)
+    # print(100*'#')
+    # print(cv_results, cv_results.columns)
 
     params = best_metrics_dict
 
     df_train = pd.concat([X_train, y_train], axis = 1)
     df_test = pd.concat([X_test, y_test], axis = 1)
-    print(100*"!")
-    print(df_train.columns)
 
     experiment_name = cfg.model.model_name + "_" + cfg.experiment_name 
 
@@ -61,10 +61,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
 
     if (mlflow.active_run()):
         mlflow.end_run()
-
-    # Fake run
-    with mlflow.start_run():
-        pass
 
     # Parent run
     with mlflow.start_run(run_name = run_name, experiment_id = experiment_id) as run:
@@ -112,6 +108,13 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 ps = {k.replace("param_",""):v for (k,v) in ps.items()}
 
                 mlflow.log_params(ps)
+                # Cast values that don't have digits after the decimal point to integers
+                for key, value in ps.items():
+                    if isinstance(value, float) and value.is_integer():
+                        ps[key] = int(value)
+                
+                print(f'!ps={ps}')
+
                 mlflow.log_metrics(ms)
                 mlflow.log_metrics(stds)
 
@@ -141,8 +144,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                     artifact_path = cfg.model.artifact_path,
                     signature = signature,
                     input_example = X_train.iloc[0].to_numpy(),
-                    registered_model_name = cfg.model.model_name,
-                    pyfunc_predict_fn = cfg.model.pyfunc_predict_fn
+                    registered_model_name = cfg.model.model_name
                 )
 
                 model_uri = model_info.model_uri
@@ -163,6 +165,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 )
 
                 print(f"metrics:\n{results.metrics}")
+
             
             # mlflow.end_run()  
     
@@ -209,7 +212,7 @@ def train(X_train, y_train, cfg):
 
     gs.fit(X_train, y_train)
 
-    print(gs.cv_results_)
+    # print(gs.cv_results_)
 
     return gs
 
@@ -227,3 +230,4 @@ def retrieve_model_with_version(model_name, model_version = "v1") -> mlflow.pyfu
 
     # best_model
     return best_model
+
