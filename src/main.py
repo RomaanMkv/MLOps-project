@@ -1,5 +1,5 @@
 import hydra
-from model import train, load_features, log_metadata
+from model import train, load_features, log_metadata, save_best_model
 from omegaconf import OmegaConf
 
 
@@ -19,6 +19,8 @@ def run(args):
     gs = train(X_train, y_train, cfg=cfg)
 
     log_metadata(cfg, gs, X_train, y_train, X_test, y_test)
+
+    save_best_model(cfg=cfg)
 
     
 @hydra.main(config_path="../configs", config_name="main", version_base=None) # type: ignore

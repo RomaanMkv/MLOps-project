@@ -9,8 +9,11 @@ import importlib
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 from mlflow.tracking import MlflowClient
+import matplotlib.pyplot as plt
+import os
+import pickle
 
-def load_features(name, version, fraction=1):
+def load_features(name, version, fraction=0.05):
     client = Client()
 
     # Retrieve the list of artifacts for the given name and version
@@ -62,9 +65,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
     run_name = "_".join([cfg.run_name, cfg.model.model_name, cfg.model.evaluation_metric, str(params[cv_evaluation_metric]).replace(".", "_")]) # type: ignore
     print("run name: ", run_name)
 
-    if (mlflow.active_run()):
-        mlflow.end_run()
-
     # Parent run
     with mlflow.start_run(run_name = run_name, experiment_id = experiment_id) as run:
 
@@ -102,7 +102,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
         for index, result in cv_results.iterrows():
 
             child_run_name = "_".join(['child', run_name, str(index)]) # type: ignore
-            with mlflow.start_run(run_name = child_run_name, experiment_id= experiment_id, nested=True): #, tags=best_metrics_dict):
+            with mlflow.start_run(run_name=child_run_name, experiment_id=experiment_id, nested=True) as child_run: #, tags=best_metrics_dict):
                 ps = result.filter(regex='param_').to_dict()
                 ms = result.filter(regex='mean_').to_dict()
                 stds = result.filter(regex='std_').to_dict()
@@ -130,15 +130,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 
                 estimator = class_instance(**ps)
                 estimator.fit(X_train, y_train)
-
-                # from sklearn.model_selection import cross_val_score
-                # scores = cross_val_score(estimator=estimator, 
-                #                          X_train, 
-                #                          y_train, 
-                #                          cv = cfg.model.folds, 
-                #                          n_jobs=cfg.cv_n_jobs,
-                #                          scoring=cfg.model.cv_evaluation_metric)
-                # cv_evaluation_metric = scores.mean()
                 
                 signature = mlflow.models.infer_signature(X_train, estimator.predict(X_train))
 
@@ -149,6 +140,8 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                     input_example = X_train.iloc[0].to_numpy(),
                     registered_model_name = cfg.model.model_name
                 )
+
+                client = mlflow.client.MlflowClient()
 
                 model_uri = model_info.model_uri
                 loaded_model = mlflow.sklearn.load_model(model_uri=model_uri)
@@ -167,10 +160,27 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 print(f'rmse={rmse}')
                 print(f'r2={r2}')
 
-            
-            # mlflow.end_run()  
+                # Plot and log performance charts
+                fig, ax = plt.subplots()
+                ax.scatter(y_test, y_pred, edgecolors=(0, 0, 0))
+                ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--', lw=4)
+                ax.set_xlabel('Measured')
+                ax.set_ylabel('Predicted')
+                ax.set_title(f'Performance of model: {child_run_name}')
+
+                plot_name = "performance_plot.png"
+                mlflow.log_figure(fig, plot_name)
     
-    # mlflow.end_run()  
+                # Download artifacts
+                dst_path = f"results/{child_run_name}"
+                if not os.path.exists(dst_path):
+                    os.makedirs(dst_path)
+
+                mlflow.artifacts.download_artifacts(artifact_uri=f'{child_run.info.artifact_uri}/{plot_name}', dst_path=dst_path)
+
+    version_metrics = get_model_versions_with_metrics(cfg.model.model_name, "root_mean_squared_error")
+    sorted_versions = sort_versions_by_metric(version_metrics)
+    assign_aliases_to_models(cfg.model.model_name, sorted_versions)
 
 
 def train(X_train, y_train, cfg):
@@ -213,9 +223,42 @@ def train(X_train, y_train, cfg):
 
     gs.fit(X_train, y_train)
 
-    # print(gs.cv_results_)
-
     return gs
+
+
+def get_model_versions_with_metrics(model_name, metric_name="root_mean_squared_error"):
+    client = MlflowClient()
+    versions = client.search_model_versions(f"name='{model_name}'")
+    version_metrics = []
+
+    for version in versions:
+        run_id = version.run_id
+        metrics = client.get_run(run_id).data.metrics
+        if metric_name in metrics:
+            version_metrics.append((version.version, metrics[metric_name]))
+        else:
+            print(f"Metric {metric_name} not found for version {version.version}")
+
+    return version_metrics
+
+
+def sort_versions_by_metric(version_metrics):
+    return sorted(version_metrics, key=lambda x: x[1])
+
+
+def assign_aliases_to_models(model_name, sorted_versions):
+    client = MlflowClient()
+    
+    # Assign 'champion' alias to the model with the smallest metric
+    champion_version = sorted_versions[0][0]
+    client.set_registered_model_alias(model_name, "champion", champion_version)
+    print(f"Assigned alias 'champion' to version {champion_version}")
+
+    # Assign 'challenger1', 'challenger2', etc. to the remaining models
+    for i, (version, metric) in enumerate(sorted_versions[1:], start=1):
+        alias = f"challenger{i}"
+        client.set_registered_model_alias(model_name, alias, version)
+        print(f"Assigned alias '{alias}' to version {version}")
 
 
 def retrieve_model_with_alias(model_name, model_alias = "champion") -> mlflow.pyfunc.PyFuncModel:
@@ -225,10 +268,28 @@ def retrieve_model_with_alias(model_name, model_alias = "champion") -> mlflow.py
     # best_model
     return best_model
 
+
 def retrieve_model_with_version(model_name, model_version = "v1") -> mlflow.pyfunc.PyFuncModel:
 
     best_model:mlflow.pyfunc.PyFuncModel = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
 
     # best_model
     return best_model
+
+
+def save_best_model(cfg, model_alias = "champion"):
+    model_uri = f"models:/{cfg.model.model_name}@{model_alias}"
+    sklearn_model = mlflow.sklearn.load_model(model_uri=model_uri)
+
+    save_dir = f'models/{cfg.model.model_name}'
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    
+    pickle_save_path = os.path.join(save_dir, f"{cfg.model.model_name}_{model_alias}.pkl")
+    
+    # Save the model locally using pickle
+    with open(pickle_save_path, 'wb') as f:
+        pickle.dump(sklearn_model, f)
+    
+    print(f"Model saved locally as pickle at {pickle_save_path}")
 
