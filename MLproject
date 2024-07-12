@@ -8,4 +8,8 @@ entry_points:
     command: "python src/main.py" # --multirun"
   
   evaluate:
-    command: "python src/evaluate.py"
+    parameters:
+      data_sample_version: {type: string, default: "1"}
+      model_name: {type: string, default: "random_forest"}
+      model_alias: {type: string, default: "champion"}
+    command: "python src/evaluate.py --data_sample_version {data_sample_version} --model_name {model_name} --model_alias {model_alias}"
