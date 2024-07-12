@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import os
 import pickle
 
-def load_features(version, name = "features_target", fraction=0.05):
+def load_features(version, name = "features_target", fraction=1):
     client = Client()
 
     # Retrieve the list of artifacts for the given name and version
