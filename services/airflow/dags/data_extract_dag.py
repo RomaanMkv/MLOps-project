@@ -88,10 +88,12 @@ version_data = BashOperator(
     dvc add data/samples/sample.csv
     
     # Read the current version number from config.yaml
-    current_version=$(grep 'version' ./configs/config.yaml | awk -F ': ' '{{print $2}}' | tr -d '[:space:]')
+    current_version=$(grep 'sample_version' ./configs/config.yaml | awk -F ': ' '{{print $2}}' | tr -d '[:space:]')
 
-    if [ -z "$current_version" ]; then
-        current_version=0
+    # Check if the current_version is correctly extracted
+    if [[ -z "$current_version" ]]; then
+    echo "Failed to extract the current version from config.yaml"
+    exit 1
     fi
 
     git push -d origin "V$current_version"
@@ -106,8 +108,8 @@ version_data = BashOperator(
     git tag -a "V$current_version" -m "A new version of the data 'V$current_version'"
     git push --tags
 
-    # Store the new version in the configuration file
-    sed -i "s/version: $current_version/version: $next_version/" ./configs/config.yaml
+    # Update the version in the YAML file
+    echo "version: $current_version" > configs/data_version.yaml
 
     """,
     dag=dag,

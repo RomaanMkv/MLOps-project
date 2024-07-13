@@ -1,0 +1,21 @@
+# configs/main.yaml
+
+defaults:
+  - _self_
+  - data_version
+  - model/model
+  - experiment
+  - config
+  # - override hydra/launcher: joblib # submitit_local #joblib
+  # - override hydra/sweeper: optuna
+  # - override hydra/sweeper/sampler: grid
+
+hydra:
+  mode: MULTIRUN
+  # launcher:
+  #   n_jobs: -1
+  sweeper:
+    params:
+      # +model: "rf"
+      +model: "rf, gb"
+      # +model: "rf"
