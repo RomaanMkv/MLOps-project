@@ -1,18 +1,18 @@
 import giskard.testing
 from data import extract_data, preprocess_data  # custom module
-from model import retrieve_model_with_alias  # custom module
+from model import retrieve_model_with_alias, save_best_model  # custom module
 from utils import init_hydra  # custom module
 import giskard
 import mlflow
 import os
-import pandas as pd
+import pickle
 
 BASE_PATH = os.path.expandvars("$PROJECT_BASE_PATH")
 cfg = init_hydra()
 version = cfg.test_data_version
 df, version = extract_data(base_path=BASE_PATH, cfg=cfg)
 
-df = df[:100]
+df = df[:1000]
 print(df)
 
 # Specify categorical columns and target column
@@ -85,6 +85,7 @@ for model_name in model_names:
         else:
             print(f"Model {model_name} version {model_version} has vulnerabilities!")
 
+best_model_alias = 'validation_champion'
 
 if rmse_scores:
     # Find the model with the smallest RMSE
@@ -92,8 +93,19 @@ if rmse_scores:
     best_model_name, best_model_version = best_model
 
     # Set alias 'validation_champion' to the model with the smallest RMSE
-    client.set_registered_model_alias(best_model_name, version=best_model_version, alias='validation_champion')
-    print(f"Set 'validation_champion' alias to model {best_model_name} version {best_model_version} with RMSE {rmse_scores[best_model]}")
+    client.set_registered_model_alias(best_model_name, version=best_model_version, alias=best_model_alias)
+    print(f"Set {best_model_alias} alias to model {best_model_name} version {best_model_version} with RMSE {rmse_scores[best_model]}")
+
+    # saving the best model
+    model_uri = f"models:/{best_model_name}@{best_model_alias}"
+    sklearn_model = mlflow.sklearn.load_model(model_uri=model_uri)
+    save_dir = f'models/{best_model_name}'
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    pickle_save_path = os.path.join(save_dir, f"{best_model_name}_{best_model_alias}.pkl")
+    # Save the model locally using pickle
+    with open(pickle_save_path, 'wb') as f:
+        pickle.dump(sklearn_model, f)
 else:
     print("No model passed the test suite")
 
