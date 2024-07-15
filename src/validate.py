@@ -28,51 +28,72 @@ giskard_dataset = giskard.Dataset(
     cat_columns=CATEGORICAL_COLUMNS  # List of categorical columns. Optional, but improves quality of results if available.
 )
 
-model_name = cfg.model.best_model_name
+model_names = ['random_forest', 'gradient_boosting']
+model_alias = 'challenger'
+rmse_scores = {}
 
-# You can sweep over challenger aliases using Hydra
-model_alias = cfg.model.best_model_alias
+for model_name in model_names:
+    for i in range(1, 27):
+        model: mlflow.pyfunc.PyFuncModel = retrieve_model_with_alias(model_name, model_alias=f'{model_alias}{i}')
+        client = mlflow.MlflowClient()
+        mv = client.get_model_version_by_alias(name=model_name, alias=f'{model_alias}{i}')
+        model_version = mv.version
 
-model: mlflow.pyfunc.PyFuncModel = retrieve_model_with_alias(model_name, model_alias=model_alias)
-client = mlflow.MlflowClient()
-mv = client.get_model_version_by_alias(name=model_name, alias=model_alias)
-model_version = mv.version
+        def predict(raw_df):
+            X, _ = preprocess_data(
+                data=raw_df,
+                cfg=cfg,
+                only_X=True
+            )
+            X = X.astype('float64')
+            return model.predict(X)
+        
+        # Create the Giskard model for the regression problem
+        giskard_model = giskard.Model(
+            model=predict,  # The prediction function
+            model_type="regression",  # Model type: "classification" or "regression"
+            name=model_name,  # Name of your model
+            feature_names=df.columns,  # List of feature names used by the model
+        )
 
-def predict(raw_df):
-    X, _ = preprocess_data(
-        data=raw_df,
-        cfg=cfg,
-        only_X=True
-    )
-    X = X.astype('float64')
-    return model.predict(X)
+        scan_results = giskard.scan(giskard_model, giskard_dataset)
 
-# Create the Giskard model for the regression problem
-giskard_model = giskard.Model(
-    model=predict,  # The prediction function
-    model_type="regression",  # Model type: "classification" or "regression"
-    name=model_name,  # Name of your model
-    feature_names=df.columns,  # List of feature names used by the model
-    #target=TARGET_COLUMN  # Target column name
-)
+        # Save the results in `html` file
+        scan_results_path = f"reports/validation_results_{model_name}_{model_version}_{dataset_name}_{version}.html"
+        scan_results.to_html(scan_results_path)
 
-pred_test_wrapped = giskard_model.predict(giskard_dataset).raw_prediction
+        suite_name = f"test_suite_{model_name}_{model_version}_{dataset_name}_{version}"
+        test_suite = giskard.Suite(name = suite_name)
+        test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
+        test_suite.add_test(test1)
+        test_results = test_suite.run()
 
-scan_results = giskard.scan(giskard_model, giskard_dataset)
+        # def props(cls):   
+        #     return [i for i in cls.__dict__.keys() if i[:1] != '_']
+        
+        # properties = props(test_results.results[0].result)
+        # print('properties =====', properties)
+        
+        if test_results.passed:
+            print(f"Model {model_name} version {model_version} passed validation!")
+            
+            rmse_score = test_results.results[0].result.metric  # Assuming the RMSE value is stored in `actual_value`
+            
+            # Store RMSE score with model details
+            rmse_scores[(model_name, model_version)] = rmse_score
 
-# Save the results in `html` file
-scan_results_path = f"reports/validation_results_{model_name}_{model_version}_{dataset_name}_{version}.html"
-scan_results.to_html(scan_results_path)
+        else:
+            print(f"Model {model_name} version {model_version} has vulnerabilities!")
 
-suite_name = f"test_suite_{model_name}_{model_version}_{dataset_name}_{version}"
-test_suite = giskard.Suite(name = suite_name)
 
-test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
+if rmse_scores:
+    # Find the model with the smallest RMSE
+    best_model = min(rmse_scores, key=rmse_scores.get)
+    best_model_name, best_model_version = best_model
 
-test_suite.add_test(test1)
-
-test_results = test_suite.run()
-if (test_results.passed):
-    print("Passed model validation!")
+    # Set alias 'validation_champion' to the model with the smallest RMSE
+    client.set_registered_model_alias(best_model_name, version=best_model_version, alias='validation_champion')
+    print(f"Set 'validation_champion' alias to model {best_model_name} version {best_model_version} with RMSE {rmse_scores[best_model]}")
 else:
-    print("Model has vulnerabilities!")
+    print("No model passed the test suite")
+
