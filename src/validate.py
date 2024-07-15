@@ -12,6 +12,9 @@ cfg = init_hydra()
 version = cfg.test_data_version
 df, version = extract_data(base_path=BASE_PATH, cfg=cfg)
 
+df = df[:100]
+print(df)
+
 # Specify categorical columns and target column
 TARGET_COLUMN = cfg.data.target_cols[0]
 CATEGORICAL_COLUMNS = list(cfg.data.cat_cols)
@@ -54,22 +57,22 @@ giskard_model = giskard.Model(
 )
 
 pred_test_wrapped = giskard_model.predict(giskard_dataset).raw_prediction
-print('11111111111', pred_test_wrapped)
 
+scan_results = giskard.scan(giskard_model, giskard_dataset)
 
-# # Save the results in `html` file
-# scan_results_path = f"reports/validation_results_{model_name}_{model_version}_{dataset_name}_{version}.html"
-# scan_results.to_html(scan_results_path)
+# Save the results in `html` file
+scan_results_path = f"reports/validation_results_{model_name}_{model_version}_{dataset_name}_{version}.html"
+scan_results.to_html(scan_results_path)
 
-# suite_name = f"test_suite_{model_name}_{model_version}_{dataset_name}_{version}"
-# test_suite = giskard.Suite(name = suite_name)
+suite_name = f"test_suite_{model_name}_{model_version}_{dataset_name}_{version}"
+test_suite = giskard.Suite(name = suite_name)
 
-# test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
+test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
 
-# test_suite.add_test(test1)
+test_suite.add_test(test1)
 
-# test_results = test_suite.run()
-# if (test_results.passed):
-#     print("Passed model validation!")
-# else:
-#     print("Model has vulnerabilities!")
+test_results = test_suite.run()
+if (test_results.passed):
+    print("Passed model validation!")
+else:
+    print("Model has vulnerabilities!")
