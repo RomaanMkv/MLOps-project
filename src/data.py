@@ -74,7 +74,8 @@ def extract_data(base_path, cfg: DictConfig):
     return df, str(version)
 
 
-def preprocess_data(data, cfg: DictConfig):
+def preprocess_data(data, cfg: DictConfig, only_X = False):
+
     def convert_time_columns(df):
         reference_date = datetime.strptime(cfg.prepr_data.reference_date, "%Y-%m-%d")
         df['month'] = pd.to_datetime(df['month'], format='%Y-%m')
@@ -165,8 +166,12 @@ def preprocess_data(data, cfg: DictConfig):
     # Apply transformations
     data = data.dropna()
             
-    X = data.drop(columns=[cfg.prepr_data.target_feature])
-    y = data[[cfg.prepr_data.target_feature]]
+    if not only_X:
+        X = data.drop(columns=[cfg.prepr_data.target_feature])
+        y = data[[cfg.prepr_data.target_feature]]
+    else:
+        X = data
+        y = None
     
     X_transformed = preprocessor.fit_transform(X)
     transformed_columns = (
