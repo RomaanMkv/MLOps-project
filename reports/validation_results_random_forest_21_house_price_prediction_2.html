@@ -180,19 +180,19 @@
   </thead>
   <tbody>
     <tr>
-      <th>519</th>
-      <td>837830.470051</td>
-      <td>706339.075821</td>
+      <th>2277</th>
+      <td>398809.149181</td>
+      <td>388890.678842</td>
     </tr>
     <tr>
-      <th>837</th>
-      <td>595250.808833</td>
-      <td>694208.943127</td>
+      <th>14807</th>
+      <td>336318.883251</td>
+      <td>464385.1813</td>
     </tr>
     <tr>
-      <th>208</th>
-      <td>798236.289821</td>
-      <td>432195.335256</td>
+      <th>2484</th>
+      <td>528087.915186</td>
+      <td>728022.143114</td>
     </tr>
   </tbody>
 </table>
@@ -245,9 +245,12 @@ happen for different reasons:</p>
     <div class="flex items-center space-x-1">
         <h2 class="uppercase my-4 mr-2 font-medium">Issues</h2>
         
-        <span class="text-xs border rounded px-1 uppercase text-red-400 border-red-400">15
+        <span class="text-xs border rounded px-1 uppercase text-red-400 border-red-400">14
             major</span>
         
+        
+        <span class="text-xs border rounded px-1 uppercase text-amber-200 border-amber-200">1
+            medium</span>
         
         
     </div>
@@ -263,7 +266,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `text_length(street_name)` &lt; 10.500 AND `text_length(street_name)` &gt;= 8.500
+        `flat_type` == &#34;EXECUTIVE&#34;
         </code>
         
     </td>
@@ -273,10 +276,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 5.280e+09</span>
+        <span>MSE = 4.467e+09</span>
         
         <span class="text-gray-400">
-            (Global = 2.410e+09)
+            (Global = 2.536e+09)
         </span>
         
     </td>
@@ -284,254 +287,14 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +119.12% than global
+            +76.15% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            74 samples affected<br>
-            (7.4% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(street_name)` &lt; 10.500 AND `text_length(street_name)` &gt;= 8.500, the MSE is 119.12% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>text_length(street_name)</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>19</th>
-      <td>SIMEI ST 1</td>
-      <td>10</td>
-      <td>525000.0</td>
-      <td>485595.424649</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>QUEENSWAY</td>
-      <td>9</td>
-      <td>505000.0</td>
-      <td>470767.759003</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>MARINE DR</td>
-      <td>9</td>
-      <td>547000.0</td>
-      <td>491095.792556</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `street_name` contains &#34;dr&#34;
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 4.945e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +105.19% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            73 samples affected<br>
-            (7.3% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `street_name` contains &#34;dr&#34;, the MSE is 105.19% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>13</th>
-      <td>WOODLANDS DR 60</td>
-      <td>390000.0</td>
-      <td>422652.142213</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>MARINE DR</td>
-      <td>547000.0</td>
-      <td>491095.792556</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>RIVERVALE DR</td>
-      <td>490000.0</td>
-      <td>566916.025696</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `floor_area_sqm` &gt;= 111.500 AND `floor_area_sqm` &lt; 117.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 4.886e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +102.76% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            76 samples affected<br>
+            277 samples affected<br>
             (7.6% of dataset)
         </span>
         
@@ -546,7 +309,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `floor_area_sqm` &gt;= 111.500 AND `floor_area_sqm` &lt; 117.500, the MSE is 102.76% greater than the global MSE.
+        For records in the dataset where `flat_type` == &#34;EXECUTIVE&#34;, the MSE is 76.15% greater than the global MSE.
         
 
         
@@ -570,509 +333,29 @@ happen for different reasons:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>floor_area_sqm</th>
+      <th>flat_type</th>
       <th>resale_price</th>
       <th>Predicted `resale_price`</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>112.0</td>
-      <td>745000.0</td>
-      <td>786089.336348</td>
+      <th>8691</th>
+      <td>EXECUTIVE</td>
+      <td>480000.0</td>
+      <td>488643.279512</td>
     </tr>
     <tr>
-      <th>31</th>
-      <td>112.0</td>
-      <td>598000.0</td>
-      <td>617378.955544</td>
+      <th>16944</th>
+      <td>EXECUTIVE</td>
+      <td>648000.0</td>
+      <td>665691.490122</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>115.0</td>
-      <td>490000.0</td>
-      <td>566916.025696</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `text_length(town)` &gt;= 9.500 AND `text_length(town)` &lt; 10.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 4.509e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +87.11% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            67 samples affected<br>
-            (6.7% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(town)` &gt;= 9.500 AND `text_length(town)` &lt; 10.500, the MSE is 87.11% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>town</th>
-      <th>text_length(town)</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4</th>
-      <td>ANG MO KIO</td>
-      <td>10</td>
-      <td>400888.0</td>
-      <td>418835.226278</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>ANG MO KIO</td>
-      <td>10</td>
-      <td>285000.0</td>
-      <td>271686.180753</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>QUEENSTOWN</td>
-      <td>10</td>
-      <td>393000.0</td>
-      <td>327071.400928</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `lease_commence_date` &gt;= 1987.500 AND `lease_commence_date` &lt; 1988.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 4.227e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +75.41% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            50 samples affected<br>
-            (5.0% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `lease_commence_date` &gt;= 1987.500 AND `lease_commence_date` &lt; 1988.500, the MSE is 75.41% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>lease_commence_date</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>14</th>
-      <td>1988</td>
-      <td>448000.0</td>
-      <td>451149.766427</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>1988</td>
-      <td>730000.0</td>
-      <td>711495.316866</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>1988</td>
-      <td>525000.0</td>
-      <td>485595.424649</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `floor_area_sqm` &gt;= 121.500 AND `floor_area_sqm` &lt; 127.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 3.976e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +64.98% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            56 samples affected<br>
-            (5.6% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `floor_area_sqm` &gt;= 121.500 AND `floor_area_sqm` &lt; 127.500, the MSE is 64.98% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>floor_area_sqm</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>3</th>
-      <td>125.0</td>
-      <td>460000.0</td>
-      <td>449231.378483</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>122.0</td>
-      <td>390000.0</td>
-      <td>422652.142213</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>127.0</td>
-      <td>730000.0</td>
-      <td>711495.316866</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `text_length(block)` &lt; 2.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 3.901e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +61.89% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            129 samples affected<br>
-            (12.9% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(block)` &lt; 2.500, the MSE is 61.89% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>block</th>
-      <th>text_length(block)</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2</th>
-      <td>6</td>
-      <td>1</td>
-      <td>458000.0</td>
-      <td>408962.079788</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>52</td>
-      <td>2</td>
-      <td>521000.0</td>
-      <td>544485.443309</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>50</td>
-      <td>2</td>
-      <td>740000.0</td>
-      <td>745757.023204</td>
+      <th>832</th>
+      <td>EXECUTIVE</td>
+      <td>685000.0</td>
+      <td>707806.323913</td>
     </tr>
   </tbody>
 </table>
@@ -1111,10 +394,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.708e+09</span>
+        <span>MSE = 4.138e+09</span>
         
         <span class="text-gray-400">
-            (Global = 2.410e+09)
+            (Global = 2.536e+09)
         </span>
         
     </td>
@@ -1122,15 +405,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +53.86% than global
+            +63.16% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            244 samples affected<br>
-            (24.4% of dataset)
+            961 samples affected<br>
+            (26.5% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1144,7 +427,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `flat_type` == &#34;5 ROOM&#34;, the MSE is 53.86% greater than the global MSE.
+        For records in the dataset where `flat_type` == &#34;5 ROOM&#34;, the MSE is 63.16% greater than the global MSE.
         
 
         
@@ -1175,22 +458,22 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>19129</th>
       <td>5 ROOM</td>
-      <td>745000.0</td>
-      <td>786089.336348</td>
+      <td>555000.0</td>
+      <td>497514.853683</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>9177</th>
       <td>5 ROOM</td>
-      <td>650000.0</td>
-      <td>613443.882418</td>
+      <td>596000.0</td>
+      <td>587165.174514</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>13297</th>
       <td>5 ROOM</td>
-      <td>460000.0</td>
-      <td>449231.378483</td>
+      <td>390000.0</td>
+      <td>427152.473605</td>
     </tr>
   </tbody>
 </table>
@@ -1219,7 +502,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `lease_commence_date` &gt;= 2008.500 AND `lease_commence_date` &lt; 2014.500
+        `month` contains &#34;2024&#34;
         </code>
         
     </td>
@@ -1229,10 +512,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.693e+09</span>
+        <span>MSE = 3.444e+09</span>
         
         <span class="text-gray-400">
-            (Global = 2.410e+09)
+            (Global = 2.536e+09)
         </span>
         
     </td>
@@ -1240,15 +523,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +53.23% than global
+            +35.79% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            76 samples affected<br>
-            (7.6% of dataset)
+            230 samples affected<br>
+            (6.3% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1262,7 +545,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `lease_commence_date` &gt;= 2008.500 AND `lease_commence_date` &lt; 2014.500, the MSE is 53.23% greater than the global MSE.
+        For records in the dataset where `month` contains &#34;2024&#34;, the MSE is 35.79% greater than the global MSE.
         
 
         
@@ -1286,29 +569,269 @@ happen for different reasons:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>lease_commence_date</th>
+      <th>month</th>
       <th>resale_price</th>
       <th>Predicted `resale_price`</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>2013</td>
-      <td>745000.0</td>
-      <td>786089.336348</td>
+      <th>8484</th>
+      <td>2024-04</td>
+      <td>610000.0</td>
+      <td>585413.245385</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>2009</td>
-      <td>690000.0</td>
-      <td>627075.477926</td>
+      <th>9177</th>
+      <td>2024-04</td>
+      <td>596000.0</td>
+      <td>587165.174514</td>
     </tr>
     <tr>
-      <th>59</th>
-      <td>2014</td>
+      <th>30647</th>
+      <td>2024-01</td>
+      <td>415888.0</td>
+      <td>430013.024837</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `text_length(remaining_lease)` == 8
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 3.335e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +31.51% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            308 samples affected<br>
+            (8.5% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `text_length(remaining_lease)` == 8, the MSE is 31.51% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>remaining_lease</th>
+      <th>text_length(remaining_lease)</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19246</th>
+      <td>69 years</td>
+      <td>8</td>
+      <td>430000.0</td>
+      <td>461779.132468</td>
+    </tr>
+    <tr>
+      <th>7008</th>
+      <td>84 years</td>
+      <td>8</td>
+      <td>838000.0</td>
+      <td>749073.035653</td>
+    </tr>
+    <tr>
+      <th>4115</th>
+      <td>83 years</td>
+      <td>8</td>
+      <td>838000.0</td>
+      <td>761315.843326</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `flat_model` == &#34;Premium Apartment&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 3.109e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +22.59% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            397 samples affected<br>
+            (11.0% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `flat_model` == &#34;Premium Apartment&#34;, the MSE is 22.59% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>flat_model</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8691</th>
+      <td>Premium Apartment</td>
       <td>480000.0</td>
-      <td>440450.083051</td>
+      <td>488643.279512</td>
+    </tr>
+    <tr>
+      <th>12042</th>
+      <td>Premium Apartment</td>
+      <td>435000.0</td>
+      <td>489307.653442</td>
+    </tr>
+    <tr>
+      <th>4545</th>
+      <td>Premium Apartment</td>
+      <td>500000.0</td>
+      <td>439644.781031</td>
     </tr>
   </tbody>
 </table>
@@ -1337,7 +860,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `lease_commence_date` &gt;= 2000.500 AND `lease_commence_date` &lt; 2002.500
+        `remaining_lease` contains &#34;93&#34;
         </code>
         
     </td>
@@ -1347,10 +870,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.260e+09</span>
+        <span>MSE = 2.993e+09</span>
         
         <span class="text-gray-400">
-            (Global = 2.410e+09)
+            (Global = 2.536e+09)
         </span>
         
     </td>
@@ -1358,15 +881,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +35.30% than global
+            +18.00% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            51 samples affected<br>
-            (5.1% of dataset)
+            198 samples affected<br>
+            (5.5% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1380,7 +903,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `lease_commence_date` &gt;= 2000.500 AND `lease_commence_date` &lt; 2002.500, the MSE is 35.3% greater than the global MSE.
+        For records in the dataset where `remaining_lease` contains &#34;93&#34;, the MSE is 18.0% greater than the global MSE.
         
 
         
@@ -1404,151 +927,29 @@ happen for different reasons:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>lease_commence_date</th>
+      <th>remaining_lease</th>
       <th>resale_price</th>
       <th>Predicted `resale_price`</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>55</th>
-      <td>2001</td>
-      <td>440000.0</td>
-      <td>454976.331891</td>
+      <th>17380</th>
+      <td>93 years 07 months</td>
+      <td>618000.0</td>
+      <td>664249.589571</td>
     </tr>
     <tr>
-      <th>60</th>
-      <td>2001</td>
-      <td>480000.0</td>
-      <td>429856.459801</td>
+      <th>1521</th>
+      <td>93 years 05 months</td>
+      <td>303000.0</td>
+      <td>416774.542721</td>
     </tr>
     <tr>
-      <th>65</th>
-      <td>2002</td>
-      <td>285000.0</td>
-      <td>399020.920678</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `text_length(town)` &gt;= 10.500 AND `text_length(town)` &lt; 11.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 3.178e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +31.87% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            173 samples affected<br>
-            (17.3% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(town)` &gt;= 10.500 AND `text_length(town)` &lt; 11.500, the MSE is 31.87% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>town</th>
-      <th>text_length(town)</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>15</th>
-      <td>JURONG EAST</td>
-      <td>11</td>
-      <td>350000.0</td>
-      <td>362130.443446</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>JURONG EAST</td>
-      <td>11</td>
-      <td>320000.0</td>
-      <td>377409.789326</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>JURONG WEST</td>
-      <td>11</td>
-      <td>240000.0</td>
-      <td>242701.325056</td>
+      <th>29098</th>
+      <td>93 years 10 months</td>
+      <td>720000.0</td>
+      <td>700568.401972</td>
     </tr>
   </tbody>
 </table>
@@ -1587,10 +988,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.171e+09</span>
+        <span>MSE = 2.975e+09</span>
         
         <span class="text-gray-400">
-            (Global = 2.410e+09)
+            (Global = 2.536e+09)
         </span>
         
     </td>
@@ -1598,15 +999,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +31.60% than global
+            +17.32% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            247 samples affected<br>
-            (24.7% of dataset)
+            998 samples affected<br>
+            (27.5% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1620,7 +1021,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `flat_model` == &#34;Improved&#34;, the MSE is 31.6% greater than the global MSE.
+        For records in the dataset where `flat_model` == &#34;Improved&#34;, the MSE is 17.32% greater than the global MSE.
         
 
         
@@ -1651,22 +1052,376 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
+      <th>19129</th>
       <td>Improved</td>
-      <td>460000.0</td>
-      <td>449231.378483</td>
+      <td>555000.0</td>
+      <td>497514.853683</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>9632</th>
       <td>Improved</td>
-      <td>521000.0</td>
-      <td>544485.443309</td>
+      <td>232888.0</td>
+      <td>274048.291747</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>7322</th>
       <td>Improved</td>
-      <td>393000.0</td>
-      <td>327071.400928</td>
+      <td>378000.0</td>
+      <td>356134.857719</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `month` contains &#34;01&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 2.919e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +15.11% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            325 samples affected<br>
+            (9.0% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `month` contains &#34;01&#34;, the MSE is 15.11% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19129</th>
+      <td>2022-01</td>
+      <td>555000.0</td>
+      <td>497514.853683</td>
+    </tr>
+    <tr>
+      <th>16944</th>
+      <td>2021-01</td>
+      <td>648000.0</td>
+      <td>665691.490122</td>
+    </tr>
+    <tr>
+      <th>30647</th>
+      <td>2024-01</td>
+      <td>415888.0</td>
+      <td>430013.024837</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `remaining_lease` contains &#34;08&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 2.909e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +14.69% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            289 samples affected<br>
+            (8.0% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `remaining_lease` contains &#34;08&#34;, the MSE is 14.69% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>remaining_lease</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>33526</th>
+      <td>61 years 08 months</td>
+      <td>310000.0</td>
+      <td>2.854898e+05</td>
+    </tr>
+    <tr>
+      <th>4399</th>
+      <td>87 years 08 months</td>
+      <td>288000.0</td>
+      <td>3.210058e+05</td>
+    </tr>
+    <tr>
+      <th>24084</th>
+      <td>68 years 08 months</td>
+      <td>1180000.0</td>
+      <td>1.044261e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `month` contains &#34;04&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 2.901e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +14.41% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            320 samples affected<br>
+            (8.8% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `month` contains &#34;04&#34;, the MSE is 14.41% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8484</th>
+      <td>2024-04</td>
+      <td>610000.0</td>
+      <td>585413.245385</td>
+    </tr>
+    <tr>
+      <th>9177</th>
+      <td>2024-04</td>
+      <td>596000.0</td>
+      <td>587165.174514</td>
+    </tr>
+    <tr>
+      <th>19390</th>
+      <td>2019-04</td>
+      <td>500000.0</td>
+      <td>530571.833661</td>
     </tr>
   </tbody>
 </table>
@@ -1705,10 +1460,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.125e+09</span>
+        <span>MSE = 2.861e+09</span>
         
         <span class="text-gray-400">
-            (Global = 2.410e+09)
+            (Global = 2.536e+09)
         </span>
         
     </td>
@@ -1716,15 +1471,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +29.69% than global
+            +12.82% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            131 samples affected<br>
-            (13.1% of dataset)
+            408 samples affected<br>
+            (11.3% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1738,7 +1493,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `town` contains &#34;bukit&#34;, the MSE is 29.69% greater than the global MSE.
+        For records in the dataset where `town` contains &#34;bukit&#34;, the MSE is 12.82% greater than the global MSE.
         
 
         
@@ -1769,22 +1524,22 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>30</th>
-      <td>BUKIT BATOK</td>
-      <td>555000.0</td>
-      <td>509766.391789</td>
-    </tr>
-    <tr>
-      <th>37</th>
+      <th>24001</th>
       <td>BUKIT MERAH</td>
-      <td>590000.0</td>
-      <td>669659.158514</td>
+      <td>685000.0</td>
+      <td>646700.356062</td>
     </tr>
     <tr>
-      <th>48</th>
-      <td>BUKIT PANJANG</td>
-      <td>283000.0</td>
-      <td>268517.834347</td>
+      <th>7008</th>
+      <td>BUKIT MERAH</td>
+      <td>838000.0</td>
+      <td>749073.035653</td>
+    </tr>
+    <tr>
+      <th>4115</th>
+      <td>BUKIT MERAH</td>
+      <td>838000.0</td>
+      <td>761315.843326</td>
     </tr>
   </tbody>
 </table>
@@ -1813,7 +1568,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `flat_type` == &#34;EXECUTIVE&#34;
+        `month` contains &#34;03&#34;
         </code>
         
     </td>
@@ -1823,10 +1578,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.062e+09</span>
+        <span>MSE = 2.850e+09</span>
         
         <span class="text-gray-400">
-            (Global = 2.410e+09)
+            (Global = 2.536e+09)
         </span>
         
     </td>
@@ -1834,15 +1589,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +27.05% than global
+            +12.39% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            80 samples affected<br>
-            (8.0% of dataset)
+            320 samples affected<br>
+            (8.8% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1856,125 +1611,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `flat_type` == &#34;EXECUTIVE&#34;, the MSE is 27.05% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>flat_type</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>7</th>
-      <td>EXECUTIVE</td>
-      <td>698000.0</td>
-      <td>693784.401068</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>EXECUTIVE</td>
-      <td>735000.0</td>
-      <td>736465.504672</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>EXECUTIVE</td>
-      <td>800000.0</td>
-      <td>834463.337641</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `month` contains &#34;2020&#34;
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 3.046e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 2.410e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +26.39% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            143 samples affected<br>
-            (14.3% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `month` contains &#34;2020&#34;, the MSE is 26.39% greater than the global MSE.
+        For records in the dataset where `month` contains &#34;03&#34;, the MSE is 12.39% greater than the global MSE.
         
 
         
@@ -2005,22 +1642,376 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
-      <td>2020-06</td>
-      <td>460000.0</td>
-      <td>449231.378483</td>
+      <th>12042</th>
+      <td>2018-03</td>
+      <td>435000.0</td>
+      <td>489307.653442</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>2020-07</td>
-      <td>285000.0</td>
-      <td>271686.180753</td>
+      <th>6850</th>
+      <td>2022-03</td>
+      <td>418000.0</td>
+      <td>477894.522606</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>2020-01</td>
-      <td>390000.0</td>
-      <td>422652.142213</td>
+      <th>23788</th>
+      <td>2023-03</td>
+      <td>430000.0</td>
+      <td>475830.715038</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `street_name` contains &#34;dr&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 2.797e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +10.30% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            326 samples affected<br>
+            (9.0% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `street_name` contains &#34;dr&#34;, the MSE is 10.3% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>street_name</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8691</th>
+      <td>ADMIRALTY DR</td>
+      <td>480000.0</td>
+      <td>488643.279512</td>
+    </tr>
+    <tr>
+      <th>2484</th>
+      <td>PASIR RIS DR 1</td>
+      <td>590000.0</td>
+      <td>528087.915186</td>
+    </tr>
+    <tr>
+      <th>16758</th>
+      <td>C'WEALTH DR</td>
+      <td>760000.0</td>
+      <td>756682.933457</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `month` contains &#34;06&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 2.792e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +10.08% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            279 samples affected<br>
+            (7.7% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `month` contains &#34;06&#34;, the MSE is 10.08% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>24788</th>
+      <td>2022-06</td>
+      <td>535000.0</td>
+      <td>526570.051197</td>
+    </tr>
+    <tr>
+      <th>27896</th>
+      <td>2021-06</td>
+      <td>395000.0</td>
+      <td>425352.804835</td>
+    </tr>
+    <tr>
+      <th>36164</th>
+      <td>2017-06</td>
+      <td>625000.0</td>
+      <td>703248.829730</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `month` contains &#34;2022&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 2.709e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 2.536e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-amber-200">
+            +6.83% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            548 samples affected<br>
+            (15.1% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `month` contains &#34;2022&#34;, the MSE is 6.83% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19129</th>
+      <td>2022-01</td>
+      <td>555000.0</td>
+      <td>497514.853683</td>
+    </tr>
+    <tr>
+      <th>19246</th>
+      <td>2022-08</td>
+      <td>430000.0</td>
+      <td>461779.132468</td>
+    </tr>
+    <tr>
+      <th>6850</th>
+      <td>2022-03</td>
+      <td>418000.0</td>
+      <td>477894.522606</td>
     </tr>
   </tbody>
 </table>
@@ -2105,22 +2096,22 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 1.000</span>
+        <span>Fail rate = 0.875</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            7/7 tested samples (100.0%) changed prediction after perturbation
+            28/32 tested samples (87.5%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            7 samples affected<br>
-            (0.7% of dataset)
+            32 samples affected<br>
+            (0.9% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -2134,7 +2125,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Punctuation Removal”, the model changes its prediction in 100.0% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “street_name” is perturbed with the transformation “Punctuation Removal”, the model changes its prediction in 87.5% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -2166,25 +2157,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>301</th>
-      <td>ST. GEORGE'S LANE</td>
-      <td>ST GEORGE S LANE</td>
-      <td>214924.822215</td>
-      <td>227931.764088</td>
-    </tr>
-    <tr>
-      <th>506</th>
+      <th>16758</th>
       <td>C'WEALTH DR</td>
       <td>C WEALTH DR</td>
-      <td>279901.228427</td>
-      <td>383535.535602</td>
+      <td>873787.443261</td>
+      <td>610607.539502</td>
     </tr>
     <tr>
-      <th>542</th>
-      <td>ST. GEORGE'S RD</td>
-      <td>ST GEORGE S RD</td>
-      <td>352812.335361</td>
-      <td>542661.185713</td>
+      <th>4855</th>
+      <td>C'WEALTH CL</td>
+      <td>C WEALTH CL</td>
+      <td>388457.069636</td>
+      <td>466192.371642</td>
+    </tr>
+    <tr>
+      <th>4809</th>
+      <td>C'WEALTH CL</td>
+      <td>C WEALTH CL</td>
+      <td>308931.954020</td>
+      <td>273820.735061</td>
     </tr>
   </tbody>
 </table>
@@ -2227,22 +2218,22 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.765</span>
+        <span>Fail rate = 0.871</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            13/17 tested samples (76.47%) changed prediction after perturbation
+            108/124 tested samples (87.1%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            17 samples affected<br>
-            (1.7% of dataset)
+            124 samples affected<br>
+            (3.4% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -2256,7 +2247,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “town” is perturbed with the transformation “Punctuation Removal”, the model changes its prediction in 76.47% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “town” is perturbed with the transformation “Punctuation Removal”, the model changes its prediction in 87.1% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -2288,269 +2279,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>64</th>
+      <th>27136</th>
       <td>KALLANG/WHAMPOA</td>
       <td>KALLANG WHAMPOA</td>
-      <td>289463.463437</td>
-      <td>337196.750206</td>
+      <td>256579.694443</td>
+      <td>322203.714592</td>
     </tr>
     <tr>
-      <th>95</th>
+      <th>3111</th>
       <td>KALLANG/WHAMPOA</td>
       <td>KALLANG WHAMPOA</td>
-      <td>703958.606368</td>
-      <td>650661.416999</td>
+      <td>639969.154735</td>
+      <td>439924.973848</td>
     </tr>
     <tr>
-      <th>301</th>
+      <th>2322</th>
       <td>KALLANG/WHAMPOA</td>
       <td>KALLANG WHAMPOA</td>
-      <td>214924.822215</td>
-      <td>244429.199239</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `block`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Transform to lowercase</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.746</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            244/327 tested samples (74.62%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            327 samples affected<br>
-            (32.7% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “block” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 74.62% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>block</th>
-      <th>Transform to lowercase(block)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>269C</td>
-      <td>269c</td>
-      <td>786089.336348</td>
-      <td>649512.587833</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>281B</td>
-      <td>281b</td>
-      <td>491220.949954</td>
-      <td>389475.843784</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>272D</td>
-      <td>272d</td>
-      <td>627075.477926</td>
-      <td>478893.313250</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `block`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Transform numbers to words</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.666</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            448/673 tested samples (66.57%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            673 samples affected<br>
-            (67.3% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “block” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 66.57% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>block</th>
-      <th>Transform numbers to words(block)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>128</td>
-      <td>one hundred and twenty-eight</td>
-      <td>613443.882418</td>
-      <td>688706.906016</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>6</td>
-      <td>six</td>
-      <td>408962.079788</td>
-      <td>386599.927338</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>409</td>
-      <td>four hundred and nine</td>
-      <td>449231.378483</td>
-      <td>512636.827459</td>
+      <td>372656.451440</td>
+      <td>427179.870367</td>
     </tr>
   </tbody>
 </table>
@@ -2593,22 +2340,22 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.597</span>
+        <span>Fail rate = 0.721</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            77/129 tested samples (59.69%) changed prediction after perturbation
+            352/488 tested samples (72.13%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            129 samples affected<br>
-            (12.9% of dataset)
+            488 samples affected<br>
+            (13.5% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -2622,7 +2369,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “town” is perturbed with the transformation “Add typos”, the model changes its prediction in 59.69% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “town” is perturbed with the transformation “Add typos”, the model changes its prediction in 72.13% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -2654,25 +2401,269 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>15</th>
-      <td>JURONG EAST</td>
-      <td>JRUONYG EAST</td>
-      <td>362130.443446</td>
-      <td>422098.896098</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>MARINE PARADE</td>
-      <td>MARINE PRAADE</td>
-      <td>491095.792556</td>
-      <td>383535.535602</td>
-    </tr>
-    <tr>
-      <th>37</th>
+      <th>7008</th>
       <td>BUKIT MERAH</td>
-      <td>BUJIT MERAH</td>
-      <td>669659.158514</td>
-      <td>516318.290845</td>
+      <td>BUKI T MERAH</td>
+      <td>796014.375218</td>
+      <td>440232.501582</td>
+    </tr>
+    <tr>
+      <th>13292</th>
+      <td>CHOA CHU KANG</td>
+      <td>COHA CHU KANG</td>
+      <td>475144.256068</td>
+      <td>508552.706266</td>
+    </tr>
+    <tr>
+      <th>4545</th>
+      <td>BUKIT PANJANG</td>
+      <td>BUKIT PANJQANG</td>
+      <td>559165.293472</td>
+      <td>478434.667655</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `block`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Transform numbers to words</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.632</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            632/1000 tested samples (63.2%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            1000 samples affected<br>
+            (27.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “block” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 63.2% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block</th>
+      <th>Transform numbers to words(block)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6404</th>
+      <td>14</td>
+      <td>fourteen</td>
+      <td>333276.140201</td>
+      <td>231976.008863</td>
+    </tr>
+    <tr>
+      <th>12415</th>
+      <td>351</td>
+      <td>three hundred and fifty-one</td>
+      <td>596219.408092</td>
+      <td>858640.459507</td>
+    </tr>
+    <tr>
+      <th>24250</th>
+      <td>212</td>
+      <td>two hundred and twelve</td>
+      <td>276530.829555</td>
+      <td>330009.989863</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `street_name`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Add typos</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.578</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            578/1000 tested samples (57.8%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            1000 samples affected<br>
+            (27.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “street_name” is perturbed with the transformation “Add typos”, the model changes its prediction in 57.8% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>street_name</th>
+      <th>Add typos(street_name)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7083</th>
+      <td>JLN TECK WHYE</td>
+      <td>JL TECK WHYE</td>
+      <td>353006.187890</td>
+      <td>413236.195258</td>
+    </tr>
+    <tr>
+      <th>14960</th>
+      <td>TELOK BLANGAH DR</td>
+      <td>TELOO BKANGAH DR</td>
+      <td>787526.257643</td>
+      <td>648631.435717</td>
+    </tr>
+    <tr>
+      <th>28374</th>
+      <td>TAMPINES ST 12</td>
+      <td>TAMPIEHS ST 12</td>
+      <td>560668.061723</td>
+      <td>499505.513102</td>
     </tr>
   </tbody>
 </table>
@@ -2715,14 +2706,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.557</span>
+        <span>Fail rate = 0.556</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            557/1000 tested samples (55.7%) changed prediction after perturbation
+            556/1000 tested samples (55.6%) changed prediction after perturbation
         </span>
     </td>
     
@@ -2730,7 +2721,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td class="p-3">
         <span class="text-gray-400">
             1000 samples affected<br>
-            (100.0% of dataset)
+            (27.6% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -2744,7 +2735,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “month” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 55.7% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “month” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 55.6% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -2776,25 +2767,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>2023-07</td>
-      <td>two thousand and twenty-three-seven</td>
-      <td>786089.336348</td>
-      <td>607242.322914</td>
+      <th>23075</th>
+      <td>2022-02</td>
+      <td>two thousand and twenty-two-two</td>
+      <td>514087.843422</td>
+      <td>436392.216979</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>2023-10</td>
-      <td>two thousand and twenty-three-ten</td>
-      <td>613443.882418</td>
-      <td>467393.740147</td>
+      <th>25405</th>
+      <td>2021-11</td>
+      <td>two thousand and twenty-one-eleven</td>
+      <td>806470.722179</td>
+      <td>712771.173868</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>2023-03</td>
-      <td>two thousand and twenty-three-three</td>
-      <td>418835.226278</td>
-      <td>330421.712290</td>
+      <th>16389</th>
+      <td>2017-11</td>
+      <td>two thousand and seventeen-eleven</td>
+      <td>359674.887426</td>
+      <td>388012.007925</td>
     </tr>
   </tbody>
 </table>
@@ -2837,22 +2828,22 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.505</span>
+        <span>Fail rate = 0.545</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            243/481 tested samples (50.52%) changed prediction after perturbation
+            545/1000 tested samples (54.5%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            481 samples affected<br>
-            (48.1% of dataset)
+            1000 samples affected<br>
+            (27.6% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -2866,7 +2857,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 50.52% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “street_name” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 54.5% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -2898,635 +2889,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
-      <td>WOODLANDS ST 41</td>
-      <td>WOODLANDS ST forty-one</td>
-      <td>449231.378483</td>
-      <td>512636.827459</td>
+      <th>23577</th>
+      <td>ANG MO KIO ST 32</td>
+      <td>ANG MO KIO ST thirty-two</td>
+      <td>598738.204995</td>
+      <td>384043.894171</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>CHOA CHU KANG ST 51</td>
-      <td>CHOA CHU KANG ST fifty-one</td>
-      <td>450381.639614</td>
-      <td>485206.537642</td>
+      <th>30849</th>
+      <td>HOUGANG AVE 6</td>
+      <td>HOUGANG AVE six</td>
+      <td>496304.353067</td>
+      <td>463869.727198</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>SERANGOON NTH AVE 3</td>
-      <td>SERANGOON NTH AVE three</td>
-      <td>515829.740755</td>
-      <td>479970.651842</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `street_name`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Add typos</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.479</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            184/384 tested samples (47.92%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            384 samples affected<br>
-            (38.4% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Add typos”, the model changes its prediction in 47.92% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>Add typos(street_name)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>3</th>
-      <td>WOODLANDS ST 41</td>
-      <td>OWODLANDS ST 41</td>
-      <td>449231.378483</td>
-      <td>513068.921456</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>WOODLANDS DR 60</td>
-      <td>WOODLAND DR 60</td>
-      <td>422652.142213</td>
-      <td>512636.827459</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>CHOA CHU KANG AVE 2</td>
-      <td>CHOA CHU KANY AVE 2</td>
-      <td>736552.624969</td>
-      <td>836483.886753</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `town`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Transform to lowercase</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.452</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            452/1000 tested samples (45.2%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            1000 samples affected<br>
-            (100.0% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “town” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 45.2% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>town</th>
-      <th>Transform to lowercase(town)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>WOODLANDS</td>
-      <td>woodlands</td>
-      <td>613443.882418</td>
-      <td>687112.670191</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>SERANGOON</td>
-      <td>serangoon</td>
-      <td>408962.079788</td>
-      <td>386599.927338</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>WOODLANDS</td>
-      <td>woodlands</td>
-      <td>449231.378483</td>
-      <td>513068.921456</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `street_name`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Transform to lowercase</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.452</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            452/1000 tested samples (45.2%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            1000 samples affected<br>
-            (100.0% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 45.2% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>Transform to lowercase(street_name)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>MARSILING RISE</td>
-      <td>marsiling rise</td>
-      <td>613443.882418</td>
-      <td>687112.670191</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>LOR LEW LIAN</td>
-      <td>lor lew lian</td>
-      <td>408962.079788</td>
-      <td>386599.927338</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>WOODLANDS ST 41</td>
-      <td>woodlands st 41</td>
-      <td>449231.378483</td>
-      <td>513068.921456</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `town`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Transform to title case</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.452</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            452/1000 tested samples (45.2%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            1000 samples affected<br>
-            (100.0% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “town” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 45.2% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>town</th>
-      <th>Transform to title case(town)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>WOODLANDS</td>
-      <td>Woodlands</td>
-      <td>613443.882418</td>
-      <td>687112.670191</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>SERANGOON</td>
-      <td>Serangoon</td>
-      <td>408962.079788</td>
-      <td>386599.927338</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>WOODLANDS</td>
-      <td>Woodlands</td>
-      <td>449231.378483</td>
-      <td>513068.921456</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `street_name`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Transform to title case</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.452</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            452/1000 tested samples (45.2%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            1000 samples affected<br>
-            (100.0% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 45.2% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>Transform to title case(street_name)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>MARSILING RISE</td>
-      <td>Marsiling Rise</td>
-      <td>613443.882418</td>
-      <td>687112.670191</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>LOR LEW LIAN</td>
-      <td>Lor Lew Lian</td>
-      <td>408962.079788</td>
-      <td>386599.927338</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>WOODLANDS ST 41</td>
-      <td>Woodlands St 41</td>
-      <td>449231.378483</td>
-      <td>513068.921456</td>
+      <th>28590</th>
+      <td>WOODLANDS DR 52</td>
+      <td>WOODLANDS DR fifty-two</td>
+      <td>609499.504870</td>
+      <td>487805.209931</td>
     </tr>
   </tbody>
 </table>
@@ -3569,22 +2950,22 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.440</span>
+        <span>Fail rate = 0.497</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            184/418 tested samples (44.02%) changed prediction after perturbation
+            497/1000 tested samples (49.7%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            418 samples affected<br>
-            (41.8% of dataset)
+            1000 samples affected<br>
+            (27.6% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -3598,7 +2979,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “remaining_lease” is perturbed with the transformation “Add typos”, the model changes its prediction in 44.02% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “remaining_lease” is perturbed with the transformation “Add typos”, the model changes its prediction in 49.7% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -3630,25 +3011,635 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>18</th>
-      <td>66 years 07 months</td>
-      <td>66 yeafs 07 kmonths</td>
-      <td>711495.316866</td>
-      <td>672681.999554</td>
+      <th>10623</th>
+      <td>83 years 10 months</td>
+      <td>83 years @0 months</td>
+      <td>624680.738948</td>
+      <td>543420.462050</td>
     </tr>
     <tr>
-      <th>25</th>
-      <td>50 years 07 months</td>
-      <td>50 years 0&amp; monhs</td>
-      <td>470767.759003</td>
-      <td>635840.479190</td>
+      <th>23149</th>
+      <td>94 years 08 months</td>
+      <td>I4 years 08 months</td>
+      <td>651815.365033</td>
+      <td>417305.663297</td>
     </tr>
     <tr>
-      <th>29</th>
-      <td>55 years 04 months</td>
-      <td>55 years 04 montjs</td>
-      <td>242701.325056</td>
-      <td>304682.564312</td>
+      <th>11383</th>
+      <td>49 years 02 months</td>
+      <td>49 eyars 02 months</td>
+      <td>420015.793393</td>
+      <td>499693.513711</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `town`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Transform to lowercase</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.478</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            478/1000 tested samples (47.8%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            1000 samples affected<br>
+            (27.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “town” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 47.8% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>town</th>
+      <th>Transform to lowercase(town)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25405</th>
+      <td>BISHAN</td>
+      <td>bishan</td>
+      <td>806470.722179</td>
+      <td>590790.067838</td>
+    </tr>
+    <tr>
+      <th>14479</th>
+      <td>GEYLANG</td>
+      <td>geylang</td>
+      <td>378987.787865</td>
+      <td>331601.027735</td>
+    </tr>
+    <tr>
+      <th>16389</th>
+      <td>YISHUN</td>
+      <td>yishun</td>
+      <td>359674.887426</td>
+      <td>421232.921031</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `street_name`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Transform to lowercase</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.478</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            478/1000 tested samples (47.8%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            1000 samples affected<br>
+            (27.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “street_name” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 47.8% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>street_name</th>
+      <th>Transform to lowercase(street_name)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25405</th>
+      <td>BISHAN ST 12</td>
+      <td>bishan st 12</td>
+      <td>806470.722179</td>
+      <td>590790.067838</td>
+    </tr>
+    <tr>
+      <th>14479</th>
+      <td>SIMS PL</td>
+      <td>sims pl</td>
+      <td>378987.787865</td>
+      <td>331601.027735</td>
+    </tr>
+    <tr>
+      <th>16389</th>
+      <td>YISHUN ST 81</td>
+      <td>yishun st 81</td>
+      <td>359674.887426</td>
+      <td>421232.921031</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `town`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Transform to title case</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.478</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            478/1000 tested samples (47.8%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            1000 samples affected<br>
+            (27.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “town” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 47.8% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>town</th>
+      <th>Transform to title case(town)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25405</th>
+      <td>BISHAN</td>
+      <td>Bishan</td>
+      <td>806470.722179</td>
+      <td>590790.067838</td>
+    </tr>
+    <tr>
+      <th>14479</th>
+      <td>GEYLANG</td>
+      <td>Geylang</td>
+      <td>378987.787865</td>
+      <td>331601.027735</td>
+    </tr>
+    <tr>
+      <th>16389</th>
+      <td>YISHUN</td>
+      <td>Yishun</td>
+      <td>359674.887426</td>
+      <td>421232.921031</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `street_name`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Transform to title case</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.478</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            478/1000 tested samples (47.8%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            1000 samples affected<br>
+            (27.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “street_name” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 47.8% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>street_name</th>
+      <th>Transform to title case(street_name)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25405</th>
+      <td>BISHAN ST 12</td>
+      <td>Bishan St 12</td>
+      <td>806470.722179</td>
+      <td>590790.067838</td>
+    </tr>
+    <tr>
+      <th>14479</th>
+      <td>SIMS PL</td>
+      <td>Sims Pl</td>
+      <td>378987.787865</td>
+      <td>331601.027735</td>
+    </tr>
+    <tr>
+      <th>16389</th>
+      <td>YISHUN ST 81</td>
+      <td>Yishun St 81</td>
+      <td>359674.887426</td>
+      <td>421232.921031</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `block`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Transform to lowercase</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.455</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            455/1000 tested samples (45.5%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            1000 samples affected<br>
+            (27.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “block” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 45.5% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block</th>
+      <th>Transform to lowercase(block)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>204</th>
+      <td>61A</td>
+      <td>61a</td>
+      <td>750888.576328</td>
+      <td>480533.318195</td>
+    </tr>
+    <tr>
+      <th>15648</th>
+      <td>471B</td>
+      <td>471b</td>
+      <td>659463.471788</td>
+      <td>503643.502841</td>
+    </tr>
+    <tr>
+      <th>35953</th>
+      <td>625B</td>
+      <td>625b</td>
+      <td>319356.797335</td>
+      <td>413993.660034</td>
     </tr>
   </tbody>
 </table>
@@ -3691,14 +3682,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.434</span>
+        <span>Fail rate = 0.403</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            434/1000 tested samples (43.4%) changed prediction after perturbation
+            403/1000 tested samples (40.3%) changed prediction after perturbation
         </span>
     </td>
     
@@ -3706,7 +3697,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td class="p-3">
         <span class="text-gray-400">
             1000 samples affected<br>
-            (100.0% of dataset)
+            (27.6% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -3720,7 +3711,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “remaining_lease” is perturbed with the transformation “Transform to uppercase”, the model changes its prediction in 43.4% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “remaining_lease” is perturbed with the transformation “Transform to uppercase”, the model changes its prediction in 40.3% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -3752,25 +3743,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>70 years 05 months</td>
-      <td>70 YEARS 05 MONTHS</td>
-      <td>613443.882418</td>
-      <td>817146.791919</td>
+      <th>17356</th>
+      <td>72 years 11 months</td>
+      <td>72 YEARS 11 MONTHS</td>
+      <td>594307.622088</td>
+      <td>805127.786848</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>79 years 04 months</td>
-      <td>79 YEARS 04 MONTHS</td>
-      <td>693784.401068</td>
-      <td>903735.062661</td>
+      <th>3402</th>
+      <td>78 years 04 months</td>
+      <td>78 YEARS 04 MONTHS</td>
+      <td>568277.288433</td>
+      <td>602548.972592</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>63 years 05 months</td>
-      <td>63 YEARS 05 MONTHS</td>
-      <td>450805.956903</td>
-      <td>509454.024805</td>
+      <th>12128</th>
+      <td>51 years 06 months</td>
+      <td>51 YEARS 06 MONTHS</td>
+      <td>310042.012935</td>
+      <td>391298.021654</td>
     </tr>
   </tbody>
 </table>
@@ -3813,14 +3804,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.434</span>
+        <span>Fail rate = 0.403</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            434/1000 tested samples (43.4%) changed prediction after perturbation
+            403/1000 tested samples (40.3%) changed prediction after perturbation
         </span>
     </td>
     
@@ -3828,7 +3819,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td class="p-3">
         <span class="text-gray-400">
             1000 samples affected<br>
-            (100.0% of dataset)
+            (27.6% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -3842,7 +3833,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “remaining_lease” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 43.4% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “remaining_lease” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 40.3% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -3874,25 +3865,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>70 years 05 months</td>
-      <td>70 Years 05 Months</td>
-      <td>613443.882418</td>
-      <td>817146.791919</td>
+      <th>17356</th>
+      <td>72 years 11 months</td>
+      <td>72 Years 11 Months</td>
+      <td>594307.622088</td>
+      <td>805127.786848</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>79 years 04 months</td>
-      <td>79 Years 04 Months</td>
-      <td>693784.401068</td>
-      <td>903735.062661</td>
+      <th>3402</th>
+      <td>78 years 04 months</td>
+      <td>78 Years 04 Months</td>
+      <td>568277.288433</td>
+      <td>602548.972592</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>63 years 05 months</td>
-      <td>63 Years 05 Months</td>
-      <td>450805.956903</td>
-      <td>509454.024805</td>
+      <th>12128</th>
+      <td>51 years 06 months</td>
+      <td>51 Years 06 Months</td>
+      <td>310042.012935</td>
+      <td>391298.021654</td>
     </tr>
   </tbody>
 </table>

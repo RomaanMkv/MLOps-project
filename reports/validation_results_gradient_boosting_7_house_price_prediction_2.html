@@ -167,19 +167,19 @@
   </thead>
   <tbody>
     <tr>
-      <th>519</th>
-      <td>769205.583407</td>
-      <td>588936.515139</td>
+      <th>2277</th>
+      <td>425843.605167</td>
+      <td>423266.23311</td>
     </tr>
     <tr>
-      <th>837</th>
-      <td>588985.321791</td>
-      <td>629061.629291</td>
+      <th>14807</th>
+      <td>350627.863315</td>
+      <td>488166.83473</td>
     </tr>
     <tr>
-      <th>208</th>
-      <td>648474.568073</td>
-      <td>494547.393029</td>
+      <th>2484</th>
+      <td>511849.965943</td>
+      <td>598782.481317</td>
     </tr>
   </tbody>
 </table>
@@ -250,7 +250,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `floor_area_sqm` &gt;= 112.500 AND `floor_area_sqm` &lt; 117.500
+        `flat_type` == &#34;EXECUTIVE&#34;
         </code>
         
     </td>
@@ -260,10 +260,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 7.024e+09</span>
+        <span>MSE = 7.165e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -271,15 +271,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +131.93% than global
+            +103.25% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            58 samples affected<br>
-            (5.8% of dataset)
+            277 samples affected<br>
+            (7.6% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -293,7 +293,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `floor_area_sqm` &gt;= 112.500 AND `floor_area_sqm` &lt; 117.500, the MSE is 131.93% greater than the global MSE.
+        For records in the dataset where `flat_type` == &#34;EXECUTIVE&#34;, the MSE is 103.25% greater than the global MSE.
         
 
         
@@ -317,29 +317,29 @@ happen for different reasons:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>floor_area_sqm</th>
+      <th>flat_type</th>
       <th>resale_price</th>
       <th>Predicted `resale_price`</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>35</th>
-      <td>115.0</td>
-      <td>490000.0</td>
-      <td>567146.598819</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>113.0</td>
-      <td>1036800.0</td>
-      <td>954312.469238</td>
-    </tr>
-    <tr>
-      <th>60</th>
-      <td>113.0</td>
+      <th>8691</th>
+      <td>EXECUTIVE</td>
       <td>480000.0</td>
-      <td>458380.930985</td>
+      <td>547443.802466</td>
+    </tr>
+    <tr>
+      <th>16944</th>
+      <td>EXECUTIVE</td>
+      <td>648000.0</td>
+      <td>661756.400525</td>
+    </tr>
+    <tr>
+      <th>832</th>
+      <td>EXECUTIVE</td>
+      <td>685000.0</td>
+      <td>664777.878836</td>
     </tr>
   </tbody>
 </table>
@@ -378,10 +378,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 6.325e+09</span>
+        <span>MSE = 6.631e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -389,15 +389,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +108.88% than global
+            +88.11% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            67 samples affected<br>
-            (6.7% of dataset)
+            257 samples affected<br>
+            (7.1% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -411,7 +411,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(town)` &gt;= 9.500 AND `text_length(town)` &lt; 10.500, the MSE is 108.88% greater than the global MSE.
+        For records in the dataset where `text_length(town)` &gt;= 9.500 AND `text_length(town)` &lt; 10.500, the MSE is 88.11% greater than the global MSE.
         
 
         
@@ -443,147 +443,25 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>4</th>
-      <td>ANG MO KIO</td>
-      <td>10</td>
-      <td>400888.0</td>
-      <td>413592.240348</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>ANG MO KIO</td>
-      <td>10</td>
-      <td>285000.0</td>
-      <td>300199.997111</td>
-    </tr>
-    <tr>
-      <th>11</th>
+      <th>7322</th>
       <td>QUEENSTOWN</td>
       <td>10</td>
-      <td>393000.0</td>
-      <td>351379.704174</td>
+      <td>378000.0</td>
+      <td>372840.755942</td>
     </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `text_length(street_name)` &lt; 10.500 AND `text_length(street_name)` &gt;= 8.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 5.867e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 3.028e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +93.74% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            74 samples affected<br>
-            (7.4% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(street_name)` &lt; 10.500 AND `text_length(street_name)` &gt;= 8.500, the MSE is 93.74% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>text_length(street_name)</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
     <tr>
-      <th>19</th>
-      <td>SIMEI ST 1</td>
+      <th>28342</th>
+      <td>ANG MO KIO</td>
       <td>10</td>
-      <td>525000.0</td>
-      <td>488449.042716</td>
+      <td>418000.0</td>
+      <td>422844.602256</td>
     </tr>
     <tr>
-      <th>25</th>
-      <td>QUEENSWAY</td>
-      <td>9</td>
-      <td>505000.0</td>
-      <td>521557.265382</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>MARINE DR</td>
-      <td>9</td>
-      <td>547000.0</td>
-      <td>504310.715707</td>
+      <th>16758</th>
+      <td>QUEENSTOWN</td>
+      <td>10</td>
+      <td>760000.0</td>
+      <td>782011.470057</td>
     </tr>
   </tbody>
 </table>
@@ -622,10 +500,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 5.372e+09</span>
+        <span>MSE = 6.311e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -633,15 +511,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +77.38% than global
+            +79.04% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            53 samples affected<br>
-            (5.3% of dataset)
+            268 samples affected<br>
+            (7.4% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -655,7 +533,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(street_name)` &gt;= 15.500 AND `text_length(street_name)` &lt; 16.500, the MSE is 77.38% greater than the global MSE.
+        For records in the dataset where `text_length(street_name)` &gt;= 15.500 AND `text_length(street_name)` &lt; 16.500, the MSE is 79.04% greater than the global MSE.
         
 
         
@@ -687,261 +565,25 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>4</th>
+      <th>28342</th>
+      <td>ANG MO KIO AVE 1</td>
+      <td>16</td>
+      <td>418000.0</td>
+      <td>422844.602256</td>
+    </tr>
+    <tr>
+      <th>9177</th>
+      <td>COMPASSVALE CRES</td>
+      <td>16</td>
+      <td>596000.0</td>
+      <td>574528.477034</td>
+    </tr>
+    <tr>
+      <th>33526</th>
       <td>ANG MO KIO AVE 6</td>
       <td>16</td>
-      <td>400888.0</td>
-      <td>413592.240348</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>EDGEFIELD PLAINS</td>
-      <td>16</td>
-      <td>698000.0</td>
-      <td>674821.493645</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>ANG MO KIO AVE 8</td>
-      <td>16</td>
-      <td>285000.0</td>
-      <td>300199.997111</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `floor_area_sqm` &gt;= 122.500 AND `floor_area_sqm` &lt; 132.500
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 5.231e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 3.028e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +72.75% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            55 samples affected<br>
-            (5.5% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `floor_area_sqm` &gt;= 122.500 AND `floor_area_sqm` &lt; 132.500, the MSE is 72.75% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>floor_area_sqm</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>3</th>
-      <td>125.0</td>
-      <td>460000.0</td>
-      <td>453138.092535</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>130.0</td>
-      <td>698000.0</td>
-      <td>674821.493645</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>127.0</td>
-      <td>730000.0</td>
-      <td>593934.374497</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `street_name` contains &#34;dr&#34;
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 4.886e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 3.028e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +61.35% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            73 samples affected<br>
-            (7.3% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `street_name` contains &#34;dr&#34;, the MSE is 61.35% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>13</th>
-      <td>WOODLANDS DR 60</td>
-      <td>390000.0</td>
-      <td>427844.620545</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>MARINE DR</td>
-      <td>547000.0</td>
-      <td>504310.715707</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>RIVERVALE DR</td>
-      <td>490000.0</td>
-      <td>567146.598819</td>
+      <td>310000.0</td>
+      <td>305155.356826</td>
     </tr>
   </tbody>
 </table>
@@ -980,10 +622,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 4.885e+09</span>
+        <span>MSE = 5.584e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -991,15 +633,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +61.32% than global
+            +58.39% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            244 samples affected<br>
-            (24.4% of dataset)
+            961 samples affected<br>
+            (26.5% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1013,7 +655,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `flat_type` == &#34;5 ROOM&#34;, the MSE is 61.32% greater than the global MSE.
+        For records in the dataset where `flat_type` == &#34;5 ROOM&#34;, the MSE is 58.39% greater than the global MSE.
         
 
         
@@ -1044,22 +686,22 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>19129</th>
       <td>5 ROOM</td>
-      <td>745000.0</td>
-      <td>697590.325514</td>
+      <td>555000.0</td>
+      <td>489266.572067</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>9177</th>
       <td>5 ROOM</td>
-      <td>650000.0</td>
-      <td>629216.228113</td>
+      <td>596000.0</td>
+      <td>574528.477034</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>13297</th>
       <td>5 ROOM</td>
-      <td>460000.0</td>
-      <td>453138.092535</td>
+      <td>390000.0</td>
+      <td>437113.242066</td>
     </tr>
   </tbody>
 </table>
@@ -1088,7 +730,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `lease_commence_date` &gt;= 1986.500 AND `lease_commence_date` &lt; 1990.500
+        `month` contains &#34;2024&#34;
         </code>
         
     </td>
@@ -1098,10 +740,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 4.678e+09</span>
+        <span>MSE = 5.499e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -1109,15 +751,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +54.48% than global
+            +55.99% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            113 samples affected<br>
-            (11.3% of dataset)
+            230 samples affected<br>
+            (6.3% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1131,7 +773,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `lease_commence_date` &gt;= 1986.500 AND `lease_commence_date` &lt; 1990.500, the MSE is 54.48% greater than the global MSE.
+        For records in the dataset where `month` contains &#34;2024&#34;, the MSE is 55.99% greater than the global MSE.
         
 
         
@@ -1155,29 +797,29 @@ happen for different reasons:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>lease_commence_date</th>
+      <th>month</th>
       <th>resale_price</th>
       <th>Predicted `resale_price`</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>14</th>
-      <td>1988</td>
-      <td>448000.0</td>
-      <td>448897.854343</td>
+      <th>8484</th>
+      <td>2024-04</td>
+      <td>610000.0</td>
+      <td>563634.141317</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>1988</td>
-      <td>730000.0</td>
-      <td>593934.374497</td>
+      <th>9177</th>
+      <td>2024-04</td>
+      <td>596000.0</td>
+      <td>574528.477034</td>
     </tr>
     <tr>
-      <th>19</th>
-      <td>1988</td>
-      <td>525000.0</td>
-      <td>488449.042716</td>
+      <th>30647</th>
+      <td>2024-01</td>
+      <td>415888.0</td>
+      <td>442882.298819</td>
     </tr>
   </tbody>
 </table>
@@ -1206,7 +848,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `text_length(block)` &lt; 2.500
+        `floor_area_sqm` &gt;= 120.500 AND `floor_area_sqm` &lt; 125.500
         </code>
         
     </td>
@@ -1216,10 +858,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 4.562e+09</span>
+        <span>MSE = 5.176e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -1227,15 +869,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +50.66% than global
+            +46.84% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            129 samples affected<br>
-            (12.9% of dataset)
+            250 samples affected<br>
+            (6.9% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1249,7 +891,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(block)` &lt; 2.500, the MSE is 50.66% greater than the global MSE.
+        For records in the dataset where `floor_area_sqm` &gt;= 120.500 AND `floor_area_sqm` &lt; 125.500, the MSE is 46.84% greater than the global MSE.
         
 
         
@@ -1273,151 +915,29 @@ happen for different reasons:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>block</th>
-      <th>text_length(block)</th>
+      <th>floor_area_sqm</th>
       <th>resale_price</th>
       <th>Predicted `resale_price`</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2</th>
-      <td>6</td>
-      <td>1</td>
-      <td>458000.0</td>
-      <td>444660.174698</td>
+      <th>13297</th>
+      <td>121.0</td>
+      <td>390000.0</td>
+      <td>437113.242066</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>52</td>
-      <td>2</td>
-      <td>521000.0</td>
-      <td>598496.291017</td>
+      <th>20917</th>
+      <td>122.0</td>
+      <td>640000.0</td>
+      <td>534455.289901</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>50</td>
-      <td>2</td>
-      <td>740000.0</td>
-      <td>746676.309226</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `remaining_lease` contains &#34;04&#34;
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 4.527e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 3.028e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +49.50% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            76 samples affected<br>
-            (7.6% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `remaining_lease` contains &#34;04&#34;, the MSE is 49.5% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>remaining_lease</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>7</th>
-      <td>79 years 04 months</td>
-      <td>698000.0</td>
-      <td>674821.493645</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>87 years 04 months</td>
-      <td>740000.0</td>
-      <td>746676.309226</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>55 years 04 months</td>
-      <td>240000.0</td>
-      <td>278568.978460</td>
+      <th>18743</th>
+      <td>121.0</td>
+      <td>430000.0</td>
+      <td>452297.411113</td>
     </tr>
   </tbody>
 </table>
@@ -1456,10 +976,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 4.359e+09</span>
+        <span>MSE = 5.032e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -1467,15 +987,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +43.95% than global
+            +42.74% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            86 samples affected<br>
-            (8.6% of dataset)
+            277 samples affected<br>
+            (7.6% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1489,7 +1009,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `text_length(town)` &lt; 6.500 AND `text_length(town)` &gt;= 5.500, the MSE is 43.95% greater than the global MSE.
+        For records in the dataset where `text_length(town)` &lt; 6.500 AND `text_length(town)` &gt;= 5.500, the MSE is 42.74% greater than the global MSE.
         
 
         
@@ -1521,25 +1041,627 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>14</th>
+      <th>24788</th>
       <td>YISHUN</td>
       <td>6</td>
-      <td>448000.0</td>
-      <td>448897.854343</td>
+      <td>535000.0</td>
+      <td>530222.631022</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>BISHAN</td>
-      <td>6</td>
-      <td>730000.0</td>
-      <td>593934.374497</td>
-    </tr>
-    <tr>
-      <th>21</th>
+      <th>1521</th>
       <td>YISHUN</td>
       <td>6</td>
+      <td>303000.0</td>
+      <td>420278.045363</td>
+    </tr>
+    <tr>
+      <th>29098</th>
+      <td>YISHUN</td>
+      <td>6</td>
+      <td>720000.0</td>
+      <td>642518.964433</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `town` contains &#34;bukit&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 4.523e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 3.525e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +28.30% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            408 samples affected<br>
+            (11.3% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `town` contains &#34;bukit&#34;, the MSE is 28.3% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>town</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>24001</th>
+      <td>BUKIT MERAH</td>
+      <td>685000.0</td>
+      <td>571226.637015</td>
+    </tr>
+    <tr>
+      <th>7008</th>
+      <td>BUKIT MERAH</td>
+      <td>838000.0</td>
+      <td>769647.619279</td>
+    </tr>
+    <tr>
+      <th>4115</th>
+      <td>BUKIT MERAH</td>
+      <td>838000.0</td>
+      <td>790184.467253</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `text_length(remaining_lease)` == 8
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 4.425e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 3.525e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +25.52% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            308 samples affected<br>
+            (8.5% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `text_length(remaining_lease)` == 8, the MSE is 25.52% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>remaining_lease</th>
+      <th>text_length(remaining_lease)</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19246</th>
+      <td>69 years</td>
+      <td>8</td>
+      <td>430000.0</td>
+      <td>464754.836742</td>
+    </tr>
+    <tr>
+      <th>7008</th>
+      <td>84 years</td>
+      <td>8</td>
+      <td>838000.0</td>
+      <td>769647.619279</td>
+    </tr>
+    <tr>
+      <th>4115</th>
+      <td>83 years</td>
+      <td>8</td>
+      <td>838000.0</td>
+      <td>790184.467253</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `remaining_lease` contains &#34;08&#34;
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 4.419e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 3.525e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +25.37% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            289 samples affected<br>
+            (8.0% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `remaining_lease` contains &#34;08&#34;, the MSE is 25.37% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>remaining_lease</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>33526</th>
+      <td>61 years 08 months</td>
+      <td>310000.0</td>
+      <td>305155.356826</td>
+    </tr>
+    <tr>
+      <th>4399</th>
+      <td>87 years 08 months</td>
+      <td>288000.0</td>
+      <td>357111.518681</td>
+    </tr>
+    <tr>
+      <th>24084</th>
+      <td>68 years 08 months</td>
+      <td>1180000.0</td>
+      <td>911804.870937</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `text_length(block)` &lt; 2.500 AND `text_length(block)` &gt;= 1.500
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 4.402e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 3.525e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +24.88% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            421 samples affected<br>
+            (11.6% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `text_length(block)` &lt; 2.500 AND `text_length(block)` &gt;= 1.500, the MSE is 24.88% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block</th>
+      <th>text_length(block)</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9632</th>
+      <td>77</td>
+      <td>2</td>
+      <td>232888.0</td>
+      <td>302123.524891</td>
+    </tr>
+    <tr>
+      <th>7008</th>
+      <td>8A</td>
+      <td>2</td>
+      <td>838000.0</td>
+      <td>769647.619279</td>
+    </tr>
+    <tr>
+      <th>4115</th>
+      <td>6A</td>
+      <td>2</td>
+      <td>838000.0</td>
+      <td>790184.467253</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0204
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        
+        <code class="mono text-blue-300">
+        `text_length(street_name)` &gt;= 11.500 AND `text_length(street_name)` &lt; 12.500
+        </code>
+        
+    </td>
+    
+
+    
+
+    
+    <td class="p-3">
+        <span>MSE = 4.347e+09</span>
+        
+        <span class="text-gray-400">
+            (Global = 3.525e+09)
+        </span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            +23.32% than global
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            477 samples affected<br>
+            (13.2% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        For records in the dataset where `text_length(street_name)` &gt;= 11.500 AND `text_length(street_name)` &lt; 12.500, the MSE is 23.32% greater than the global MSE.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>street_name</th>
+      <th>text_length(street_name)</th>
+      <th>resale_price</th>
+      <th>Predicted `resale_price`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9632</th>
+      <td>BEDOK NTH RD</td>
+      <td>12</td>
+      <td>232888.0</td>
+      <td>302123.524891</td>
+    </tr>
+    <tr>
+      <th>8691</th>
+      <td>ADMIRALTY DR</td>
+      <td>12</td>
+      <td>480000.0</td>
+      <td>547443.802466</td>
+    </tr>
+    <tr>
+      <th>12042</th>
+      <td>PUNGGOL CTRL</td>
+      <td>12</td>
       <td>435000.0</td>
-      <td>445871.811574</td>
+      <td>466311.128436</td>
     </tr>
   </tbody>
 </table>
@@ -1578,10 +1700,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 4.010e+09</span>
+        <span>MSE = 4.266e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -1589,15 +1711,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +32.40% than global
+            +21.01% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            247 samples affected<br>
-            (24.7% of dataset)
+            998 samples affected<br>
+            (27.5% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1611,7 +1733,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `flat_model` == &#34;Improved&#34;, the MSE is 32.4% greater than the global MSE.
+        For records in the dataset where `flat_model` == &#34;Improved&#34;, the MSE is 21.01% greater than the global MSE.
         
 
         
@@ -1642,22 +1764,22 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
+      <th>19129</th>
       <td>Improved</td>
-      <td>460000.0</td>
-      <td>453138.092535</td>
+      <td>555000.0</td>
+      <td>489266.572067</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>9632</th>
       <td>Improved</td>
-      <td>521000.0</td>
-      <td>598496.291017</td>
+      <td>232888.0</td>
+      <td>302123.524891</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>7322</th>
       <td>Improved</td>
-      <td>393000.0</td>
-      <td>351379.704174</td>
+      <td>378000.0</td>
+      <td>372840.755942</td>
     </tr>
   </tbody>
 </table>
@@ -1686,7 +1808,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `month` contains &#34;02&#34;
+        `month` contains &#34;04&#34;
         </code>
         
     </td>
@@ -1696,10 +1818,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.985e+09</span>
+        <span>MSE = 4.262e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -1707,15 +1829,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +31.60% than global
+            +20.90% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            72 samples affected<br>
-            (7.2% of dataset)
+            320 samples affected<br>
+            (8.8% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1729,7 +1851,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `month` contains &#34;02&#34;, the MSE is 31.6% greater than the global MSE.
+        For records in the dataset where `month` contains &#34;04&#34;, the MSE is 20.9% greater than the global MSE.
         
 
         
@@ -1760,22 +1882,22 @@ happen for different reasons:</p>
   </thead>
   <tbody>
     <tr>
-      <th>36</th>
-      <td>2024-02</td>
-      <td>415000.0</td>
-      <td>443295.707735</td>
+      <th>8484</th>
+      <td>2024-04</td>
+      <td>610000.0</td>
+      <td>563634.141317</td>
     </tr>
     <tr>
-      <th>39</th>
-      <td>2020-02</td>
-      <td>400000.0</td>
-      <td>458531.384889</td>
+      <th>9177</th>
+      <td>2024-04</td>
+      <td>596000.0</td>
+      <td>574528.477034</td>
     </tr>
     <tr>
-      <th>57</th>
-      <td>2020-02</td>
-      <td>350000.0</td>
-      <td>446577.860731</td>
+      <th>19390</th>
+      <td>2019-04</td>
+      <td>500000.0</td>
+      <td>502662.300951</td>
     </tr>
   </tbody>
 </table>
@@ -1804,7 +1926,7 @@ happen for different reasons:</p>
         
         
         <code class="mono text-blue-300">
-        `month` contains &#34;12&#34;
+        `street_name` contains &#34;st&#34;
         </code>
         
     </td>
@@ -1814,10 +1936,10 @@ happen for different reasons:</p>
 
     
     <td class="p-3">
-        <span>MSE = 3.963e+09</span>
+        <span>MSE = 4.181e+09</span>
         
         <span class="text-gray-400">
-            (Global = 3.028e+09)
+            (Global = 3.525e+09)
         </span>
         
     </td>
@@ -1825,15 +1947,15 @@ happen for different reasons:</p>
     
     <td class="p-3">        
         <span class="text-red-400">
-            +30.86% than global
+            +18.60% than global
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            80 samples affected<br>
-            (8.0% of dataset)
+            900 samples affected<br>
+            (24.8% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -1847,7 +1969,7 @@ happen for different reasons:</p>
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `month` contains &#34;12&#34;, the MSE is 30.86% greater than the global MSE.
+        For records in the dataset where `street_name` contains &#34;st&#34;, the MSE is 18.6% greater than the global MSE.
         
 
         
@@ -1871,147 +1993,29 @@ happen for different reasons:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>month</th>
+      <th>street_name</th>
       <th>resale_price</th>
       <th>Predicted `resale_price`</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>25</th>
-      <td>2022-12</td>
-      <td>505000.0</td>
-      <td>521557.265382</td>
+      <th>7322</th>
+      <td>MEI LING ST</td>
+      <td>378000.0</td>
+      <td>372840.755942</td>
     </tr>
     <tr>
-      <th>45</th>
-      <td>2019-12</td>
-      <td>300000.0</td>
-      <td>377660.621195</td>
+      <th>20698</th>
+      <td>WOODLANDS ST 83</td>
+      <td>355000.0</td>
+      <td>365191.317446</td>
     </tr>
     <tr>
-      <th>52</th>
-      <td>2019-12</td>
-      <td>375000.0</td>
-      <td>446613.743269</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0204
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        
-        <code class="mono text-blue-300">
-        `month` contains &#34;2023&#34;
-        </code>
-        
-    </td>
-    
-
-    
-
-    
-    <td class="p-3">
-        <span>MSE = 3.900e+09</span>
-        
-        <span class="text-gray-400">
-            (Global = 3.028e+09)
-        </span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            +28.78% than global
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            143 samples affected<br>
-            (14.3% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        For records in the dataset where `month` contains &#34;2023&#34;, the MSE is 28.78% greater than the global MSE.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>month</th>
-      <th>resale_price</th>
-      <th>Predicted `resale_price`</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2023-07</td>
-      <td>745000.0</td>
-      <td>697590.325514</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2023-10</td>
-      <td>650000.0</td>
-      <td>629216.228113</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2023-03</td>
-      <td>400888.0</td>
-      <td>413592.240348</td>
+      <th>35482</th>
+      <td>RIVERVALE ST</td>
+      <td>430000.0</td>
+      <td>463020.839021</td>
     </tr>
   </tbody>
 </table>

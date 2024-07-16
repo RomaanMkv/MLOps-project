@@ -1,19 +1,17 @@
 import giskard.testing
 from data import extract_data, preprocess_data  # custom module
-from model import retrieve_model_with_alias, save_best_model  # custom module
+from model import retrieve_model_with_alias  # custom module
 from utils import init_hydra  # custom module
 import giskard
 import mlflow
 import os
 import pickle
 
-BASE_PATH = os.path.expandvars("$PROJECT_BASE_PATH")
 cfg = init_hydra()
 version = cfg.test_data_version
-df, version = extract_data(base_path=BASE_PATH, cfg=cfg)
+df, version = extract_data(cfg=cfg)
 
-df = df[:1000]
-print(df)
+df = df.sample(frac=cfg.validation_sample_size, random_state=1)
 
 # Specify categorical columns and target column
 TARGET_COLUMN = cfg.data.target_cols[0]
@@ -28,12 +26,12 @@ giskard_dataset = giskard.Dataset(
     cat_columns=CATEGORICAL_COLUMNS  # List of categorical columns. Optional, but improves quality of results if available.
 )
 
-model_names = ['random_forest', 'gradient_boosting']
-model_alias = 'challenger'
+model_names = list(cfg.model.model_names)
+model_alias = cfg.model.model_alias
 rmse_scores = {}
 
 for model_name in model_names:
-    for i in range(1, 27):
+    for i in range(cfg.model.model_number):
         model: mlflow.pyfunc.PyFuncModel = retrieve_model_with_alias(model_name, model_alias=f'{model_alias}{i}')
         client = mlflow.MlflowClient()
         mv = client.get_model_version_by_alias(name=model_name, alias=f'{model_alias}{i}')
@@ -85,7 +83,7 @@ for model_name in model_names:
         else:
             print(f"Model {model_name} version {model_version} has vulnerabilities!")
 
-best_model_alias = 'validation_champion'
+best_model_alias = cfg.best_model_alias
 
 if rmse_scores:
     # Find the model with the smallest RMSE

@@ -61,7 +61,10 @@ def validate_initial_data(cfg: DictConfig) -> None:
     print("All expectations passed successfully.")
 
 
-def extract_data(base_path, cfg: DictConfig):
+def extract_data(cfg: DictConfig, base_path = None):
+    if base_path is None:
+        base_path = os.path.expandvars("$PROJECT_BASE_PATH")
+        
     version_file_path = base_path + cfg.extr_data.version_file_path
     version = 0
     with open(version_file_path, 'r') as file:
