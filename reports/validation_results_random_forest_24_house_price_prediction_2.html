@@ -168,18 +168,18 @@
   <tbody>
     <tr>
       <th>26658</th>
-      <td>516081.60494</td>
-      <td>392127.341892</td>
+      <td>496423.422281</td>
+      <td>443790.665981</td>
     </tr>
     <tr>
       <th>2907</th>
-      <td>435353.254044</td>
-      <td>359566.514296</td>
+      <td>446969.352477</td>
+      <td>399727.718345</td>
     </tr>
     <tr>
       <th>35666</th>
-      <td>427976.753415</td>
-      <td>380009.132192</td>
+      <td>446280.759082</td>
+      <td>428300.284614</td>
     </tr>
   </tbody>
 </table>
@@ -249,129 +249,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td class="p-3">
         
         <span class="mono text-blue-300">
-            Feature `town`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Add typos</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.857</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            6/7 tested samples (85.71%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            7 samples affected<br>
-            (7.1% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “town” is perturbed with the transformation “Add typos”, the model changes its prediction in 85.71% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>town</th>
-      <th>Add typos(town)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>7008</th>
-      <td>BUKIT MERAH</td>
-      <td>BUKI T MERAH</td>
-      <td>708780.106242</td>
-      <td>524916.481960</td>
-    </tr>
-    <tr>
-      <th>19390</th>
-      <td>BUKIT BATOK</td>
-      <td>BUKI TBATOK</td>
-      <td>531870.053324</td>
-      <td>606139.939777</td>
-    </tr>
-    <tr>
-      <th>13292</th>
-      <td>CHOA CHU KANG</td>
-      <td>COHA CHU KANG</td>
-      <td>451258.710763</td>
-      <td>512558.300136</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `block`
+            Feature `street_name`
         </span>
         
         
@@ -386,22 +264,22 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.661</span>
+        <span>Fail rate = 0.688</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            41/62 tested samples (66.13%) changed prediction after perturbation
+            33/48 tested samples (68.75%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            62 samples affected<br>
-            (63.3% of dataset)
+            48 samples affected<br>
+            (49.0% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -415,7 +293,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “block” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 66.13% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “street_name” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 68.75% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -439,33 +317,33 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>block</th>
-      <th>Transform numbers to words(block)</th>
+      <th>street_name</th>
+      <th>Transform numbers to words(street_name)</th>
       <th>Original prediction</th>
       <th>Prediction after perturbation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>9632</th>
-      <td>77</td>
-      <td>seventy-seven</td>
-      <td>295583.290087</td>
-      <td>272938.531359</td>
-    </tr>
-    <tr>
       <th>20698</th>
-      <td>831</td>
-      <td>eight hundred and thirty-one</td>
-      <td>352287.081458</td>
-      <td>401480.790935</td>
+      <td>WOODLANDS ST 83</td>
+      <td>WOODLANDS ST eighty-three</td>
+      <td>372703.326579</td>
+      <td>343856.667767</td>
     </tr>
     <tr>
-      <th>35482</th>
-      <td>128</td>
-      <td>one hundred and twenty-eight</td>
-      <td>436033.824053</td>
-      <td>488761.614520</td>
+      <th>28342</th>
+      <td>ANG MO KIO AVE 1</td>
+      <td>ANG MO KIO AVE one</td>
+      <td>409808.298383</td>
+      <td>385973.653418</td>
+    </tr>
+    <tr>
+      <th>13297</th>
+      <td>WOODLANDS ST 11</td>
+      <td>WOODLANDS ST eleven</td>
+      <td>425140.892825</td>
+      <td>472908.978579</td>
     </tr>
   </tbody>
 </table>
@@ -508,14 +386,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.611</span>
+        <span>Fail rate = 0.639</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            22/36 tested samples (61.11%) changed prediction after perturbation
+            23/36 tested samples (63.89%) changed prediction after perturbation
         </span>
     </td>
     
@@ -537,7 +415,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “block” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 61.11% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “block” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 63.89% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -569,25 +447,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
+      <th>8484</th>
+      <td>440A</td>
+      <td>440a</td>
+      <td>583862.872347</td>
+      <td>550154.356528</td>
+    </tr>
+    <tr>
       <th>24001</th>
       <td>10A</td>
       <td>10a</td>
-      <td>574206.447866</td>
-      <td>338687.844226</td>
+      <td>457656.704336</td>
+      <td>313184.086196</td>
     </tr>
     <tr>
-      <th>12042</th>
-      <td>303B</td>
-      <td>303b</td>
-      <td>487743.765010</td>
-      <td>382255.341882</td>
-    </tr>
-    <tr>
-      <th>9177</th>
-      <td>296C</td>
-      <td>296c</td>
-      <td>585151.942602</td>
-      <td>647074.899216</td>
+      <th>8691</th>
+      <td>360B</td>
+      <td>360b</td>
+      <td>509724.805344</td>
+      <td>560474.826272</td>
     </tr>
   </tbody>
 </table>
@@ -624,28 +502,28 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Transform numbers to words</span>
+        <span>Add typos</span>
     </td>
     
 
     
     <td class="p-3">
-        <span>Fail rate = 0.583</span>
+        <span>Fail rate = 0.632</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            28/48 tested samples (58.33%) changed prediction after perturbation
+            24/38 tested samples (63.16%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            48 samples affected<br>
-            (49.0% of dataset)
+            38 samples affected<br>
+            (38.8% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -659,7 +537,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 58.33% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “street_name” is perturbed with the transformation “Add typos”, the model changes its prediction in 63.16% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -684,32 +562,32 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <tr style="text-align: right;">
       <th></th>
       <th>street_name</th>
-      <th>Transform numbers to words(street_name)</th>
+      <th>Add typos(street_name)</th>
       <th>Original prediction</th>
       <th>Prediction after perturbation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th>8691</th>
+      <td>ADMIRALTY DR</td>
+      <td>AMDIRZALTY DR</td>
+      <td>509724.805344</td>
+      <td>545629.648333</td>
+    </tr>
+    <tr>
       <th>20698</th>
       <td>WOODLANDS ST 83</td>
-      <td>WOODLANDS ST eighty-three</td>
-      <td>352287.081458</td>
-      <td>402976.630364</td>
+      <td>OWODLANDS ST 83</td>
+      <td>372703.326579</td>
+      <td>345211.423958</td>
     </tr>
     <tr>
-      <th>13297</th>
-      <td>WOODLANDS ST 11</td>
-      <td>WOODLANDS ST eleven</td>
-      <td>426249.463337</td>
-      <td>479740.592263</td>
-    </tr>
-    <tr>
-      <th>2484</th>
-      <td>PASIR RIS DR 1</td>
-      <td>PASIR RIS DR one</td>
-      <td>521987.228823</td>
-      <td>451252.279228</td>
+      <th>19246</th>
+      <td>CHOA CHU KANG AVE 3</td>
+      <td>CHOA CHU KANGA VE 3</td>
+      <td>588589.523494</td>
+      <td>490515.601847</td>
     </tr>
   </tbody>
 </table>
@@ -737,7 +615,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td class="p-3">
         
         <span class="mono text-blue-300">
-            Feature `remaining_lease`
+            Feature `town`
         </span>
         
         
@@ -759,15 +637,15 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     
     <td class="p-3">        
         <span class="text-red-400">
-            20/35 tested samples (57.14%) changed prediction after perturbation
+            4/7 tested samples (57.14%) changed prediction after perturbation
         </span>
     </td>
     
     
     <td class="p-3">
         <span class="text-gray-400">
-            35 samples affected<br>
-            (35.7% of dataset)
+            7 samples affected<br>
+            (7.1% of dataset)
         </span>
         
     <td class="p-3 text-xs text-right space-x-1">
@@ -781,7 +659,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “remaining_lease” is perturbed with the transformation “Add typos”, the model changes its prediction in 57.14% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “town” is perturbed with the transformation “Add typos”, the model changes its prediction in 57.14% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -805,33 +683,155 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>remaining_lease</th>
-      <th>Add typos(remaining_lease)</th>
+      <th>town</th>
+      <th>Add typos(town)</th>
       <th>Original prediction</th>
       <th>Prediction after perturbation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>24001</th>
-      <td>94 years 07 months</td>
-      <td>49 years 07 months</td>
-      <td>574206.447866</td>
-      <td>463018.568558</td>
+      <th>7008</th>
+      <td>BUKIT MERAH</td>
+      <td>BUKI T MERAH</td>
+      <td>719409.729778</td>
+      <td>509811.172435</td>
     </tr>
     <tr>
-      <th>35482</th>
-      <td>76 years 10 months</td>
-      <td>76 year s10 months</td>
-      <td>436033.824053</td>
-      <td>462173.669329</td>
+      <th>13292</th>
+      <td>CHOA CHU KANG</td>
+      <td>COHA CHU KANG</td>
+      <td>492055.660817</td>
+      <td>528122.675645</td>
     </tr>
     <tr>
-      <th>2484</th>
-      <td>90 years 09 months</td>
-      <td>90y ears 09 months</td>
-      <td>521987.228823</td>
-      <td>446127.458247</td>
+      <th>4545</th>
+      <td>BUKIT PANJANG</td>
+      <td>BUKIT PANJQANG</td>
+      <td>402037.383854</td>
+      <td>452097.797447</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `block`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Transform numbers to words</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.565</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            35/62 tested samples (56.45%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            62 samples affected<br>
+            (63.3% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “block” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 56.45% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block</th>
+      <th>Transform numbers to words(block)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9632</th>
+      <td>77</td>
+      <td>seventy-seven</td>
+      <td>308338.748690</td>
+      <td>285130.009822</td>
+    </tr>
+    <tr>
+      <th>20698</th>
+      <td>831</td>
+      <td>eight hundred and thirty-one</td>
+      <td>372703.326579</td>
+      <td>396573.480700</td>
+    </tr>
+    <tr>
+      <th>13297</th>
+      <td>168</td>
+      <td>one hundred and sixty-eight</td>
+      <td>425140.892825</td>
+      <td>476312.689603</td>
     </tr>
   </tbody>
 </table>
@@ -938,144 +938,22 @@ changing word order, or turning text into uppercase or lowercase. This happens w
       <th>19129</th>
       <td>2022-01</td>
       <td>two thousand and twenty-two-one</td>
-      <td>491462.194869</td>
-      <td>374504.016009</td>
+      <td>475705.056711</td>
+      <td>417735.374208</td>
     </tr>
     <tr>
       <th>8484</th>
       <td>2024-04</td>
       <td>two thousand and twenty-four-four</td>
-      <td>583570.901765</td>
-      <td>440244.565268</td>
+      <td>583862.872347</td>
+      <td>434378.716433</td>
     </tr>
     <tr>
-      <th>24001</th>
-      <td>2020-07</td>
-      <td>two thousand and twenty-seven</td>
-      <td>574206.447866</td>
-      <td>611581.255583</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-        </div>
-        
-
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
-        
-        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
-            avid-effect:performance:P0201
-        </span>
-        
-        
-    </td>
-</tr>
-        </tbody>
-        
-        <tbody class="first:border-t border-b border-zinc-500">
-            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
-    
-    <td class="p-3">
-        
-        <span class="mono text-blue-300">
-            Feature `street_name`
-        </span>
-        
-        
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Add typos</span>
-    </td>
-    
-
-    
-    <td class="p-3">
-        <span>Fail rate = 0.500</span>
-        
-    </td>
-    
-    
-    <td class="p-3">        
-        <span class="text-red-400">
-            19/38 tested samples (50.0%) changed prediction after perturbation
-        </span>
-    </td>
-    
-    
-    <td class="p-3">
-        <span class="text-gray-400">
-            38 samples affected<br>
-            (38.8% of dataset)
-        </span>
-        
-    <td class="p-3 text-xs text-right space-x-1">
-        <a href="#"
-            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
-        <a href="#"
-            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
-    </td>
-</tr>
-<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
-    <td colspan="1000" class="p-3">
-        
-        <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Add typos”, the model changes its prediction in 50.0% of the cases. We expected the predictions not to be affected by this transformation.
-        
-
-        
-        <h4 class="font-bold text-sm mt-4">Examples</h4>
-        <div class="text-white text-sm overflow-scroll">
-            <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>street_name</th>
-      <th>Add typos(street_name)</th>
-      <th>Original prediction</th>
-      <th>Prediction after perturbation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>20698</th>
-      <td>WOODLANDS ST 83</td>
-      <td>OWODLANDS ST 83</td>
-      <td>352287.081458</td>
-      <td>401596.098580</td>
-    </tr>
-    <tr>
-      <th>2484</th>
-      <td>PASIR RIS DR 1</td>
-      <td>PASUR RIS DR 1</td>
-      <td>521987.228823</td>
-      <td>450788.978704</td>
-    </tr>
-    <tr>
-      <th>4115</th>
-      <td>BOON TIONG RD</td>
-      <td>BOON  TIONG RD</td>
-      <td>725802.946407</td>
-      <td>434648.837070</td>
+      <th>7322</th>
+      <td>2023-12</td>
+      <td>two thousand and twenty-three-twelve</td>
+      <td>386586.685270</td>
+      <td>321884.805748</td>
     </tr>
   </tbody>
 </table>
@@ -1182,8 +1060,130 @@ changing word order, or turning text into uppercase or lowercase. This happens w
       <th>16758</th>
       <td>C'WEALTH DR</td>
       <td>C WEALTH DR</td>
-      <td>746047.463672</td>
-      <td>636131.95769</td>
+      <td>708724.019795</td>
+      <td>526817.139552</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+        
+
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Taxonomy</h4>
+        
+        <span class="inline-block bg-blue-300/25 text-zinc-100 px-2 py-0.5 rounded-sm text-sm mr-1 my-2">
+            avid-effect:performance:P0201
+        </span>
+        
+        
+    </td>
+</tr>
+        </tbody>
+        
+        <tbody class="first:border-t border-b border-zinc-500">
+            <tr class="gsk-issue text-sm group peer text-left cursor-pointer hover:bg-zinc-700">
+    
+    <td class="p-3">
+        
+        <span class="mono text-blue-300">
+            Feature `remaining_lease`
+        </span>
+        
+        
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Add typos</span>
+    </td>
+    
+
+    
+    <td class="p-3">
+        <span>Fail rate = 0.486</span>
+        
+    </td>
+    
+    
+    <td class="p-3">        
+        <span class="text-red-400">
+            17/35 tested samples (48.57%) changed prediction after perturbation
+        </span>
+    </td>
+    
+    
+    <td class="p-3">
+        <span class="text-gray-400">
+            35 samples affected<br>
+            (35.7% of dataset)
+        </span>
+        
+    <td class="p-3 text-xs text-right space-x-1">
+        <a href="#"
+            class="gsk-issue-detail-btn inline-block group-[.open]:hidden border border-zinc-100/50 text-zinc-100/90 hover:bg-zinc-500 hover:border-zinc-500 hover:text-white px-2 py-0.5 rounded-sm">Show details</a>
+        <a href="#"
+            class="hidden group-[.open]:inline-block gsk-issue-detail-btn border border-zinc-500 text-zinc-100/90 bg-zinc-500 hover:bg-zinc-400 hover:text-white px-2 py-0.5 rounded-sm">Hide details</a>
+    </td>
+</tr>
+<tr class="gsk-issue-detail text-left hidden  peer-[.open]:table-row border-b border-zinc-500 bg-zinc-700">
+    <td colspan="1000" class="p-3">
+        
+        <h4 class="font-bold text-sm">Description</h4>
+        When feature “remaining_lease” is perturbed with the transformation “Add typos”, the model changes its prediction in 48.57% of the cases. We expected the predictions not to be affected by this transformation.
+        
+
+        
+        <h4 class="font-bold text-sm mt-4">Examples</h4>
+        <div class="text-white text-sm overflow-scroll">
+            <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>remaining_lease</th>
+      <th>Add typos(remaining_lease)</th>
+      <th>Original prediction</th>
+      <th>Prediction after perturbation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>24001</th>
+      <td>94 years 07 months</td>
+      <td>49 years 07 months</td>
+      <td>457656.704336</td>
+      <td>392800.473549</td>
+    </tr>
+    <tr>
+      <th>2484</th>
+      <td>90 years 09 months</td>
+      <td>90y ears 09 months</td>
+      <td>539141.451386</td>
+      <td>511019.260275</td>
+    </tr>
+    <tr>
+      <th>23788</th>
+      <td>77 years 10 months</td>
+      <td>77 years 10 mkonths</td>
+      <td>515764.416819</td>
+      <td>557473.552187</td>
     </tr>
   </tbody>
 </table>
@@ -1226,14 +1226,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.449</span>
+        <span>Fail rate = 0.480</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            44/98 tested samples (44.9%) changed prediction after perturbation
+            47/98 tested samples (47.96%) changed prediction after perturbation
         </span>
     </td>
     
@@ -1255,7 +1255,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “town” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 44.9% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “town” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 47.96% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -1287,25 +1287,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
+      <th>19129</th>
+      <td>SEMBAWANG</td>
+      <td>sembawang</td>
+      <td>475705.056711</td>
+      <td>502433.080840</td>
+    </tr>
+    <tr>
       <th>9632</th>
       <td>BEDOK</td>
       <td>bedok</td>
-      <td>295583.290087</td>
-      <td>266536.379194</td>
+      <td>308338.748690</td>
+      <td>285261.938509</td>
     </tr>
     <tr>
       <th>24001</th>
       <td>BUKIT MERAH</td>
       <td>bukit merah</td>
-      <td>574206.447866</td>
-      <td>374661.519493</td>
-    </tr>
-    <tr>
-      <th>20698</th>
-      <td>WOODLANDS</td>
-      <td>woodlands</td>
-      <td>352287.081458</td>
-      <td>426339.128317</td>
+      <td>457656.704336</td>
+      <td>366688.276673</td>
     </tr>
   </tbody>
 </table>
@@ -1348,14 +1348,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.449</span>
+        <span>Fail rate = 0.480</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            44/98 tested samples (44.9%) changed prediction after perturbation
+            47/98 tested samples (47.96%) changed prediction after perturbation
         </span>
     </td>
     
@@ -1377,7 +1377,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 44.9% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “street_name” is perturbed with the transformation “Transform to lowercase”, the model changes its prediction in 47.96% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -1409,25 +1409,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
+      <th>19129</th>
+      <td>CANBERRA RD</td>
+      <td>canberra rd</td>
+      <td>475705.056711</td>
+      <td>502433.080840</td>
+    </tr>
+    <tr>
       <th>9632</th>
       <td>BEDOK NTH RD</td>
       <td>bedok nth rd</td>
-      <td>295583.290087</td>
-      <td>266536.379194</td>
+      <td>308338.748690</td>
+      <td>285261.938509</td>
     </tr>
     <tr>
       <th>24001</th>
       <td>BOON TIONG RD</td>
       <td>boon tiong rd</td>
-      <td>574206.447866</td>
-      <td>374661.519493</td>
-    </tr>
-    <tr>
-      <th>20698</th>
-      <td>WOODLANDS ST 83</td>
-      <td>woodlands st 83</td>
-      <td>352287.081458</td>
-      <td>426339.128317</td>
+      <td>457656.704336</td>
+      <td>366688.276673</td>
     </tr>
   </tbody>
 </table>
@@ -1470,14 +1470,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.449</span>
+        <span>Fail rate = 0.480</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            44/98 tested samples (44.9%) changed prediction after perturbation
+            47/98 tested samples (47.96%) changed prediction after perturbation
         </span>
     </td>
     
@@ -1499,7 +1499,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “town” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 44.9% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “town” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 47.96% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -1531,25 +1531,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
+      <th>19129</th>
+      <td>SEMBAWANG</td>
+      <td>Sembawang</td>
+      <td>475705.056711</td>
+      <td>502433.080840</td>
+    </tr>
+    <tr>
       <th>9632</th>
       <td>BEDOK</td>
       <td>Bedok</td>
-      <td>295583.290087</td>
-      <td>266536.379194</td>
+      <td>308338.748690</td>
+      <td>285261.938509</td>
     </tr>
     <tr>
       <th>24001</th>
       <td>BUKIT MERAH</td>
       <td>Bukit Merah</td>
-      <td>574206.447866</td>
-      <td>374661.519493</td>
-    </tr>
-    <tr>
-      <th>20698</th>
-      <td>WOODLANDS</td>
-      <td>Woodlands</td>
-      <td>352287.081458</td>
-      <td>426339.128317</td>
+      <td>457656.704336</td>
+      <td>366688.276673</td>
     </tr>
   </tbody>
 </table>
@@ -1592,14 +1592,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.449</span>
+        <span>Fail rate = 0.480</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            44/98 tested samples (44.9%) changed prediction after perturbation
+            47/98 tested samples (47.96%) changed prediction after perturbation
         </span>
     </td>
     
@@ -1621,7 +1621,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “street_name” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 44.9% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “street_name” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 47.96% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -1653,25 +1653,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
+      <th>19129</th>
+      <td>CANBERRA RD</td>
+      <td>Canberra Rd</td>
+      <td>475705.056711</td>
+      <td>502433.080840</td>
+    </tr>
+    <tr>
       <th>9632</th>
       <td>BEDOK NTH RD</td>
       <td>Bedok Nth Rd</td>
-      <td>295583.290087</td>
-      <td>266536.379194</td>
+      <td>308338.748690</td>
+      <td>285261.938509</td>
     </tr>
     <tr>
       <th>24001</th>
       <td>BOON TIONG RD</td>
       <td>Boon Tiong Rd</td>
-      <td>574206.447866</td>
-      <td>374661.519493</td>
-    </tr>
-    <tr>
-      <th>20698</th>
-      <td>WOODLANDS ST 83</td>
-      <td>Woodlands St 83</td>
-      <td>352287.081458</td>
-      <td>426339.128317</td>
+      <td>457656.704336</td>
+      <td>366688.276673</td>
     </tr>
   </tbody>
 </table>
@@ -1714,14 +1714,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.439</span>
+        <span>Fail rate = 0.347</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            43/98 tested samples (43.88%) changed prediction after perturbation
+            34/98 tested samples (34.69%) changed prediction after perturbation
         </span>
     </td>
     
@@ -1743,7 +1743,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “remaining_lease” is perturbed with the transformation “Transform to uppercase”, the model changes its prediction in 43.88% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “remaining_lease” is perturbed with the transformation “Transform to uppercase”, the model changes its prediction in 34.69% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -1775,25 +1775,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>9632</th>
-      <td>65 years 05 months</td>
-      <td>65 YEARS 05 MONTHS</td>
-      <td>295583.290087</td>
-      <td>279360.464343</td>
-    </tr>
-    <tr>
       <th>24001</th>
       <td>94 years 07 months</td>
       <td>94 YEARS 07 MONTHS</td>
-      <td>574206.447866</td>
-      <td>416318.904946</td>
+      <td>457656.704336</td>
+      <td>402968.457531</td>
     </tr>
     <tr>
-      <th>8691</th>
-      <td>79 years 11 months</td>
-      <td>79 YEARS 11 MONTHS</td>
-      <td>508167.830376</td>
-      <td>464476.317773</td>
+      <th>7322</th>
+      <td>45 years 03 months</td>
+      <td>45 YEARS 03 MONTHS</td>
+      <td>386586.685270</td>
+      <td>457290.108444</td>
+    </tr>
+    <tr>
+      <th>9177</th>
+      <td>76 years 10 months</td>
+      <td>76 YEARS 10 MONTHS</td>
+      <td>426845.053340</td>
+      <td>658389.139077</td>
     </tr>
   </tbody>
 </table>
@@ -1836,14 +1836,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.439</span>
+        <span>Fail rate = 0.347</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            43/98 tested samples (43.88%) changed prediction after perturbation
+            34/98 tested samples (34.69%) changed prediction after perturbation
         </span>
     </td>
     
@@ -1865,7 +1865,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “remaining_lease” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 43.88% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “remaining_lease” is perturbed with the transformation “Transform to title case”, the model changes its prediction in 34.69% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -1897,25 +1897,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>9632</th>
-      <td>65 years 05 months</td>
-      <td>65 Years 05 Months</td>
-      <td>295583.290087</td>
-      <td>279360.464343</td>
-    </tr>
-    <tr>
       <th>24001</th>
       <td>94 years 07 months</td>
       <td>94 Years 07 Months</td>
-      <td>574206.447866</td>
-      <td>416318.904946</td>
+      <td>457656.704336</td>
+      <td>402968.457531</td>
     </tr>
     <tr>
-      <th>8691</th>
-      <td>79 years 11 months</td>
-      <td>79 Years 11 Months</td>
-      <td>508167.830376</td>
-      <td>464476.317773</td>
+      <th>7322</th>
+      <td>45 years 03 months</td>
+      <td>45 Years 03 Months</td>
+      <td>386586.685270</td>
+      <td>457290.108444</td>
+    </tr>
+    <tr>
+      <th>9177</th>
+      <td>76 years 10 months</td>
+      <td>76 Years 10 Months</td>
+      <td>426845.053340</td>
+      <td>658389.139077</td>
     </tr>
   </tbody>
 </table>
@@ -1958,14 +1958,14 @@ changing word order, or turning text into uppercase or lowercase. This happens w
 
     
     <td class="p-3">
-        <span>Fail rate = 0.306</span>
+        <span>Fail rate = 0.204</span>
         
     </td>
     
     
     <td class="p-3">        
         <span class="text-red-400">
-            30/98 tested samples (30.61%) changed prediction after perturbation
+            20/98 tested samples (20.41%) changed prediction after perturbation
         </span>
     </td>
     
@@ -1987,7 +1987,7 @@ changing word order, or turning text into uppercase or lowercase. This happens w
     <td colspan="1000" class="p-3">
         
         <h4 class="font-bold text-sm">Description</h4>
-        When feature “remaining_lease” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 30.61% of the cases. We expected the predictions not to be affected by this transformation.
+        When feature “remaining_lease” is perturbed with the transformation “Transform numbers to words”, the model changes its prediction in 20.41% of the cases. We expected the predictions not to be affected by this transformation.
         
 
         
@@ -2019,25 +2019,25 @@ changing word order, or turning text into uppercase or lowercase. This happens w
   </thead>
   <tbody>
     <tr>
-      <th>9632</th>
-      <td>65 years 05 months</td>
-      <td>sixty-five years five months</td>
-      <td>295583.290087</td>
-      <td>272533.375760</td>
-    </tr>
-    <tr>
-      <th>8484</th>
-      <td>90 years 04 months</td>
-      <td>ninety years four months</td>
-      <td>583570.901765</td>
-      <td>532785.524332</td>
-    </tr>
-    <tr>
       <th>24001</th>
       <td>94 years 07 months</td>
       <td>ninety-four years seven months</td>
-      <td>574206.447866</td>
-      <td>410523.446632</td>
+      <td>457656.704336</td>
+      <td>391564.376376</td>
+    </tr>
+    <tr>
+      <th>9177</th>
+      <td>76 years 10 months</td>
+      <td>seventy-six years ten months</td>
+      <td>426845.053340</td>
+      <td>633382.270639</td>
+    </tr>
+    <tr>
+      <th>19246</th>
+      <td>69 years</td>
+      <td>sixty-nine years</td>
+      <td>588589.523494</td>
+      <td>490539.928611</td>
     </tr>
   </tbody>
 </table>

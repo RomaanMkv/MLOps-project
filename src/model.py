@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import os
 import pickle
 
-def load_features(version, name = "features_target", fraction=1):
+def load_features(version, name = "features_target", fraction=0.01):
     client = Client()
 
     # Retrieve the list of artifacts for the given name and version
@@ -95,8 +95,10 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
             pyfunc_predict_fn = cfg.model.pyfunc_predict_fn
         )
 
+        # save the best model
         client = mlflow.client.MlflowClient()
         client.set_model_version_tag(name = cfg.model.model_name, version=model_info.registered_model_version, key="source", value="best_Grid_search_model")
+        client.set_registered_model_alias(name=cfg.model.model_name, alias=cfg.model.best_model_alias, version=model_info.registered_model_version)
 
 
         for index, result in cv_results.iterrows():
@@ -180,7 +182,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
 
     version_metrics = get_model_versions_with_metrics(cfg.model.model_name, "root_mean_squared_error")
     sorted_versions = sort_versions_by_metric(version_metrics)
-    assign_aliases_to_models(cfg.model.model_name, sorted_versions)
+    assign_aliases_to_models(cfg.model.model_name, sorted_versions, cfg.model.ordinal_model_alias)
 
 
 def train(X_train, y_train, cfg):
@@ -246,17 +248,17 @@ def sort_versions_by_metric(version_metrics):
     return sorted(version_metrics, key=lambda x: x[1])
 
 
-def assign_aliases_to_models(model_name, sorted_versions):
+def assign_aliases_to_models(model_name, sorted_versions, ordinal_alias):
     client = MlflowClient()
     
     # Assign 'champion' alias to the model with the smallest metric
-    champion_version = sorted_versions[0][0]
-    client.set_registered_model_alias(model_name, "champion", champion_version)
-    print(f"Assigned alias 'champion' to version {champion_version}")
+    # champion_version = sorted_versions[0][0]
+    # client.set_registered_model_alias(model_name, "champion", champion_version)
+    # print(f"Assigned alias 'champion' to version {champion_version}")
 
     # Assign 'challenger1', 'challenger2', etc. to the remaining models
-    for i, (version, metric) in enumerate(sorted_versions[1:], start=1):
-        alias = f"challenger{i}"
+    for i, (version, metric) in enumerate(sorted_versions):
+        alias = f"{ordinal_alias}{i}"
         client.set_registered_model_alias(model_name, alias, version)
         print(f"Assigned alias '{alias}' to version {version}")
 

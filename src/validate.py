@@ -31,7 +31,7 @@ model_alias = cfg.model.model_alias
 rmse_scores = {}
 
 for model_name in model_names:
-    for i in range(1, cfg.model.model_number):
+    for i in range(cfg.model.model_number):
         model: mlflow.pyfunc.PyFuncModel = retrieve_model_with_alias(model_name, model_alias=f'{model_alias}{i}')
         client = mlflow.MlflowClient()
         mv = client.get_model_version_by_alias(name=model_name, alias=f'{model_alias}{i}')
