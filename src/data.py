@@ -256,7 +256,7 @@ def transform_data(df: pd.DataFrame, cfg: DictConfig, fraction=1) -> pd.DataFram
     raw_df = raw_df.sample(frac=fraction, random_state=cfg.random_state)
 
     X = raw_df.drop(columns=[cfg.prepr_data.target_feature])
-    combined_df = pd.concat([X, df], ignore_index=True)
+    combined_df = pd.concat([X, df])
     
     combined_df, _ = preprocess_data(data=combined_df,
                                      cfg=cfg,

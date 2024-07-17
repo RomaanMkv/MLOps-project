@@ -8,7 +8,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends nginx
 WORKDIR /opt/mlflow
 
 # Install MLflow
-RUN pip install mlflow==2.14.1
+RUN pip install mlflow==2.14.3
 
 # Copy model to image and install dependencies
 COPY model_dir/ /opt/ml/model

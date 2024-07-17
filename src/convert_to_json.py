@@ -1,6 +1,5 @@
 import pandas as pd
 import json
-from data import transform_data
 
 df = pd.read_csv('data/preprocessed/X.csv')
 
