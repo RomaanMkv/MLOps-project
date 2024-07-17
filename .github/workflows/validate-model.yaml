@@ -40,7 +40,9 @@ jobs:
         pip install -r requirements.txt
 
     - name: Set PROJECT_BASE_PATH environment variable
-      run: echo "PROJECT_BASE_PATH=$(pwd)" >> $GITHUB_ENV
+      run: |
+        echo $(pwd)
+        echo "PROJECT_BASE_PATH=$(pwd)" >> $GITHUB_ENV
 
     - name: Validate Model
       run: |
