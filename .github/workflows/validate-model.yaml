@@ -45,7 +45,11 @@ jobs:
         echo "PROJECT_BASE_PATH=$(pwd)" >> $GITHUB_ENV
 
     - name: Restore data sample
-      run: dvc checkout
+      run: |
+        dvc remote list
+        dvc push
+        dvc remote list
+        dvc checkout
 
     - name: Validate Model
       run: |
