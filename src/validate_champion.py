@@ -1,5 +1,5 @@
 import giskard.testing
-from data import extract_data, preprocess_data  # custom module
+from data import extract_data, preprocess_data, sample_data  # custom module
 from model import retrieve_model_with_alias  # custom module
 import giskard
 import mlflow
@@ -8,7 +8,10 @@ import sys
 
 @hydra.main(config_path="../configs", config_name="main", version_base=None) # type: ignore
 def validate_champion(cfg = None):
-    version = cfg.test_data_version
+    sample_data(cfg=cfg)
+    print('Data has been sampled')
+
+    version = cfg.sample_data.sample_version
     df, version = extract_data(cfg=cfg)
 
     model_name = cfg.model.model_name

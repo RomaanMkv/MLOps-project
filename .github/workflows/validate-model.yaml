@@ -44,12 +44,6 @@ jobs:
         echo $(pwd)
         echo "PROJECT_BASE_PATH=$(pwd)" >> $GITHUB_ENV
 
-    - name: Restore data sample
-      run: |
-        dvc add data/samples/sample.csv
-        dvc push
-        dvc checkout
-
     - name: Validate Model
       run: |
         python src/validate_champion.py
