@@ -23,4 +23,25 @@ entry_points:
   extract:
     command: "airflow dags test data_extract_dag"
 
+  deploy:
+    command: "bash scripts/deploy_docker.sh"
+
+  predict:
+    parameters:
+      example_version: 
+        type: string
+        default: "2"
+      hostname:
+        type: string
+        default: "hostname"
+      port:
+        type: float
+        default: 5151
+      random_state:
+        type: float
+        default: 1
+      
+    # src/predict.py is decorated with @hydra.main to pass parameters at runtime
+    command: "python src/predict.py ++example_version={example_version} ++hostname={hostname} ++port={port} ++random_state={random_state}"
+
   

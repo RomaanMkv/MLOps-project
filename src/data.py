@@ -250,6 +250,27 @@ def load_artifact(name: str, version: str) -> pd.DataFrame:
     artifacts.reverse()
     return artifacts[0].load()
 
+
+def transform_data(df: pd.DataFrame, cfg: DictConfig, fraction=1) -> pd.DataFrame:
+    raw_df, _ = extract_data(cfg=cfg)
+    raw_df = raw_df.sample(frac=fraction, random_state=cfg.random_state)
+
+    X = raw_df.drop(columns=[cfg.prepr_data.target_feature])
+    combined_df = pd.concat([X, df])
+    
+    combined_df, _ = preprocess_data(data=combined_df,
+                                     cfg=cfg,
+                                     only_X=True
+                                     )
+    
+    df = combined_df.iloc[len(X):]
+    
+    return df
+    
+
+    
+
+
 # df, version = extract_data("/home/roman/MLOps/MLOps-project")
 # X, y = preprocess_data(df)
 # print(type(y))

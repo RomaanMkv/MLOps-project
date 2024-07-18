@@ -1,4 +1,8 @@
+![Test code workflow](https://github.com/RomaanMkv/MLOps-project/actions/workflows/test-code.yaml/badge.svg)
+![Test model workflow](https://github.com/RomaanMkv/MLOps-project/actions/workflows/validate-model.yaml/badge.svg)
+
 # README: HDB Resale Price Prediction Project
+
 
 ## Project Overview
 
