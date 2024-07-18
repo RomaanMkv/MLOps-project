@@ -46,9 +46,8 @@ jobs:
 
     - name: Restore data sample
       run: |
-        dvc remote list
+        dvc add data/samples/sample.csv
         dvc push
-        dvc remote list
         dvc checkout
 
     - name: Validate Model
