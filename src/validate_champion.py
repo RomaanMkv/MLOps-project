@@ -5,6 +5,7 @@ import giskard
 import mlflow
 import hydra
 import sys
+import pickle
 
 @hydra.main(config_path="../configs", config_name="main", version_base=None) # type: ignore
 def validate_champion(cfg = None):
@@ -32,10 +33,8 @@ def validate_champion(cfg = None):
         cat_columns=CATEGORICAL_COLUMNS  # List of categorical columns. Optional, but improves quality of results if available.
     )
 
-    model: mlflow.pyfunc.PyFuncModel = retrieve_model_with_alias(model_name, model_alias=model_alias)
-    client = mlflow.MlflowClient()
-    mv = client.get_model_version_by_alias(name=model_name, alias=model_alias)
-    model_version = mv.version
+    file_name = f'models/{cfg.model.model_name}/{cfg.model.model_name}_{cfg.model.best_model_alias}.pkl'
+    model = pickle.load(open(file_name, 'rb'))
 
     def predict(raw_df):
         X, _ = preprocess_data(
@@ -43,6 +42,8 @@ def validate_champion(cfg = None):
             cfg=cfg,
             only_X=True
         )
+        columns_order = list(cfg.prepr_data.columns_needed)
+        X = X[columns_order]
         X = X.astype('float64')
         return model.predict(X)
     
@@ -54,21 +55,21 @@ def validate_champion(cfg = None):
         feature_names=df.columns,  # List of feature names used by the model
     )
 
-    suite_name = f"test_suite_{model_name}_{model_version}_{dataset_name}_{version}"
+    suite_name = f"test_suite_{model_name}_{dataset_name}_{version}"
     test_suite = giskard.Suite(name = suite_name)
     test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=400000)
     test_suite.add_test(test1)
     test_results = test_suite.run()
     
     if test_results.passed:
-        print(f"Model {model_name} version {model_version} passed validation!")
+        print(f"Model {model_name} passed validation!")
         
         rmse_score = test_results.results[0].result.metric  # Assuming the RMSE value is stored in `actual_value`
         
         print(f'The best {model_name} model has rmse score = {rmse_score}')
 
     else:
-        print(f"Model {model_name} version {model_version} has vulnerabilities!")
+        print(f"Model {model_name} has vulnerabilities!")
         sys.exit(1)
 
 
