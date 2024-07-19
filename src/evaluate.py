@@ -1,8 +1,8 @@
 import argparse
 import mlflow.sklearn
 from model import load_features
-from sklearn.metrics import mean_squared_error, r2_score
-import numpy as np
+import pandas as pd
+import giskard # do not remove
 
 def evaluate_model(data_sample_version, model_name, model_alias):
     # Load the model using the provided alias
@@ -10,24 +10,25 @@ def evaluate_model(data_sample_version, model_name, model_alias):
 
     X_test, y_test = load_features(version=data_sample_version, fraction=0.2)
 
-
-
     # Perform evaluation
     y_pred = model.predict(X_test)
     # Add your evaluation metrics calculation here
     # For example, calculating RMSE, R2, etc.
-    print(f"Evaluating model version: {data_sample_version}, alias: {model_alias}")
-    mse = mean_squared_error(y_test, y_pred)
-    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-    r2 = r2_score(y_test, y_pred)
+    eval_data = pd.DataFrame(y_test)
+    eval_data.columns = ["actual"]
+    eval_data["predictions"] = y_pred
 
-    mlflow.log_metric("mean_squared_error", mse)
-    mlflow.log_metric("root_mean_squared_error", rmse)
-    mlflow.log_metric("r_2_score", r2)
+    results = mlflow.evaluate(
+        data=eval_data,
+        model_type="regressor",
+        targets="actual",
+        predictions="predictions",
+        evaluators="default"
+    )
 
-    print(f'mse={mse}')
-    print(f'rmse={rmse}')
-    print(f'r2={r2}')
+    print(f"'{model_name}' model with '{model_alias}' alias has the following metrics:\n{results.metrics}")
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate model")

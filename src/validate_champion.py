@@ -33,7 +33,7 @@ def validate_champion(cfg = None):
         cat_columns=CATEGORICAL_COLUMNS  # List of categorical columns. Optional, but improves quality of results if available.
     )
 
-    file_name = f'models/{cfg.model.model_name}/{cfg.model.model_name}_{cfg.model.best_model_alias}.pkl'
+    file_name = f'models/{cfg.model.model_name}/{cfg.model.best_model_alias}/model.pkl'
     model = pickle.load(open(file_name, 'rb'))
 
     def predict(raw_df):
