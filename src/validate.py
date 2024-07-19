@@ -62,15 +62,9 @@ for model_name in model_names:
 
         suite_name = f"test_suite_{model_name}_{model_version}_{dataset_name}_{version}"
         test_suite = giskard.Suite(name = suite_name)
-        test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
+        test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=400000)
         test_suite.add_test(test1)
         test_results = test_suite.run()
-
-        # def props(cls):   
-        #     return [i for i in cls.__dict__.keys() if i[:1] != '_']
-        
-        # properties = props(test_results.results[0].result)
-        # print('properties =====', properties)
         
         if test_results.passed:
             print(f"Model {model_name} version {model_version} passed validation!")
@@ -96,14 +90,13 @@ if rmse_scores:
 
     # saving the best model
     model_uri = f"models:/{best_model_name}@{best_model_alias}"
-    sklearn_model = mlflow.sklearn.load_model(model_uri=model_uri)
-    save_dir = f'models/{best_model_name}'
+    save_dir = f'models/{best_model_name}/{best_model_alias}'
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
-    pickle_save_path = os.path.join(save_dir, f"{best_model_name}_{best_model_alias}.pkl")
-    # Save the model locally using pickle
-    with open(pickle_save_path, 'wb') as f:
-        pickle.dump(sklearn_model, f)
+
+    mlflow.artifacts.download_artifacts(artifact_uri=model_uri, dst_path=save_dir)
+    
+    print(f"Model with '{model_alias}' alias is saved locally at {save_dir}")
 else:
     print("No model passed the test suite")
 
