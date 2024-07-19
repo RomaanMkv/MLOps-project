@@ -9,8 +9,7 @@ import importlib
 from mlflow.tracking import MlflowClient
 import matplotlib.pyplot as plt
 import os
-import pickle
-import giskard
+import giskard # do not remove
 
 def load_features(version, name = "features_target", fraction=0.001):
     client = Client()
@@ -154,7 +153,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 eval_data["predictions"] = y_pred
 
                 results = mlflow.evaluate(
-                    model=model_uri,
                     data=eval_data,
                     model_type="regressor",
                     targets="actual",
@@ -252,13 +250,8 @@ def sort_versions_by_metric(version_metrics):
 
 def assign_aliases_to_models(model_name, sorted_versions, ordinal_alias):
     client = MlflowClient()
-    
-    # Assign 'champion' alias to the model with the smallest metric
-    # champion_version = sorted_versions[0][0]
-    # client.set_registered_model_alias(model_name, "champion", champion_version)
-    # print(f"Assigned alias 'champion' to version {champion_version}")
 
-    # Assign 'challenger1', 'challenger2', etc. to the remaining models
+    # Assign 'challenger1', 'challenger2', etc. to the  models
     for i, (version, metric) in enumerate(sorted_versions):
         alias = f"{ordinal_alias}{i}"
         client.set_registered_model_alias(model_name, alias, version)
@@ -283,17 +276,12 @@ def retrieve_model_with_version(model_name, model_version = "v1") -> mlflow.pyfu
 
 def save_best_model(cfg, model_alias = "champion"):
     model_uri = f"models:/{cfg.model.model_name}@{model_alias}"
-    sklearn_model = mlflow.sklearn.load_model(model_uri=model_uri)
 
-    save_dir = f'models/{cfg.model.model_name}'
+    save_dir = f'models/{cfg.model.model_name}/{model_alias}'
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
     
-    pickle_save_path = os.path.join(save_dir, f"{cfg.model.model_name}_{model_alias}.pkl")
+    mlflow.artifacts.download_artifacts(artifact_uri=model_uri, dst_path=save_dir)
     
-    # Save the model locally using pickle
-    with open(pickle_save_path, 'wb') as f:
-        pickle.dump(sklearn_model, f)
-    
-    print(f"Model saved locally as pickle at {pickle_save_path}")
+    print(f"Model saved locally at {save_dir}")
 
