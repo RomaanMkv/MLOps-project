@@ -6,12 +6,11 @@ import pandas as pd
 import mlflow
 import mlflow.sklearn
 import importlib
-from sklearn.metrics import mean_squared_error, r2_score
-import numpy as np
 from mlflow.tracking import MlflowClient
 import matplotlib.pyplot as plt
 import os
 import pickle
+import giskard
 
 def load_features(version, name = "features_target", fraction=0.001):
     client = Client()
@@ -149,18 +148,21 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 loaded_model = mlflow.sklearn.load_model(model_uri=model_uri)
 
                 y_pred = loaded_model.predict(X_test) # type: ignore
-        
-                mse = mean_squared_error(y_test, y_pred)
-                rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-                r2 = r2_score(y_test, y_pred)
+    
+                eval_data = pd.DataFrame(y_test)
+                eval_data.columns = ["actual"]
+                eval_data["predictions"] = y_pred
 
-                mlflow.log_metric("mean_squared_error", mse)
-                mlflow.log_metric("root_mean_squared_error", rmse)
-                mlflow.log_metric("r_2_score", r2)
+                results = mlflow.evaluate(
+                    model=model_uri,
+                    data=eval_data,
+                    model_type="regressor",
+                    targets="actual",
+                    predictions="predictions",
+                    evaluators="default"
+                )
 
-                print(f'mse={mse}')
-                print(f'rmse={rmse}')
-                print(f'r2={r2}')
+                print(f"metrics:\n{results.metrics}")
 
                 # Plot and log performance charts
                 fig, ax = plt.subplots()
