@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import os
 import giskard # do not remove
 
-def load_features(version, name = "features_target", fraction=0.001):
+def load_features(version, name = "features_target", fraction=1):
     client = Client()
 
     # Retrieve the list of artifacts for the given name and version
