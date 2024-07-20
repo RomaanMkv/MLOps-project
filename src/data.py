@@ -266,16 +266,21 @@ def load_artifact(name: str, version: str) -> pd.DataFrame:
     return artifacts[0].load()
 
 
-def transform_data(df: pd.DataFrame, cfg: DictConfig, scaler_vertion) -> pd.DataFrame:
+def transform_data(df: pd.DataFrame, cfg: DictConfig, fraction=0.2) -> pd.DataFrame:
+    raw_df, _ = extract_data(cfg=cfg)
+    raw_df = raw_df.sample(frac=fraction, random_state=cfg.random_state)
 
-    X, _ = preprocess_data(data=df,
+    X = raw_df.drop(columns=[cfg.prepr_data.target_feature])
+    combined_df = pd.concat([X, df])
+    
+    combined_df, _ = preprocess_data(data=combined_df,
                                      cfg=cfg,
-                                     only_X=True,
-                                     scaler_version=scaler_vertion
+                                     only_X=True
                                      )
     
+    df = combined_df.iloc[len(X):]
     
-    return X
+    return df
     
 
     
