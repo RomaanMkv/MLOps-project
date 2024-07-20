@@ -5,7 +5,7 @@ import pandas as pd
 from omegaconf import DictConfig
 import os
 import yaml
-
+import pickle
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from datetime import datetime
@@ -77,7 +77,7 @@ def extract_data(cfg: DictConfig, base_path = None):
     return df, str(version)
 
 
-def preprocess_data(data, cfg: DictConfig, only_X = False):
+def preprocess_data(data, cfg: DictConfig, only_X = False, scaler_version=None, data_vertion=None):
 
     def convert_time_columns(df):
         reference_date = datetime.strptime(cfg.prepr_data.reference_date, "%Y-%m-%d")
@@ -148,16 +148,22 @@ def preprocess_data(data, cfg: DictConfig, only_X = False):
     # Define the transformations
     categorical_features = list(cfg.prepr_data.categorical_features)
     numeric_features = list(cfg.prepr_data.numeric_features)
-    coordinate_features = list(cfg.prepr_data.coordinate_features)
     
     # Pipeline for categorical features
     categorical_transformer = Pipeline(steps=[
         ('onehot', OneHotEncoder(sparse_output=False))
     ])
+
+    # load scaler
+    if scaler_version is None:
+        scaler = StandardScaler()
+    else:
+        with open(f'data/scalers/scaler{scaler_version}.pkl', 'rb') as f:
+            scaler = pickle.load(f)
     
     # Pipeline for numeric features
     numeric_transformer = Pipeline(steps=[
-        ('scaler', StandardScaler())
+        ('scaler', scaler)
     ])
     
     # Combine all transformations
@@ -180,8 +186,7 @@ def preprocess_data(data, cfg: DictConfig, only_X = False):
     X_transformed = preprocessor.fit_transform(X)
     transformed_columns = (
         preprocessor.transformers_[0][1].named_steps['onehot'].get_feature_names_out(categorical_features).tolist() +
-        numeric_features +
-        coordinate_features
+        numeric_features
     )
     X = pd.DataFrame(X_transformed, columns=transformed_columns, index=X.index)
 
@@ -196,6 +201,18 @@ def preprocess_data(data, cfg: DictConfig, only_X = False):
     
     # Apply transformations
     X = X.fillna(X.mean())
+
+    # save scaler
+    file_path = 'data/scalers'
+    if not os.path.exists(file_path):
+        os.mkdir(file_path)
+    if data_vertion is None:
+        scaler_path = os.path.join(file_path, 'scaler.pkl')
+    else:
+        scaler_path = os.path.join(file_path, f'scaler{data_vertion}.pkl')
+    
+    with open(scaler_path, 'wb') as f:
+        pickle.dump(scaler, f)
     
     return X, y
 
