@@ -77,7 +77,7 @@ def extract_data(cfg: DictConfig, base_path = None):
     return df, str(version)
 
 
-def preprocess_data(data, cfg: DictConfig, only_X = False, scaler_version=None, data_vertion=None):
+def preprocess_data(data, cfg: DictConfig, only_X = False, scaler_version=None):
 
     def convert_time_columns(df):
         reference_date = datetime.strptime(cfg.prepr_data.reference_date, "%Y-%m-%d")
@@ -203,16 +203,14 @@ def preprocess_data(data, cfg: DictConfig, only_X = False, scaler_version=None, 
     X = X.fillna(X.mean())
 
     # save scaler
-    file_path = 'data/scalers'
-    if not os.path.exists(file_path):
-        os.mkdir(file_path)
-    if data_vertion is None:
-        scaler_path = os.path.join(file_path, 'scaler.pkl')
-    else:
-        scaler_path = os.path.join(file_path, f'scaler{data_vertion}.pkl')
+    if scaler_version is None:
+        file_path = 'data/scalers'
+        if not os.path.exists(file_path):
+            os.mkdir(file_path)
+        scaler_path = os.path.join(file_path, f'scaler{cfg.version}.pkl')
     
-    with open(scaler_path, 'wb') as f:
-        pickle.dump(scaler, f)
+        with open(scaler_path, 'wb') as f:
+            pickle.dump(scaler, f)
     
     return X, y
 
