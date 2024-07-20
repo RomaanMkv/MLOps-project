@@ -207,10 +207,10 @@ def preprocess_data(data, cfg: DictConfig, only_X = False, scaler_version=None):
         file_path = 'data/scalers'
         if not os.path.exists(file_path):
             os.mkdir(file_path)
-        scaler_path = os.path.join(file_path, f'scaler{cfg.version}.pkl')
-    
-        with open(scaler_path, 'wb') as f:
-            pickle.dump(scaler, f)
+        scaler_path = os.path.join(file_path, f'scaler{cfg.sample_data.sample_version}.pkl')
+        if not os.path.isfile(scaler_path):
+            with open(scaler_path, 'wb') as f:
+                pickle.dump(scaler, f)
     
     return X, y
 
@@ -266,21 +266,16 @@ def load_artifact(name: str, version: str) -> pd.DataFrame:
     return artifacts[0].load()
 
 
-def transform_data(df: pd.DataFrame, cfg: DictConfig, fraction=1) -> pd.DataFrame:
-    raw_df, _ = extract_data(cfg=cfg)
-    raw_df = raw_df.sample(frac=fraction, random_state=cfg.random_state)
+def transform_data(df: pd.DataFrame, cfg: DictConfig, scaler_vertion) -> pd.DataFrame:
 
-    X = raw_df.drop(columns=[cfg.prepr_data.target_feature])
-    combined_df = pd.concat([X, df])
-    
-    combined_df, _ = preprocess_data(data=combined_df,
+    X, _ = preprocess_data(data=df,
                                      cfg=cfg,
-                                     only_X=True
+                                     only_X=True,
+                                     scaler_version=scaler_vertion
                                      )
     
-    df = combined_df.iloc[len(X):]
     
-    return df
+    return X
     
 
     

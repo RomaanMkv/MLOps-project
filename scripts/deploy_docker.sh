@@ -20,6 +20,8 @@ navigate_to_mlops_project() {
 # Call the function
 navigate_to_mlops_project
 
+# mlflow models generate-dockerfile --model-uri models:/gradient_boosting@validation_champion --env-manager local -d api
+
 cd api
 
 docker build -t my_ml_service .

@@ -41,11 +41,11 @@ def predict(month = None,
     # Build a dataframe of one row
     raw_df = pd.DataFrame(features, index=[0])
     
-    # This will read the saved transformers "v4" from ZenML artifact store
     # And only transform the input data (no fit here).
     X = transform_data(
                         df = raw_df, 
-                        cfg = cfg
+                        cfg = cfg,
+                        scaler_vertion=cfg.sample_data.sample_version
                       )
     
     # Convert it into JSON
