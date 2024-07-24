@@ -26,7 +26,7 @@ def info():
 @app.route("/", methods=["GET"])
 def home():
     msg = """
-    Welcome to our ML service to predict Customer satisfaction\n\n
+    Welcome to our ML service to predict Prices for flats in Singapore\n\n
 
     This API has two main endpoints:\n
     1. /info: to get info about the deployed model.\n
@@ -54,7 +54,7 @@ def predict():
         prediction = model.predict(input_df)
 
         # Return the prediction result
-        return jsonify({'result': prediction.tolist()})
+        return jsonify({'flat price': f'{int(prediction)} S$'})
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 

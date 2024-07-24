@@ -63,6 +63,8 @@ def predict(month=None,
         data=payload,
         headers={"Content-Type": "application/json"},
     )
+
+    print(response)
     
     return response.json()
 
@@ -89,7 +91,7 @@ demo = gr.Interface(
         gr.Number(label="Remaining Lease Years", precision=0),
         gr.Dropdown(label="Remaining Lease Months", choices=months),
     ],
-    outputs=gr.Text(label="Prediction Result"),
+    outputs=gr.Text(label="Predicted flat price"),
 )
 
 if __name__ == "__main__":

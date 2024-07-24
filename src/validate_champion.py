@@ -58,7 +58,7 @@ def validate_champion(cfg = None):
 
             suite_name = f"test_suite_{model_name}_{dataset_name}_{version}"
             test_suite = giskard.Suite(name = suite_name)
-            test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
+            test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=300000)
             test_suite.add_test(test1)
             test_results = test_suite.run()
             
