@@ -33,44 +33,48 @@ def validate_champion(cfg = None):
         cat_columns=CATEGORICAL_COLUMNS  # List of categorical columns. Optional, but improves quality of results if available.
     )
 
-    file_name = f'models/{cfg.model.model_name}/{cfg.model.best_model_alias}/model.pkl'
-    model = pickle.load(open(file_name, 'rb'))
+    file_name = f'models/{cfg.model.model_name}/{cfg.model.absolute_champion}/model.pkl'
+    try:
+        with open(file_name, 'rb') as file:
+            model = pickle.load(file)
+            def predict(raw_df):
+                X, _ = preprocess_data(
+                    data=raw_df,
+                    cfg=cfg,
+                    only_X=True
+                )
+                columns_order = list(cfg.prepr_data.columns_needed)
+                X = X[columns_order]
+                X = X.astype('float64')
+                return model.predict(X)
+            
+            # Create the Giskard model for the regression problem
+            giskard_model = giskard.Model(
+                model=predict,  # The prediction function
+                model_type="regression",  # Model type: "classification" or "regression"
+                name=model_name,  # Name of your model
+                feature_names=df.columns,  # List of feature names used by the model
+            )
 
-    def predict(raw_df):
-        X, _ = preprocess_data(
-            data=raw_df,
-            cfg=cfg,
-            only_X=True
-        )
-        columns_order = list(cfg.prepr_data.columns_needed)
-        X = X[columns_order]
-        X = X.astype('float64')
-        return model.predict(X)
-    
-    # Create the Giskard model for the regression problem
-    giskard_model = giskard.Model(
-        model=predict,  # The prediction function
-        model_type="regression",  # Model type: "classification" or "regression"
-        name=model_name,  # Name of your model
-        feature_names=df.columns,  # List of feature names used by the model
-    )
+            suite_name = f"test_suite_{model_name}_{dataset_name}_{version}"
+            test_suite = giskard.Suite(name = suite_name)
+            test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
+            test_suite.add_test(test1)
+            test_results = test_suite.run()
+            
+            if test_results.passed:
+                print(f"Model {model_name} passed validation!")
+                
+                rmse_score = test_results.results[0].result.metric  # Assuming the RMSE value is stored in `actual_value`
+                
+                print(f'The best {model_name} model has rmse score = {rmse_score}')
 
-    suite_name = f"test_suite_{model_name}_{dataset_name}_{version}"
-    test_suite = giskard.Suite(name = suite_name)
-    test1 = giskard.testing.test_rmse(model=giskard_model, dataset=giskard_dataset, threshold=40000)
-    test_suite.add_test(test1)
-    test_results = test_suite.run()
-    
-    if test_results.passed:
-        print(f"Model {model_name} passed validation!")
+            else:
+                print(f"Model {model_name} has vulnerabilities!")
+                sys.exit(1)
+    except FileNotFoundError:
+        print(f"Error: The file '{file_name}' does not exist.")
         
-        rmse_score = test_results.results[0].result.metric  # Assuming the RMSE value is stored in `actual_value`
-        
-        print(f'The best {model_name} model has rmse score = {rmse_score}')
-
-    else:
-        print(f"Model {model_name} has vulnerabilities!")
-        sys.exit(1)
 
 
 
